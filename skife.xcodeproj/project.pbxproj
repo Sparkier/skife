@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA5175381AA356440078FAD4 /* BroadcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5175371AA356440078FAD4 /* BroadcastViewController.swift */; };
+		FA51753A1AA3572F0078FAD4 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA5175391AA3572F0078FAD4 /* CoreBluetooth.framework */; };
+		FA6E77131A9F3C0D001F1BE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E77121A9F3C0D001F1BE9 /* AppDelegate.swift */; };
+		FA6E77161A9F3C0D001F1BE9 /* skife.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA6E77141A9F3C0D001F1BE9 /* skife.xcdatamodeld */; };
+		FA6E771B1A9F3C0D001F1BE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6E77191A9F3C0D001F1BE9 /* Main.storyboard */; };
+		FA6E771D1A9F3C0D001F1BE9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA6E771C1A9F3C0D001F1BE9 /* Images.xcassets */; };
+		FA6E77201A9F3C0D001F1BE9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA6E771E1A9F3C0D001F1BE9 /* LaunchScreen.xib */; };
+		FA6E772C1A9F3C0E001F1BE9 /* skifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E772B1A9F3C0E001F1BE9 /* skifeTests.swift */; };
+		FA6E77361A9F3C76001F1BE9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6E77351A9F3C76001F1BE9 /* CoreLocation.framework */; };
+		FA6F431A1AA1FAC000AF98A8 /* DetailedSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F43191AA1FAC000AF98A8 /* DetailedSearchViewController.swift */; };
+		FA8B58FC1A9F4D6D0064B16D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B58FB1A9F4D6D0064B16D /* SearchViewController.swift */; };
+		FA9A12E11AA204B800D0058E /* Rider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A12E01AA204B800D0058E /* Rider.swift */; };
+		FAF01CA51AA1C4AF00D491D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF01CA41AA1C4AF00D491D4 /* MainViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA6E77261A9F3C0D001F1BE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA6E77051A9F3C0D001F1BE9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA6E770C1A9F3C0D001F1BE9;
+			remoteInfo = skife;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FA5175371AA356440078FAD4 /* BroadcastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BroadcastViewController.swift; sourceTree = "<group>"; };
+		FA5175391AA3572F0078FAD4 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		FA6E770D1A9F3C0D001F1BE9 /* skife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skife.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA6E77111A9F3C0D001F1BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA6E77121A9F3C0D001F1BE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FA6E77151A9F3C0D001F1BE9 /* skife.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = skife.xcdatamodel; sourceTree = "<group>"; };
+		FA6E771A1A9F3C0D001F1BE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FA6E771C1A9F3C0D001F1BE9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FA6E771F1A9F3C0D001F1BE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		FA6E77251A9F3C0D001F1BE9 /* skifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA6E772A1A9F3C0D001F1BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA6E772B1A9F3C0E001F1BE9 /* skifeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skifeTests.swift; sourceTree = "<group>"; };
+		FA6E77351A9F3C76001F1BE9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FA6F43191AA1FAC000AF98A8 /* DetailedSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedSearchViewController.swift; sourceTree = "<group>"; };
+		FA8B58FB1A9F4D6D0064B16D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		FA9A12E01AA204B800D0058E /* Rider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rider.swift; sourceTree = "<group>"; };
+		FAF01CA41AA1C4AF00D491D4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA6E770A1A9F3C0D001F1BE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA51753A1AA3572F0078FAD4 /* CoreBluetooth.framework in Frameworks */,
+				FA6E77361A9F3C76001F1BE9 /* CoreLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA6E77221A9F3C0D001F1BE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA6E77041A9F3C0D001F1BE9 = {
+			isa = PBXGroup;
+			children = (
+				FA5175391AA3572F0078FAD4 /* CoreBluetooth.framework */,
+				FA6E77351A9F3C76001F1BE9 /* CoreLocation.framework */,
+				FA6E770F1A9F3C0D001F1BE9 /* skife */,
+				FA6E77281A9F3C0D001F1BE9 /* skifeTests */,
+				FA6E770E1A9F3C0D001F1BE9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA6E770E1A9F3C0D001F1BE9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E770D1A9F3C0D001F1BE9 /* skife.app */,
+				FA6E77251A9F3C0D001F1BE9 /* skifeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA6E770F1A9F3C0D001F1BE9 /* skife */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E77121A9F3C0D001F1BE9 /* AppDelegate.swift */,
+				FA6F431B1AA1FAC600AF98A8 /* ViewController */,
+				FA9A12E21AA204DB00D0058E /* Objects */,
+				FA6E77191A9F3C0D001F1BE9 /* Main.storyboard */,
+				FA6E771C1A9F3C0D001F1BE9 /* Images.xcassets */,
+				FA6E771E1A9F3C0D001F1BE9 /* LaunchScreen.xib */,
+				FA6E77141A9F3C0D001F1BE9 /* skife.xcdatamodeld */,
+				FA6E77101A9F3C0D001F1BE9 /* Supporting Files */,
+			);
+			path = skife;
+			sourceTree = "<group>";
+		};
+		FA6E77101A9F3C0D001F1BE9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E77111A9F3C0D001F1BE9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA6E77281A9F3C0D001F1BE9 /* skifeTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E772B1A9F3C0E001F1BE9 /* skifeTests.swift */,
+				FA6E77291A9F3C0D001F1BE9 /* Supporting Files */,
+			);
+			path = skifeTests;
+			sourceTree = "<group>";
+		};
+		FA6E77291A9F3C0D001F1BE9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E772A1A9F3C0D001F1BE9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA6F431B1AA1FAC600AF98A8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FAF01CA41AA1C4AF00D491D4 /* MainViewController.swift */,
+				FA8B58FB1A9F4D6D0064B16D /* SearchViewController.swift */,
+				FA6F43191AA1FAC000AF98A8 /* DetailedSearchViewController.swift */,
+				FA5175371AA356440078FAD4 /* BroadcastViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		FA9A12E21AA204DB00D0058E /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				FA9A12E01AA204B800D0058E /* Rider.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA6E770C1A9F3C0D001F1BE9 /* skife */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA6E772F1A9F3C0E001F1BE9 /* Build configuration list for PBXNativeTarget "skife" */;
+			buildPhases = (
+				FA6E77091A9F3C0D001F1BE9 /* Sources */,
+				FA6E770A1A9F3C0D001F1BE9 /* Frameworks */,
+				FA6E770B1A9F3C0D001F1BE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = skife;
+			productName = skife;
+			productReference = FA6E770D1A9F3C0D001F1BE9 /* skife.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA6E77241A9F3C0D001F1BE9 /* skifeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA6E77321A9F3C0E001F1BE9 /* Build configuration list for PBXNativeTarget "skifeTests" */;
+			buildPhases = (
+				FA6E77211A9F3C0D001F1BE9 /* Sources */,
+				FA6E77221A9F3C0D001F1BE9 /* Frameworks */,
+				FA6E77231A9F3C0D001F1BE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA6E77271A9F3C0D001F1BE9 /* PBXTargetDependency */,
+			);
+			name = skifeTests;
+			productName = skifeTests;
+			productReference = FA6E77251A9F3C0D001F1BE9 /* skifeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA6E77051A9F3C0D001F1BE9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Alex Bäuerle";
+				TargetAttributes = {
+					FA6E770C1A9F3C0D001F1BE9 = {
+						CreatedOnToolsVersion = 6.1.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					FA6E77241A9F3C0D001F1BE9 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = FA6E770C1A9F3C0D001F1BE9;
+					};
+				};
+			};
+			buildConfigurationList = FA6E77081A9F3C0D001F1BE9 /* Build configuration list for PBXProject "skife" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA6E77041A9F3C0D001F1BE9;
+			productRefGroup = FA6E770E1A9F3C0D001F1BE9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA6E770C1A9F3C0D001F1BE9 /* skife */,
+				FA6E77241A9F3C0D001F1BE9 /* skifeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA6E770B1A9F3C0D001F1BE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA6E771B1A9F3C0D001F1BE9 /* Main.storyboard in Resources */,
+				FA6E77201A9F3C0D001F1BE9 /* LaunchScreen.xib in Resources */,
+				FA6E771D1A9F3C0D001F1BE9 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA6E77231A9F3C0D001F1BE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA6E77091A9F3C0D001F1BE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA5175381AA356440078FAD4 /* BroadcastViewController.swift in Sources */,
+				FA9A12E11AA204B800D0058E /* Rider.swift in Sources */,
+				FA8B58FC1A9F4D6D0064B16D /* SearchViewController.swift in Sources */,
+				FA6E77161A9F3C0D001F1BE9 /* skife.xcdatamodeld in Sources */,
+				FA6F431A1AA1FAC000AF98A8 /* DetailedSearchViewController.swift in Sources */,
+				FA6E77131A9F3C0D001F1BE9 /* AppDelegate.swift in Sources */,
+				FAF01CA51AA1C4AF00D491D4 /* MainViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA6E77211A9F3C0D001F1BE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA6E772C1A9F3C0E001F1BE9 /* skifeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA6E77271A9F3C0D001F1BE9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA6E770C1A9F3C0D001F1BE9 /* skife */;
+			targetProxy = FA6E77261A9F3C0D001F1BE9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA6E77191A9F3C0D001F1BE9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA6E771A1A9F3C0D001F1BE9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FA6E771E1A9F3C0D001F1BE9 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA6E771F1A9F3C0D001F1BE9 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA6E772D1A9F3C0E001F1BE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alex Bäuerle (EQUP6Q54M3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA6E772E1A9F3C0E001F1BE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alex Bäuerle (EQUP6Q54M3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA6E77301A9F3C0E001F1BE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = skife/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FA6E77311A9F3C0E001F1BE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = skife/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FA6E77331A9F3C0E001F1BE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = skifeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/skife.app/skife";
+			};
+			name = Debug;
+		};
+		FA6E77341A9F3C0E001F1BE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = skifeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/skife.app/skife";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA6E77081A9F3C0D001F1BE9 /* Build configuration list for PBXProject "skife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA6E772D1A9F3C0E001F1BE9 /* Debug */,
+				FA6E772E1A9F3C0E001F1BE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA6E772F1A9F3C0E001F1BE9 /* Build configuration list for PBXNativeTarget "skife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA6E77301A9F3C0E001F1BE9 /* Debug */,
+				FA6E77311A9F3C0E001F1BE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA6E77321A9F3C0E001F1BE9 /* Build configuration list for PBXNativeTarget "skifeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA6E77331A9F3C0E001F1BE9 /* Debug */,
+				FA6E77341A9F3C0E001F1BE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FA6E77141A9F3C0D001F1BE9 /* skife.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FA6E77151A9F3C0D001F1BE9 /* skife.xcdatamodel */,
+			);
+			currentVersion = FA6E77151A9F3C0D001F1BE9 /* skife.xcdatamodel */;
+			path = skife.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FA6E77051A9F3C0D001F1BE9 /* Project object */;
+}
