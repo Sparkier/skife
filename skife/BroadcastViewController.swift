@@ -17,12 +17,15 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Setting up broadcast stuff
         let uuid = NSUUID(UUIDString: "7521105F-8937-48B7-A875-66E6FE21D713")
         let beaconRegion = CLBeaconRegion(proximityUUID: uuid, major: 1, minor: 1, identifier: "testregion")
         perMan = CBPeripheralManager(delegate: self, queue: nil)
         myBeaconData = beaconRegion.peripheralDataWithMeasuredPower(nil)
     }
     
+    // Broadcast when Bluetooth is on
     func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
         if peripheral.state == CBPeripheralManagerState.PoweredOn {
             self.perMan.startAdvertising(myBeaconData)

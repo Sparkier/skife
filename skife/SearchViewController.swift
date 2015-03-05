@@ -42,7 +42,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UITable
         locationManager!.startUpdatingLocation()
     }
     
-    // Send Notifications on Beacon found
+    // Send Notifications on Beacon actions
     func sendLocalNotificationWithMessage(message: String!) {
         let notification:UILocalNotification = UILocalNotification()
         notification.alertBody = message
