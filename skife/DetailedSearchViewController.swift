@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate {
+class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     var locationManager: CLLocationManager?
     var rider: Rider!
@@ -57,18 +57,30 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate 
         }
     }
     
+    // Locating the User and Updating the Map
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         previousLocations.append(locations[0] as CLLocation)
 
         if (previousLocations.count > 1){
-            var sourceIndex = previousLocations.count - 1
-            var destinationIndex = previousLocations.count - 2
-            
-            let c1 = previousLocations[sourceIndex].coordinate
-            let c2 = previousLocations[destinationIndex].coordinate
-            var a = [c1, c2]
+            var a: [CLLocationCoordinate2D] = []
+            for location in previousLocations {
+                a.append(location.coordinate)
+            }
             var polyline = MKPolyline(coordinates: &a, count: a.count)
             self.map.addOverlay(polyline)
+        }
+    }
+    
+    // Drawing Line where User walks
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        if overlay is MKPolyline {
+            var circle = MKPolylineRenderer(overlay: overlay)
+            circle.strokeColor = UIColor.redColor()
+            circle.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.1)
+            circle.lineWidth = 1
+            return circle
+        } else {
+            return nil
         }
     }
     
