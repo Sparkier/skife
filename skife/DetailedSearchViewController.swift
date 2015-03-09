@@ -38,7 +38,7 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate,
         locationManager!.startUpdatingLocation()
         
         // Set up Map
-        map.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
+        self.map.camera.altitude = 30
     }
     
     // Ranged Beacon by Location Manager
@@ -60,12 +60,12 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate,
     // Locating the User and Updating the Map
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         previousLocations.append(locations[0] as CLLocation)
+        self.map.setCenterCoordinate(map.userLocation.coordinate, animated: true)
 
         if (previousLocations.count > 1){
             var a: [CLLocationCoordinate2D] = []
-            for location in previousLocations {
-                a.append(location.coordinate)
-            }
+            a.append(previousLocations[previousLocations.count-2].coordinate)
+            a.append(previousLocations[previousLocations.count-1].coordinate)
             var polyline = MKPolyline(coordinates: &a, count: a.count)
             self.map.addOverlay(polyline)
         }
