@@ -19,6 +19,7 @@
 		FA6F431A1AA1FAC000AF98A8 /* DetailedSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F43191AA1FAC000AF98A8 /* DetailedSearchViewController.swift */; };
 		FA8B58FC1A9F4D6D0064B16D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B58FB1A9F4D6D0064B16D /* SearchViewController.swift */; };
 		FA9A12E11AA204B800D0058E /* Rider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A12E01AA204B800D0058E /* Rider.swift */; };
+		FADB29B11AAD82D9000868F7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADB29B01AAD82D9000868F7 /* MapKit.framework */; };
 		FAF01CA51AA1C4AF00D491D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF01CA41AA1C4AF00D491D4 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		FA6F43191AA1FAC000AF98A8 /* DetailedSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedSearchViewController.swift; sourceTree = "<group>"; };
 		FA8B58FB1A9F4D6D0064B16D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		FA9A12E01AA204B800D0058E /* Rider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rider.swift; sourceTree = "<group>"; };
+		FADB29B01AAD82D9000868F7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FAF01CA41AA1C4AF00D491D4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FADB29B11AAD82D9000868F7 /* MapKit.framework in Frameworks */,
 				FA51753A1AA3572F0078FAD4 /* CoreBluetooth.framework in Frameworks */,
 				FA6E77361A9F3C76001F1BE9 /* CoreLocation.framework in Frameworks */,
 			);
@@ -75,6 +78,7 @@
 		FA6E77041A9F3C0D001F1BE9 = {
 			isa = PBXGroup;
 			children = (
+				FADB29B01AAD82D9000868F7 /* MapKit.framework */,
 				FA5175391AA3572F0078FAD4 /* CoreBluetooth.framework */,
 				FA6E77351A9F3C76001F1BE9 /* CoreLocation.framework */,
 				FA6E770F1A9F3C0D001F1BE9 /* skife */,

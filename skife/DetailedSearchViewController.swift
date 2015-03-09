@@ -8,20 +8,24 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager?
     var rider: Rider!
     var lastDistances = [CLLocationAccuracy]()
+    var previousLocations: [CLLocation] = []
     
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var map: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set up Location Manager
+        // Set up Location Manager for Beacons
         locationManager = CLLocationManager()
+        locationManager!.desiredAccuracy = kCLLocationAccuracyBest
         if(locationManager!.respondsToSelector("requestAlwaysAuthorization")) {
             locationManager!.requestAlwaysAuthorization()
         }
@@ -32,6 +36,9 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate 
         locationManager!.startMonitoringForRegion(rider.beaconRegion)
         locationManager!.startRangingBeaconsInRegion(rider.beaconRegion)
         locationManager!.startUpdatingLocation()
+        
+        // Set up Map
+        map.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
     }
     
     // Ranged Beacon by Location Manager
@@ -47,6 +54,21 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate 
             if lastDistances.count == 2 {
                 self.checkDirection()
             }
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        previousLocations.append(locations[0] as CLLocation)
+
+        if (previousLocations.count > 1){
+            var sourceIndex = previousLocations.count - 1
+            var destinationIndex = previousLocations.count - 2
+            
+            let c1 = previousLocations[sourceIndex].coordinate
+            let c2 = previousLocations[destinationIndex].coordinate
+            var a = [c1, c2]
+            var polyline = MKPolyline(coordinates: &a, count: a.count)
+            self.map.addOverlay(polyline)
         }
     }
     
