@@ -17,9 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IoF-1f-wI3">
-                                <rect key="frame" x="16" y="550" width="568" height="30"/>
-                                <state key="normal" title="Search">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IoF-1f-wI3">
+                                <rect key="frame" x="268" y="293" width="150" height="150"/>
+                                <state key="normal" image="SearchButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -27,7 +27,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owd-s6-Z3c">
-                                <rect key="frame" x="225" y="392" width="150" height="150"/>
+                                <rect key="frame" x="182" y="197" width="150" height="150"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" image="BroadcastButton"/>
                                 <connections>
@@ -38,15 +38,26 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="IoF-1f-wI3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="1lu-Ma-cEh"/>
+                            <constraint firstAttribute="centerY" secondItem="IoF-1f-wI3" secondAttribute="centerY" constant="-68" id="GNd-pG-d9F"/>
                             <constraint firstItem="IoF-1f-wI3" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="N6A-KI-ZPp"/>
                             <constraint firstAttribute="centerX" secondItem="owd-s6-Z3c" secondAttribute="centerX" id="Nj0-RF-iQ3"/>
+                            <constraint firstAttribute="centerX" secondItem="owd-s6-Z3c" secondAttribute="centerX" constant="43" id="Re5-Kp-ySO"/>
+                            <constraint firstAttribute="centerY" secondItem="owd-s6-Z3c" secondAttribute="centerY" constant="28" id="df3-FB-abP"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="IoF-1f-wI3" secondAttribute="bottom" constant="20" id="jBR-qx-Z2O"/>
+                            <constraint firstAttribute="centerX" secondItem="IoF-1f-wI3" secondAttribute="centerX" id="nQs-lV-r6C"/>
                             <constraint firstItem="IoF-1f-wI3" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="npK-Vg-0Bu"/>
                             <constraint firstItem="IoF-1f-wI3" firstAttribute="top" secondItem="owd-s6-Z3c" secondAttribute="bottom" constant="8" id="nr8-13-i1K"/>
+                            <constraint firstAttribute="centerX" secondItem="IoF-1f-wI3" secondAttribute="centerX" constant="-43" id="uVJ-Li-7EM"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Nj0-RF-iQ3"/>
+                                <exclude reference="1lu-Ma-cEh"/>
                                 <exclude reference="N6A-KI-ZPp"/>
+                                <exclude reference="nQs-lV-r6C"/>
+                                <exclude reference="npK-Vg-0Bu"/>
+                                <exclude reference="nr8-13-i1K"/>
+                                <exclude reference="jBR-qx-Z2O"/>
                             </mask>
                         </variation>
                     </view>
@@ -59,10 +70,10 @@
             </objects>
             <point key="canvasLocation" x="1057" y="235"/>
         </scene>
-        <!--Broadcast View Controller-->
+        <!--Broadcast-->
         <scene sceneID="Fut-UN-nuo">
             <objects>
-                <viewController id="PTS-qS-bCQ" customClass="BroadcastViewController" customModule="skife" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Broadcast" id="PTS-qS-bCQ" customClass="BroadcastViewController" customModule="skife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5e8-O5-N7m"/>
                         <viewControllerLayoutGuide type="bottom" id="eZJ-3U-OVi"/>
@@ -89,10 +100,10 @@
             </objects>
             <point key="canvasLocation" x="1057" y="946"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="oat-bS-Uw6">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="zcc-Hh-mJv" customClass="SearchViewController" customModule="skife" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Search" automaticallyAdjustsScrollViewInsets="NO" id="zcc-Hh-mJv" customClass="SearchViewController" customModule="skife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WMs-Wn-Hqc"/>
                         <viewControllerLayoutGuide type="bottom" id="Zpm-ba-5MD"/>
@@ -126,10 +137,10 @@
             </objects>
             <point key="canvasLocation" x="1731" y="235"/>
         </scene>
-        <!--Detailed Search View Controller-->
+        <!--Detailed-->
         <scene sceneID="1tk-4e-Mel">
             <objects>
-                <viewController storyboardIdentifier="detailedSearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3p4-a9-YiX" customClass="DetailedSearchViewController" customModule="skife" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailedSearchViewController" title="Detailed" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3p4-a9-YiX" customClass="DetailedSearchViewController" customModule="skife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IxZ-9W-zRS"/>
                         <viewControllerLayoutGuide type="bottom" id="7WM-5z-36V"/>
@@ -182,9 +193,14 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jEz-1i-37Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jGU-T0-pDS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="jGU-T0-pDS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -198,5 +214,6 @@
     </scenes>
     <resources>
         <image name="BroadcastButton" width="150" height="150"/>
+        <image name="SearchButton" width="150" height="150"/>
     </resources>
 </document>

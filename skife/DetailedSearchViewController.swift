@@ -16,6 +16,8 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate,
     var rider: Rider!
     var lastDistances = [CLLocationAccuracy]()
     var previousLocations: [CLLocation] = []
+    var mapOnScreen: Bool = true
+    var closeLabel: UILabel!
     
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var map: MKMapView!
@@ -39,6 +41,11 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate,
         
         // Set up Map
         self.map.camera.altitude = 30
+        
+        // Set up Close Label
+        closeLabel = UILabel(frame: self.view.frame)
+        closeLabel.font = closeLabel.font.fontWithSize(50.0)
+        closeLabel.textAlignment = NSTextAlignment.Center
     }
     
     // Ranged Beacon by Location Manager
@@ -47,13 +54,12 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate,
         
         if beacons.count > 0 {
             self.distanceLabel.text = "Distance about \(round(beacons[0].accuracy*100.0)/100.0) meters."
+            self.closeLabel.text = "\(round(beacons[0].accuracy*100.0)/100.0)"
             self.lastDistances.append(beacons[0].accuracy)
             if self.lastDistances.count > 2 {
                 self.lastDistances.removeAtIndex(0)
             }
-            if lastDistances.count == 2 {
-                self.checkDirection()
-            }
+            self.checkDistance()
         }
     }
     
@@ -84,12 +90,19 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate,
         }
     }
     
-    // Checks if User moves in correct Direction
-    func checkDirection() {
-        if lastDistances[0] > lastDistances[1] {
-            self.view.backgroundColor = UIColor.greenColor()
-        } else {
-            self.view.backgroundColor = UIColor.redColor()
+    // Checks if User is really Close to the Sender
+    func checkDistance() {
+        let lastDistance = lastDistances.last
+        if lastDistance <= 3.0 {
+            self.map.removeFromSuperview()
+            self.distanceLabel.removeFromSuperview()
+            self.view.addSubview(closeLabel)
+            mapOnScreen == false
+        } else if lastDistance > 3.0 {
+            self.closeLabel.removeFromSuperview()
+            self.view.addSubview(map)
+            self.view.addSubview(distanceLabel)
+            mapOnScreen = true
         }
     }
 }

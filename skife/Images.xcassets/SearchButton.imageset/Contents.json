@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "BroadcastButton.png"
+      "filename" : "SearchButton.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "BroadcastButton@2x.png"
+      "filename" : "SearchButton@2x.png"
     },
     {
       "idiom" : "universal",
