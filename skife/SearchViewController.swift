@@ -8,12 +8,14 @@
 
 import UIKit
 import CoreLocation
+import CoreBluetooth
 
-class SearchViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate {
+class SearchViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, CBCentralManagerDelegate {
     
     var locationManager: CLLocationManager?
     var riders = [Rider]()
     var detections = [(Rider, CLBeacon)]()
+    var centralManager = CBCentralManager()
     
     @IBOutlet weak var beaconsTableView: UITableView!
     
@@ -23,8 +25,10 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UITable
         // Set up Riders
         let riderQualcomm = Rider(name: "QualcommBeacon", uuid: "D8FF5C06-7D34-445B-B382-822E98849F18")
         let riderAlina = Rider(name: "Alina Handy", uuid: "4B5F4BC9-BCBD-44BC-85BE-2B80E91BAD34")
+        let riderIphone = Rider(name: "Iphone", uuid: "7521105F-8937-48B7-A875-66E6FE21D713")
         riders.append(riderQualcomm)
         riders.append(riderAlina)
+        riders.append(riderIphone)
         
         // Set up Location Manager
         locationManager = CLLocationManager()
@@ -40,6 +44,11 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UITable
             locationManager!.startRangingBeaconsInRegion(rider.beaconRegion)
         }
         locationManager!.startUpdatingLocation()
+        
+        // Listen to BLE of IPhones
+        let scanOptions: NSDictionary = [true: CBCentralManagerScanOptionAllowDuplicatesKey]
+        let services: NSArray = [CBUUID(string: "7521105F-8937-48B7-A875-66E6FE21D714")]
+        centralManager.scanForPeripheralsWithServices(services, options: scanOptions)
     }
     
     // Send Notifications on Beacon actions
@@ -121,5 +130,13 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UITable
         detailedSearchViewController.rider = detections[indexPath.row].0
         navigationController?.pushViewController(vc as UIViewController, animated: true)
     }
+    
+    // Found IPhone
+    func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
+        println(RSSI)
+    }
+    
+    // CBCentralManagerDelegate
+    func centralManagerDidUpdateState(central: CBCentralManager!) {
+    }
 }
-
