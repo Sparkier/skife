@@ -13,7 +13,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UITable
     
     var locationManager: CLLocationManager?
     var riders = [Rider]()
-    var detections = [(Rider, CLBeacon)]()
     
     @IBOutlet weak var beaconsTableView: UITableView!
     
@@ -51,22 +50,11 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UITable
     
     // Ranged Beacon by Location Manager
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!,inRegion region: CLBeaconRegion!) {
-        var message:String = ""
-        
-        // Deleting Beacon if already There
-        if detections.count > 0 {
-            for i in 0...(detections.count-1) {
-                if region.proximityUUID == detections[i].0.beaconUUID {
-                    detections.removeAtIndex(i)
-                    break
-                }
-            }
-        }
-        // Adding Beacon to Detected List
-        if(beacons.count > 0) {
-            for rider in self.riders {
-                if rider.beaconUUID == region.proximityUUID {
-                    self.detections.append((rider, beacons[0] as CLBeacon))
+        // Updating Beacon of Rider
+        for rider in riders {
+            if region.proximityUUID == rider.beaconUUID {
+                if beacons.count > 0 {
+                    rider.beacon = beacons[0] as? CLBeacon
                 }
             }
         }
@@ -89,7 +77,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UITable
     
     // Table View Specifying how many Rows
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return detections.count
+        return riders.count
     }
     
     // Table View Generating each Cell
@@ -103,12 +91,19 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UITable
             cell!.selectionStyle = UITableViewCellSelectionStyle.None
         }
         
-        let beacon:CLBeacon = detections[indexPath.row].1
-        var nameLabel:String! = detections[indexPath.row].0.name
+        let beacon:CLBeacon? = riders[indexPath.row].beacon
+        var nameLabel:String! = riders[indexPath.row].name
         
         cell!.textLabel!.text = nameLabel
         
-        let detailLabel:String = "About \(round(10*beacon.accuracy)/10) meters"
+        var detailLabel: String = "Not in Range."
+        if let b = beacon {
+            if b.accuracy == -1 {
+                detailLabel = "Distance could not be Calculated."
+            } else {
+                detailLabel = "About \(round(10*b.accuracy)/10) meters."
+            }
+        }
         cell!.detailTextLabel!.text = detailLabel
         
         return cell!
@@ -118,7 +113,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UITable
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc: AnyObject! = self.storyboard?.instantiateViewControllerWithIdentifier("detailedSearchViewController")
         var detailedSearchViewController: DetailedSearchViewController = vc as DetailedSearchViewController;
-        detailedSearchViewController.rider = detections[indexPath.row].0
+        detailedSearchViewController.rider = riders[indexPath.row]
         navigationController?.pushViewController(vc as UIViewController, animated: true)
     }
 }
