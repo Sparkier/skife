@@ -10,17 +10,17 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager?
     var rider: Rider!
     var lastDistances = [CLLocationAccuracy]()
-    var previousLocations: [CLLocation] = []
-    var mapOnScreen: Bool = true
     var closeLabel: UILabel!
+    var goingBack: Bool = false
+    var closestPoint: CLLocationAccuracy?
     
     @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var map: MKMapView!
+    @IBOutlet weak var directionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +39,6 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate,
         locationManager!.startRangingBeaconsInRegion(rider.beaconRegion)
         locationManager!.startUpdatingLocation()
         
-        // Set up Map
-        self.map.camera.altitude = 30
-        
         // Set up Close Label
         closeLabel = UILabel(frame: self.view.frame)
         closeLabel.font = closeLabel.font.fontWithSize(50.0)
@@ -56,37 +53,24 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate,
             self.distanceLabel.text = "Distance about \(round(beacons[0].accuracy*100.0)/100.0) meters."
             self.closeLabel.text = "\(round(beacons[0].accuracy*100.0)/100.0)"
             self.lastDistances.append(beacons[0].accuracy)
+            if let cp = self.closestPoint {
+                if cp > beacons[0].accuracy{
+                    self.closestPoint = beacons[0].accuracy
+                }
+            } else {
+                self.closestPoint = beacons[0].accuracy
+            }
             if self.lastDistances.count > 2 {
                 self.lastDistances.removeAtIndex(0)
             }
             self.checkDistance()
-        }
-    }
-    
-    // Locating the User and Updating the Map
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        previousLocations.append(locations[0] as CLLocation)
-        self.map.setCenterCoordinate(map.userLocation.coordinate, animated: true)
-
-        if (previousLocations.count > 1){
-            var a: [CLLocationCoordinate2D] = []
-            a.append(previousLocations[previousLocations.count-2].coordinate)
-            a.append(previousLocations[previousLocations.count-1].coordinate)
-            var polyline = MKPolyline(coordinates: &a, count: a.count)
-            self.map.addOverlay(polyline)
-        }
-    }
-    
-    // Drawing Line where User walks
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-        if overlay is MKPolyline {
-            var circle = MKPolylineRenderer(overlay: overlay)
-            circle.strokeColor = UIColor.redColor()
-            circle.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.1)
-            circle.lineWidth = 1
-            return circle
         } else {
-            return nil
+            self.distanceLabel.text = "Not in Range."
+            if lastDistances.count > 0 {
+                directionLabel.text = "You lost Connection to the Sender. Please move back to where you had a connection."
+            } else {
+                directionLabel.text = "Please go where you think the Sender might be burrowed."
+            }
         }
     }
     
@@ -94,15 +78,16 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate,
     func checkDistance() {
         let lastDistance = lastDistances.last
         if lastDistance <= 3.0 {
-            self.map.removeFromSuperview()
             self.distanceLabel.removeFromSuperview()
             self.view.addSubview(closeLabel)
-            mapOnScreen == false
         } else if lastDistance > 3.0 {
             self.closeLabel.removeFromSuperview()
-            self.view.addSubview(map)
             self.view.addSubview(distanceLabel)
-            mapOnScreen = true
+            if closestPoint!+5 < lastDistance {
+                self.directionLabel.text = "Turn around and go back to where your distance is about \(round(closestPoint!*100.0)/100.0). Then turn left or right."
+            } else if !goingBack {
+                self.directionLabel.text = "Keep on walking this Direction."
+            }
         }
     }
 }

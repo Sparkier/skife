@@ -222,39 +222,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Pt-xd-GrY">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <connections>
-                                    <outlet property="delegate" destination="3p4-a9-YiX" id="zB6-Ue-Mg3"/>
-                                </connections>
-                            </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcp-pE-9gh">
-                                <rect key="frame" x="16" y="554" width="568" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCc-ea-mco">
+                                <rect key="frame" x="16" y="559" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcp-pE-9gh">
+                                <rect key="frame" x="16" y="28" width="568" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Mcp-pE-9gh" firstAttribute="top" secondItem="KCc-ea-mco" secondAttribute="bottom" constant="8" id="4rL-6b-IgR"/>
+                            <constraint firstItem="7WM-5z-36V" firstAttribute="top" secondItem="KCc-ea-mco" secondAttribute="bottom" constant="20" id="7kb-iG-V47"/>
                             <constraint firstItem="Mcp-pE-9gh" firstAttribute="top" secondItem="IxZ-9W-zRS" secondAttribute="bottom" constant="8" id="9LY-OS-JwV"/>
-                            <constraint firstItem="9Pt-xd-GrY" firstAttribute="top" secondItem="tRp-bO-7WA" secondAttribute="topMargin" id="FK9-mo-OEH"/>
-                            <constraint firstItem="7WM-5z-36V" firstAttribute="top" secondItem="9Pt-xd-GrY" secondAttribute="bottom" id="HXS-vt-mpm"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9Pt-xd-GrY" secondAttribute="trailing" constant="-16" id="ICm-Av-U8K"/>
+                            <constraint firstItem="Mcp-pE-9gh" firstAttribute="top" secondItem="IxZ-9W-zRS" secondAttribute="bottom" constant="8" id="GJF-2v-tN3"/>
                             <constraint firstItem="Mcp-pE-9gh" firstAttribute="leading" secondItem="tRp-bO-7WA" secondAttribute="leadingMargin" id="N6W-eF-gn7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KCc-ea-mco" secondAttribute="trailing" id="T5i-43-6z8"/>
                             <constraint firstItem="7WM-5z-36V" firstAttribute="top" secondItem="Mcp-pE-9gh" secondAttribute="bottom" constant="25" id="fTe-xN-Ghh"/>
-                            <constraint firstItem="9Pt-xd-GrY" firstAttribute="leading" secondItem="tRp-bO-7WA" secondAttribute="leadingMargin" constant="-16" id="gV8-4X-elK"/>
+                            <constraint firstItem="KCc-ea-mco" firstAttribute="leading" secondItem="tRp-bO-7WA" secondAttribute="leadingMargin" id="o5I-PU-JKn"/>
                             <constraint firstItem="Mcp-pE-9gh" firstAttribute="trailing" secondItem="tRp-bO-7WA" secondAttribute="trailingMargin" id="p5P-uO-85F"/>
+                            <constraint firstAttribute="centerX" secondItem="KCc-ea-mco" secondAttribute="centerX" id="wJw-Qi-8C9"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="4rL-6b-IgR"/>
                                 <exclude reference="9LY-OS-JwV"/>
+                                <exclude reference="fTe-xN-Ghh"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="directionLabel" destination="KCc-ea-mco" id="KA5-xw-KfJ"/>
                         <outlet property="distanceLabel" destination="Mcp-pE-9gh" id="fi5-AM-DpD"/>
-                        <outlet property="map" destination="9Pt-xd-GrY" id="3Jh-rB-ge5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ueU-D0-2We" userLabel="First Responder" sceneMemberID="firstResponder"/>
