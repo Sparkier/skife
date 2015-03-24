@@ -22,7 +22,9 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UITable
         // Set up Riders
         let riderQualcomm = Rider(name: "QualcommBeacon", uuid: "D8FF5C06-7D34-445B-B382-822E98849F18")
         let riderAlina = Rider(name: "Alina Handy", uuid: "4B5F4BC9-BCBD-44BC-85BE-2B80E91BAD34")
+        let riderSelf = Rider(name: "Anderes Handy", uuid: "7521105F-8937-48B7-A875-66E6FE21D713")
         riders.append(riderQualcomm)
+        riders.append(riderSelf)
         riders.append(riderAlina)
         
         // Set up Location Manager
