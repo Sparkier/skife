@@ -14,10 +14,9 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate 
     
     var locationManager: CLLocationManager?
     var rider: Rider!
-    var lastDistances = [CLLocationAccuracy]()
     var closeLabel: UILabel!
     var goingBack: Bool = false
-    var closestPoint: CLLocationAccuracy?
+    let directionEngine = DirectionEngine()
     
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var directionLabel: UILabel!
@@ -52,42 +51,40 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate 
         if beacons.count > 0 {
             self.distanceLabel.text = "Distance about \(round(beacons[0].accuracy*100.0)/100.0) meters."
             self.closeLabel.text = "\(round(beacons[0].accuracy*100.0)/100.0)"
-            self.lastDistances.append(beacons[0].accuracy)
-            if let cp = self.closestPoint {
-                if cp > beacons[0].accuracy{
-                    self.closestPoint = beacons[0].accuracy
-                }
-            } else {
-                self.closestPoint = beacons[0].accuracy
-            }
-            if self.lastDistances.count > 2 {
-                self.lastDistances.removeAtIndex(0)
+            self.directionEngine.previousDistances.append(beacons[0].accuracy)
+            self.directionEngine.inRange = true
+            if directionEngine.closestPoint > beacons[0].accuracy {
+                self.directionEngine.closestPoint = beacons[0].accuracy
             }
             self.checkDistance()
         } else {
+            self.directionEngine.inRange = false
             self.distanceLabel.text = "Not in Range."
-            if lastDistances.count > 0 {
-                directionLabel.text = "You lost Connection to the Sender. Please move back to where you had a connection."
-            } else {
-                directionLabel.text = "Please go where you think the Sender might be burrowed."
+            if self.directionEngine.previousDistances.count > 0 {
+                
             }
+        }
+        
+        // Get Direction from DirectionEngine
+        let dir = directionEngine.getDirection()
+        if dir == Direction.Any {
+            directionLabel.text = "Please go where you think the Sender might be burrowed."
+        } else if dir == Direction.Back && directionEngine.inRange == false {
+            directionLabel.text = "You lost Connection to the Sender. Please move back to where you had a connection."
+        } else if dir == Direction.Back {
+            self.directionLabel.text = "Turn around and go back to where your distance was about \(round(directionEngine.closestPoint*100.0)/100.0). Then turn left or right."
         }
     }
     
     // Checks if User is really Close to the Sender
     func checkDistance() {
-        let lastDistance = lastDistances.last
+        let lastDistance = self.directionEngine.previousDistances.last
         if lastDistance <= 3.0 {
-            self.distanceLabel.removeFromSuperview()
+            self.distanceLabel.hidden = true
             self.view.addSubview(closeLabel)
         } else if lastDistance > 3.0 {
             self.closeLabel.removeFromSuperview()
-            self.view.addSubview(distanceLabel)
-            if closestPoint!+5 < lastDistance {
-                self.directionLabel.text = "Turn around and go back to where your distance is about \(round(closestPoint!*100.0)/100.0). Then turn left or right."
-            } else if !goingBack {
-                self.directionLabel.text = "Keep on walking this Direction."
-            }
+            self.distanceLabel.hidden = false
         }
     }
 }
