@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SettingsViewController: UIViewController {
+class ProfileViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
 

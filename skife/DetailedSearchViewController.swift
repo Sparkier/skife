@@ -49,7 +49,7 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate 
         var message:String = ""
         
         if beacons.count > 0 {
-            self.distanceLabel.text = "Distance about \(round(beacons[0].accuracy*100.0)/100.0) meters."
+            self.distanceLabel.text = "~ \(round(beacons[0].accuracy*100.0)/100.0) m"
             self.closeLabel.text = "\(round(beacons[0].accuracy*100.0)/100.0)"
             self.directionEngine.previousDistances.append(beacons[0].accuracy)
             self.directionEngine.inRange = true
@@ -69,10 +69,16 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate 
         let dir = directionEngine.getDirection()
         if dir == Direction.Any {
             directionLabel.text = "Please go where you think the Sender might be burrowed."
-        } else if dir == Direction.Back && directionEngine.inRange == false {
+        } else if dir == Direction.Lost {
             directionLabel.text = "You lost Connection to the Sender. Please move back to where you had a connection."
         } else if dir == Direction.Back {
             self.directionLabel.text = "Turn around and go back to where your distance was about \(round(directionEngine.closestPoint*100.0)/100.0). Then turn left or right."
+        } else if dir == Direction.Straight {
+            self.directionLabel.text = "Keep on walking this direction."
+            self.view.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.3)
+        } else if dir == Direction.Wrong {
+            self.directionLabel.text = "The distance to the Sender is getting bigger."
+            self.view.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.3)
         }
     }
     

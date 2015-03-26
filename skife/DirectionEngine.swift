@@ -11,11 +11,10 @@ import CoreLocation
 
 enum Direction {
     case Back
-    case Left
-    case Right
-    case Turn
     case Straight
+    case Wrong
     case Any
+    case Lost
 }
 
 class DirectionEngine {
@@ -25,11 +24,28 @@ class DirectionEngine {
     var inRange: Bool = false
     
     func getDirection() -> Direction {
-        if previousDistances.count == 0 {
-            return Direction.Any
+        if previousDistances.count > 2 {
+            if !inRange { // Connection Lost
+                previousDirection = Direction.Lost
+                return previousDirection
+            }
+            let i = previousDistances.count
+            var tendency = previousDistances[i] - previousDistances[i-1] + (previousDistances[i-1] - previousDistances[i-2])
+            if closestPoint*1.2 < previousDistances.last { // Closest Point Way Closer than Current Point
+                previousDirection = Direction.Back
+                return previousDirection
+            }
+            if tendency > 0 { // Tendency Dependant Return
+                previousDirection = Direction.Wrong
+                return previousDirection
+            } else if tendency < 0 {
+                previousDirection = Direction.Straight
+                return previousDirection
+            }
         }
-        else {
-            return Direction.Straight
-        }
+        
+        // Return Any if not Anough Samples Collected
+        previousDirection = Direction.Any
+        return previousDirection
     }
 }
