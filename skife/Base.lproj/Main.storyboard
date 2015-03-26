@@ -94,8 +94,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="aTB-95-u4t"/>
                                 <exclude reference="8fL-HV-ola"/>
+                                <exclude reference="aTB-95-u4t"/>
                             </mask>
                         </variation>
                     </view>
@@ -125,6 +125,9 @@
                                 <state key="normal" title="Join Group">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="8cl-6a-knS" kind="show" id="3KK-Ei-NBG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7UU-T2-50p">
                                 <rect key="frame" x="254" y="512" width="93" height="30"/>
@@ -170,17 +173,58 @@
                                     <segue destination="PTS-qS-bCQ" kind="show" id="aKT-pH-L3R"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="K3A-YB-DCm">
+                                <rect key="frame" x="0.0" y="64" width="600" height="478"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="idCellPeer" id="ckx-UQ-Ugi">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ckx-UQ-Ugi" id="ndY-yH-8Uw">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="3Lt-hc-GA5" id="3cf-cr-B0h"/>
+                                    <outlet property="delegate" destination="3Lt-hc-GA5" id="ce8-7y-mB1"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="K3A-YB-DCm" firstAttribute="top" secondItem="Vuk-9M-OLI" secondAttribute="bottom" id="HXp-HB-ga4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="K3A-YB-DCm" secondAttribute="trailing" constant="-16" id="NjQ-Sp-g7z"/>
+                            <constraint firstItem="K3A-YB-DCm" firstAttribute="leading" secondItem="uge-f2-nta" secondAttribute="leadingMargin" constant="-16" id="ZST-n4-qKL"/>
                             <constraint firstAttribute="centerX" secondItem="EGp-lj-PWm" secondAttribute="centerX" id="cRM-dD-8X8"/>
+                            <constraint firstItem="EGp-lj-PWm" firstAttribute="top" secondItem="K3A-YB-DCm" secondAttribute="bottom" constant="8" id="msD-1R-L8y"/>
                             <constraint firstItem="sjJ-MB-qEm" firstAttribute="top" secondItem="EGp-lj-PWm" secondAttribute="bottom" constant="20" id="yHL-4U-FAL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tblPeers" destination="K3A-YB-DCm" id="7Mi-19-6Jq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gji-Db-Cp6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2403" y="235"/>
+        </scene>
+        <!--Join-->
+        <scene sceneID="atS-Qg-yfg">
+            <objects>
+                <viewController title="Join" id="8cl-6a-knS" customClass="JoinGroupViewController" customModule="skife" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jXX-KN-WPe"/>
+                        <viewControllerLayoutGuide type="bottom" id="LyV-sz-5Se"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5fn-C7-VKe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CXT-Wj-2dh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2403" y="890"/>
         </scene>
         <!--Broadcast-->
         <scene sceneID="Fut-UN-nuo">
