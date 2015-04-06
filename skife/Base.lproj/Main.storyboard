@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jEz-1i-37Z">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -319,7 +320,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCc-ea-mco">
                                 <rect key="frame" x="16" y="559" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcp-pE-9gh">
@@ -328,16 +329,26 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AnyDirectionIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Vo6-7s-I3J">
+                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Vo6-7s-I3J" secondAttribute="height" multiplier="1:1" id="Jnn-IZ-MbO"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Vo6-7s-I3J" firstAttribute="top" secondItem="Mcp-pE-9gh" secondAttribute="bottom" constant="8" id="4Pj-U0-XqM"/>
                             <constraint firstItem="Mcp-pE-9gh" firstAttribute="top" secondItem="KCc-ea-mco" secondAttribute="bottom" constant="8" id="4rL-6b-IgR"/>
                             <constraint firstItem="7WM-5z-36V" firstAttribute="top" secondItem="KCc-ea-mco" secondAttribute="bottom" constant="20" id="7kb-iG-V47"/>
                             <constraint firstItem="Mcp-pE-9gh" firstAttribute="top" secondItem="IxZ-9W-zRS" secondAttribute="bottom" constant="8" id="9LY-OS-JwV"/>
                             <constraint firstItem="Mcp-pE-9gh" firstAttribute="top" secondItem="IxZ-9W-zRS" secondAttribute="bottom" constant="8" id="GJF-2v-tN3"/>
                             <constraint firstItem="Mcp-pE-9gh" firstAttribute="leading" secondItem="tRp-bO-7WA" secondAttribute="leadingMargin" id="N6W-eF-gn7"/>
+                            <constraint firstItem="KCc-ea-mco" firstAttribute="top" secondItem="Vo6-7s-I3J" secondAttribute="bottom" constant="8" id="NGH-Xo-PWs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KCc-ea-mco" secondAttribute="trailing" id="T5i-43-6z8"/>
+                            <constraint firstAttribute="centerY" secondItem="Vo6-7s-I3J" secondAttribute="centerY" id="X3Q-lj-VFV"/>
                             <constraint firstItem="7WM-5z-36V" firstAttribute="top" secondItem="Mcp-pE-9gh" secondAttribute="bottom" constant="25" id="fTe-xN-Ghh"/>
+                            <constraint firstAttribute="centerX" secondItem="Vo6-7s-I3J" secondAttribute="centerX" id="iw6-bl-oNe"/>
                             <constraint firstItem="KCc-ea-mco" firstAttribute="leading" secondItem="tRp-bO-7WA" secondAttribute="leadingMargin" id="o5I-PU-JKn"/>
                             <constraint firstItem="Mcp-pE-9gh" firstAttribute="trailing" secondItem="tRp-bO-7WA" secondAttribute="trailingMargin" id="p5P-uO-85F"/>
                             <constraint firstAttribute="centerX" secondItem="KCc-ea-mco" secondAttribute="centerX" id="wJw-Qi-8C9"/>
@@ -346,11 +357,14 @@
                             <mask key="constraints">
                                 <exclude reference="4rL-6b-IgR"/>
                                 <exclude reference="9LY-OS-JwV"/>
+                                <exclude reference="4Pj-U0-XqM"/>
+                                <exclude reference="NGH-Xo-PWs"/>
                                 <exclude reference="fTe-xN-Ghh"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="directionImageView" destination="Vo6-7s-I3J" id="kIw-hp-Lrk"/>
                         <outlet property="directionLabel" destination="KCc-ea-mco" id="KA5-xw-KfJ"/>
                         <outlet property="distanceLabel" destination="Mcp-pE-9gh" id="fi5-AM-DpD"/>
                     </connections>
@@ -384,6 +398,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AnyDirectionIcon" width="300" height="300"/>
         <image name="SearchButton" width="150" height="150"/>
     </resources>
 </document>

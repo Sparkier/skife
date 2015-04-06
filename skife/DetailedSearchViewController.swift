@@ -18,6 +18,7 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate 
     var goingBack: Bool = false
     let directionEngine = DirectionEngine()
     
+    @IBOutlet weak var directionImageView: UIImageView!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var directionLabel: UILabel!
     
@@ -64,21 +65,29 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate 
                 
             }
         }
-        
+    }
+    
+    // Checks which Direction the User needs to go
+    func checkDirection() {
         // Get Direction from DirectionEngine
         let dir = directionEngine.getDirection()
         if dir == Direction.Any {
             directionLabel.text = "Please go where you think the Sender might be burrowed."
+            directionImageView.image = UIImage(named: "AnyDirectionIcon")
         } else if dir == Direction.Lost {
             directionLabel.text = "You lost Connection to the Sender. Please move back to where you had a connection."
+            directionImageView.image = UIImage(named: "AnyDirectionIcon")
         } else if dir == Direction.Back {
             self.directionLabel.text = "Turn around and go back to where your distance was about \(round(directionEngine.closestPoint*100.0)/100.0). Then turn left or right."
+            directionImageView.image = UIImage(named: "BackDirectionIcon")
         } else if dir == Direction.Straight {
             self.directionLabel.text = "Keep on walking this direction."
             self.view.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.3)
+            directionImageView.image = UIImage(named: "CloserDirectionIcon")
         } else if dir == Direction.Wrong {
             self.directionLabel.text = "The distance to the Sender is getting bigger."
             self.view.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.3)
+            directionImageView.image = UIImage(named: "FurtherDirectionIcon")
         }
     }
     
@@ -87,10 +96,12 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate 
         let lastDistance = self.directionEngine.previousDistances.last
         if lastDistance <= 3.0 {
             self.distanceLabel.hidden = true
+            self.directionImageView.hidden = true
             self.view.addSubview(closeLabel)
         } else if lastDistance > 3.0 {
             self.closeLabel.removeFromSuperview()
             self.distanceLabel.hidden = false
+            self.directionImageView.hidden = false
         }
     }
 }
