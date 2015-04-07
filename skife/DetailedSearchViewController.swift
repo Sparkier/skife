@@ -62,9 +62,9 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate 
             self.directionEngine.inRange = false
             self.distanceLabel.text = "Not in Range."
             if self.directionEngine.previousDistances.count > 0 {
-                
             }
         }
+        self.checkDirection()
     }
     
     // Checks which Direction the User needs to go
