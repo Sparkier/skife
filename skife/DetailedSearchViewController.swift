@@ -65,7 +65,7 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate,
     
     // Locating the User and Updating the Map
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        previousLocations.append(locations[0] as CLLocation)
+        previousLocations.append(locations[0] as! CLLocation)
         self.map.setCenterCoordinate(map.userLocation.coordinate, animated: true)
 
         if (previousLocations.count > 1){

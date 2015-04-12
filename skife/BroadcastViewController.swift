@@ -7,30 +7,28 @@
 //
 
 import UIKit
-//import CoreLocation
 import CoreBluetooth
 
 class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate {
     
     var myBeaconData: NSDictionary!
-    var advertisingData: NSDictionary!
     var perMan: CBPeripheralManager!
-    let TRANSFER_SERVICE_UUID = "7521105F-8937-48B7-A875-66E6FE21D714"
+    let myCustomServiceUUID: CBUUID = CBUUID(string: "109F17E4-EF68-43FC-957D-502BB0EFCF46")
+    var myService: CBMutableService!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         perMan = CBPeripheralManager(delegate: self, queue: nil)
+        myService = CBMutableService(type: myCustomServiceUUID, primary: true)
+        perMan.addService(myService)
     }
     
     // Broadcast when Bluetooth is on
     func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
         if peripheral.state == CBPeripheralManagerState.PoweredOn {
-            let advertisingData: NSDictionary = [CBAdvertisementDataLocalNameKey: "vicinity-peripheral",
-                CBAdvertisementDataServiceUUIDsKey: [TRANSFER_SERVICE_UUID]];
-            
             // Start advertising over BLE
-            self.perMan.startAdvertising(advertisingData)
+            self.perMan.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [myService.UUID]])
+            println("Adertising")
         } else if peripheral.state == CBPeripheralManagerState.PoweredOff {
             self.perMan.stopAdvertising()
         }
