@@ -65,14 +65,14 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UITable
     
     // Beacon did Enter to Location Manager
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
-        manager.startRangingBeaconsInRegion(region as CLBeaconRegion)
+        manager.startRangingBeaconsInRegion(region as! CLBeaconRegion)
         manager.startUpdatingLocation()
         sendLocalNotificationWithMessage("You entered the region")
     }
     
     // Beacon did Exit of Location Manager
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
-        manager.stopRangingBeaconsInRegion(region as CLBeaconRegion)
+        manager.stopRangingBeaconsInRegion(region as! CLBeaconRegion)
         manager.stopUpdatingLocation()
         sendLocalNotificationWithMessage("You exited the region")
     }
@@ -114,9 +114,9 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate, UITable
     // Click on TableView Row detection
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc: AnyObject! = self.storyboard?.instantiateViewControllerWithIdentifier("detailedSearchViewController")
-        var detailedSearchViewController: DetailedSearchViewController = vc as DetailedSearchViewController;
+        var detailedSearchViewController: DetailedSearchViewController = vc as! DetailedSearchViewController;
         detailedSearchViewController.rider = riders[indexPath.row]
-        navigationController?.pushViewController(vc as UIViewController, animated: true)
+        navigationController?.pushViewController(vc as! UIViewController, animated: true)
     }
 }
 

@@ -37,12 +37,12 @@ class MPCManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, M
         super.init()
         
         // Get Profile Name
-        let appDel = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDel.managedObjectContext!
         let request = NSFetchRequest(entityName: "Profile")
         request.returnsObjectsAsFaults = false
         var res:NSArray = context.executeFetchRequest(request, error: nil)!
-        self.profile = res[0] as Profile
+        self.profile = res[0] as! Profile
         
         // Set up Peer
         peer = MCPeerID(displayName: profile.name)
@@ -109,7 +109,7 @@ class MPCManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, M
         let peersArray = NSArray(object: targetPeer)
         var error: NSError?
         
-        if !session.sendData(dataToSend, toPeers: peersArray, withMode: MCSessionSendDataMode.Reliable, error: &error) {
+        if !session.sendData(dataToSend, toPeers: peersArray as [AnyObject], withMode: MCSessionSendDataMode.Reliable, error: &error) {
             println(error?.localizedDescription)
             return false
         }

@@ -18,14 +18,14 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDel = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDel.managedObjectContext!
         
         let request = NSFetchRequest(entityName: "Profile")
         request.returnsObjectsAsFaults = false
         
         var res:NSArray = context.executeFetchRequest(request, error: nil)!
-        self.profile = res[0] as Profile
+        self.profile = res[0] as! Profile
         nameTextField.text = profile.name
     }
     
@@ -35,7 +35,7 @@ class ProfileViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         self.profile.name = self.nameTextField.text
-        let appDel = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDel.managedObjectContext!
         context.save(nil)
     }

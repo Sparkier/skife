@@ -24,7 +24,7 @@ class MainViewController: UIViewController, CBPeripheralManagerDelegate {
             var inputTextField: UITextField?
             let namePrompt = UIAlertController(title: "Enter Username", message: "You need to enter your username.", preferredStyle: UIAlertControllerStyle.Alert)
             namePrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-                let appDel = UIApplication.sharedApplication().delegate as AppDelegate
+                let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
                 let context = appDel.managedObjectContext!
                 
                 let entProfile = NSEntityDescription.entityForName("Profile", inManagedObjectContext: context)

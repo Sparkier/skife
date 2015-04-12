@@ -54,7 +54,7 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("idCellPeer") as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("idCellPeer") as! UITableViewCell
         if contains(connectedPeers, mpcManager.foundPeers[indexPath.row]) {
             cell.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.3)
         }

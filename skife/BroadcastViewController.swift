@@ -12,8 +12,8 @@ import CoreBluetooth
 
 class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate {
     
-    var myBeaconData: NSDictionary!
     var perMan: CBPeripheralManager!
+    var myBeaconData: NSDictionary = NSDictionary()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate {
     // Broadcast when Bluetooth is on
     func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
         if peripheral.state == CBPeripheralManagerState.PoweredOn {
-            self.perMan.startAdvertising(myBeaconData)
+            self.perMan.startAdvertising(myBeaconData as [NSObject : AnyObject])
         } else if peripheral.state == CBPeripheralManagerState.PoweredOff {
             self.perMan.stopAdvertising()
         }
