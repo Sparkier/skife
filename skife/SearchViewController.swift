@@ -22,7 +22,6 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate {
         
         // Listen to BLE of IPhones
         let services: NSArray = ["7521105F-8937-48B7-A875-66E6FE21D714"]
-        centralManager.scanForPeripheralsWithServices(nil, options: nil)
     }
     
     // Found IPhone
@@ -33,5 +32,8 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate {
     
     // CBCentralManagerDelegate
     func centralManagerDidUpdateState(central: CBCentralManager!) {
+        if central.state == CBCentralManagerState.PoweredOn {
+            centralManager.scanForPeripheralsWithServices(nil, options: nil)
+        }
     }
 }
