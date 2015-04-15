@@ -48,5 +48,10 @@ class MainViewController: UIViewController, CBPeripheralManagerDelegate {
     
     // Just for Notifying the User when Bluetooth is turned off
     func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
+        if peripheral.state == CBPeripheralManagerState.PoweredOn {
+            println("on")
+        } else {
+            println("Off")
+        }
     }
 }

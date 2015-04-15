@@ -53,6 +53,44 @@
             </objects>
             <point key="canvasLocation" x="1057" y="937"/>
         </scene>
+        <!--Information-->
+        <scene sceneID="rcI-mo-jQg">
+            <objects>
+                <viewController id="d0h-ZL-d36" customClass="InformationViewController" customModule="skife" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6nx-wA-u58"/>
+                        <viewControllerLayoutGuide type="bottom" id="JsB-BC-gDy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JQq-K3-IpU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qq-lx-u2f">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <string key="text">This Application does not protect you from any Injuries. It was created to make skiing a little less risky even if you dont expect an avalanche coming.
+
+Never go Freeskiing without propper equipment such as Beacon, Shovel and Probe.
+
+Thank you and enjoy your Ride!</string>
+                                <color key="textColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JsB-BC-gDy" firstAttribute="top" secondItem="6qq-lx-u2f" secondAttribute="bottom" id="Hn4-cB-KY3"/>
+                            <constraint firstItem="6qq-lx-u2f" firstAttribute="leading" secondItem="JQq-K3-IpU" secondAttribute="leadingMargin" constant="-16" id="WwR-bC-rIz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6qq-lx-u2f" secondAttribute="trailing" constant="-16" id="hbe-ZN-rWC"/>
+                            <constraint firstItem="6qq-lx-u2f" firstAttribute="top" secondItem="JQq-K3-IpU" secondAttribute="topMargin" id="stl-xg-L1l"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Information" id="hd8-2z-fjb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eIj-nj-mSN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="347" y="235"/>
+        </scene>
         <!--skife-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -66,16 +104,25 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Me5-nl-HTN">
-                                <rect key="frame" x="254" y="562" width="92" height="30"/>
-                                <state key="normal" title="Einstellungen">
+                                <rect key="frame" x="278" y="524" width="44" height="30"/>
+                                <state key="normal" title="Profile">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="gIK-XA-VoQ" kind="show" id="kS2-Yx-ehp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiZ-sg-dU2">
+                                <rect key="frame" x="257" y="562" width="86" height="30"/>
+                                <state key="normal" title="Informations">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="d0h-ZL-d36" kind="show" id="Mzq-F6-PEx"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dM2-6M-S4J">
-                                <rect key="frame" x="284" y="524" width="32" height="30"/>
+                                <rect key="frame" x="284" y="486" width="32" height="30"/>
                                 <state key="normal" title="Ride">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -90,13 +137,17 @@
                             <constraint firstItem="dM2-6M-S4J" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="8fL-HV-ola"/>
                             <constraint firstItem="Me5-nl-HTN" firstAttribute="top" secondItem="dM2-6M-S4J" secondAttribute="bottom" constant="8" id="FHp-dl-miu"/>
                             <constraint firstItem="Me5-nl-HTN" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="aTB-95-u4t"/>
+                            <constraint firstItem="eiZ-sg-dU2" firstAttribute="top" secondItem="Me5-nl-HTN" secondAttribute="bottom" constant="8" id="clt-4P-4xP"/>
                             <constraint firstAttribute="centerX" secondItem="Me5-nl-HTN" secondAttribute="centerX" id="fqO-Xb-eTk"/>
+                            <constraint firstAttribute="centerX" secondItem="eiZ-sg-dU2" secondAttribute="centerX" id="ms5-26-6Ar"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="eiZ-sg-dU2" secondAttribute="bottom" constant="8" id="v9x-KB-DaV"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Me5-nl-HTN" secondAttribute="bottom" constant="8" id="zVP-xu-5bF"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="8fL-HV-ola"/>
                                 <exclude reference="aTB-95-u4t"/>
+                                <exclude reference="zVP-xu-5bF"/>
                             </mask>
                         </variation>
                     </view>
@@ -245,7 +296,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lF5-dM-SZP">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lF5-dM-SZP">
                                 <rect key="frame" x="225" y="101" width="150" height="150"/>
                                 <state key="normal" image="SearchButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
