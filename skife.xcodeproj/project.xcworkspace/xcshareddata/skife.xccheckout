@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>958C7C77-2A2F-469A-9D77-19ED1458ABBC</string>
 	<key>IDESourceControlProjectName</key>
-	<string>skife</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>EF45223B76103494B75007AAA82F9EB0C6B6DBB3</key>
 		<string>gitlab.com:Baeuerle/skife.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>skife.xcodeproj</string>
+	<string>skife.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>EF45223B76103494B75007AAA82F9EB0C6B6DBB3</key>
