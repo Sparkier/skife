@@ -14,6 +14,7 @@ class Rider {
     var uuid: String
     var beaconUUID: NSUUID
     var beaconRegion: CLBeaconRegion
+    var beacon: CLBeacon?
     
     init (name: String, uuid:String) {
         self.name = name

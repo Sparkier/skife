@@ -11,7 +11,6 @@ import CoreBluetooth
 
 class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate {
     
-    var myBeaconData: NSDictionary!
     var perMan: CBPeripheralManager!
     let myCustomServiceUUID: CBUUID = CBUUID(string: "109F17E4-EF68-43FC-957D-502BB0EFCF46")
     var myService: CBMutableService!
