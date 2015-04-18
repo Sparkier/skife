@@ -9,10 +9,10 @@
 import UIKit
 import CoreBluetooth
 
-class SearchViewController: UIViewController, CBCentralManagerDelegate {
+class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableViewDataSource, UITableViewDelegate {
     
     var centralManager: CBCentralManager!
-    var peripheral: CBPeripheral?
+    var peripherals = [CBPeripheral]()
     
     @IBOutlet weak var beaconsTableView: UITableView!
     
@@ -28,7 +28,8 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate {
     // Found IPhone
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
         println(RSSI)
-        self.peripheral = peripheral
+        self.peripherals.append(peripheral)
+        beaconsTableView.reloadData()
     }
     
     // CBCentralManagerDelegate
@@ -36,5 +37,38 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate {
         if central.state == CBCentralManagerState.PoweredOn {
             centralManager.scanForPeripheralsWithServices(nil, options: nil)
         }
+    }
+    
+    // Table View Specifying how many Rows
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return peripherals.count
+    }
+    
+    // Table View Generating each Cell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell:UITableViewCell? =
+        tableView.dequeueReusableCellWithIdentifier("MyIdentifier") as? UITableViewCell
+        
+        if(cell == nil) {
+            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle,
+                reuseIdentifier: "MyIdentifier")
+            cell!.selectionStyle = UITableViewCellSelectionStyle.None
+        }
+        
+        var nameLabel:String! = peripherals[indexPath.row].name
+        cell!.textLabel!.text = nameLabel
+        
+        var detailLabel: String = "Not in Range."
+        cell!.detailTextLabel!.text = detailLabel
+        
+        return cell!
+    }
+    
+    // Click on TableView Row detection
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        /*let vc: AnyObject! = self.storyboard?.instantiateViewControllerWithIdentifier("detailedSearchViewController")
+        var detailedSearchViewController: DetailedSearchViewController = vc as! DetailedSearchViewController;
+        detailedSearchViewController.rider = riders[indexPath.row]
+        navigationController?.pushViewController(vc as! UIViewController, animated: true)*/
     }
 }

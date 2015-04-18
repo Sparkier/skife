@@ -67,30 +67,27 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate 
         self.checkDirection()
     }
     
-    // Locating the User and Updating the Map
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        previousLocations.append(locations[0] as! CLLocation)
-        self.map.setCenterCoordinate(map.userLocation.coordinate, animated: true)
-
-        if (previousLocations.count > 1){
-            var a: [CLLocationCoordinate2D] = []
-            a.append(previousLocations[previousLocations.count-2].coordinate)
-            a.append(previousLocations[previousLocations.count-1].coordinate)
-            var polyline = MKPolyline(coordinates: &a, count: a.count)
-            self.map.addOverlay(polyline)
-        }
-    }
-    
-    // Drawing Line where User walks
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-        if overlay is MKPolyline {
-            var circle = MKPolylineRenderer(overlay: overlay)
-            circle.strokeColor = UIColor.redColor()
-            circle.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.1)
-            circle.lineWidth = 1
-            return circle
-        } else {
-            return nil
+    // Checks which Direction the User needs to go
+    func checkDirection() {
+        // Get Direction from DirectionEngine
+        let dir = directionEngine.getDirection()
+        if dir == Direction.Any {
+            directionLabel.text = "Please go where you think the Sender might be burrowed."
+            directionImageView.image = UIImage(named: "AnyDirectionIcon")
+        } else if dir == Direction.Lost {
+            directionLabel.text = "You lost Connection to the Sender. Please move back to where you had a connection."
+            directionImageView.image = UIImage(named: "AnyDirectionIcon")
+        } else if dir == Direction.Back {
+            self.directionLabel.text = "Turn around and go back to where your distance was about \(round(directionEngine.closestPoint*100.0)/100.0). Then turn left or right."
+            directionImageView.image = UIImage(named: "BackDirectionIcon")
+        } else if dir == Direction.Straight {
+            self.directionLabel.text = "Keep on walking this direction."
+            self.view.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.3)
+            directionImageView.image = UIImage(named: "CloserDirectionIcon")
+        } else if dir == Direction.Wrong {
+            self.directionLabel.text = "The distance to the Sender is getting bigger."
+            self.view.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.3)
+            directionImageView.image = UIImage(named: "FurtherDirectionIcon")
         }
     }
     
