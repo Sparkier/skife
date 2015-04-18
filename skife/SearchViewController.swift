@@ -55,7 +55,7 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
             cell!.selectionStyle = UITableViewCellSelectionStyle.None
         }
         
-        var nameLabel:String! = peripherals[indexPath.row].name
+        var nameLabel:String! = "\(peripherals[indexPath.row].state)"
         cell!.textLabel!.text = nameLabel
         
         var detailLabel: String = "Not in Range."
