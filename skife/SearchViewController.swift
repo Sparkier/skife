@@ -12,6 +12,7 @@ import CoreBluetooth
 class SearchViewController: UIViewController, CBCentralManagerDelegate {
     
     var centralManager: CBCentralManager!
+    var peripheral: CBPeripheral?
     
     @IBOutlet weak var beaconsTableView: UITableView!
     
@@ -26,8 +27,8 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate {
     
     // Found IPhone
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
-        println("Hallo:")
         println(RSSI)
+        self.peripheral = peripheral
     }
     
     // CBCentralManagerDelegate
