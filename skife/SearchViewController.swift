@@ -9,9 +9,10 @@
 import UIKit
 import CoreBluetooth
 
-class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableViewDataSource, UITableViewDelegate {
+class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableViewDataSource, UITableViewDelegate, CBPeripheralDelegate {
     
     var centralManager: CBCentralManager!
+    var nsTimer: NSTimer!
     var peripherals = [CBPeripheral]()
     
     @IBOutlet weak var beaconsTableView: UITableView!
@@ -20,16 +21,18 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
         super.viewDidLoad()
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
-        
+
         // Listen to BLE of IPhones
         let services: NSArray = ["7521105F-8937-48B7-A875-66E6FE21D714"]
+        
+        nsTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("checkRSSI"), userInfo: nil, repeats: true)
     }
     
     // Found IPhone
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
         println(RSSI)
         self.peripherals.append(peripheral)
-        beaconsTableView.reloadData()
+        centralManager.connectPeripheral(peripheral, options: nil)
     }
     
     // CBCentralManagerDelegate
@@ -55,10 +58,10 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
             cell!.selectionStyle = UITableViewCellSelectionStyle.None
         }
         
-        var nameLabel:String! = "\(peripherals[indexPath.row].state)"
+        var nameLabel:String! = "\(peripherals[indexPath.row].name)"
         cell!.textLabel!.text = nameLabel
         
-        var detailLabel: String = "Not in Range."
+        var detailLabel: String = "\(peripherals[indexPath.row].readRSSI())"
         cell!.detailTextLabel!.text = detailLabel
         
         return cell!
@@ -70,5 +73,9 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
         var detailedSearchViewController: DetailedSearchViewController = vc as! DetailedSearchViewController;
         detailedSearchViewController.rider = riders[indexPath.row]
         navigationController?.pushViewController(vc as! UIViewController, animated: true)*/
+    }
+    
+    func checkRSSI() {
+        self.beaconsTableView.reloadData()
     }
 }

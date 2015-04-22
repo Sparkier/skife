@@ -27,7 +27,6 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate {
         if peripheral.state == CBPeripheralManagerState.PoweredOn {
             // Start advertising over BLE
             self.perMan.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [myService.UUID]])
-            println("Adertising")
         } else if peripheral.state == CBPeripheralManagerState.PoweredOff {
             self.perMan.stopAdvertising()
         }
