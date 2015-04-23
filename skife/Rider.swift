@@ -9,6 +9,7 @@
 
 import CoreLocation
 
+// Rider = Someone burrowed
 class Rider {
     var name: String
     var uuid: String

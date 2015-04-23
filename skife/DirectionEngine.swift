@@ -17,6 +17,7 @@ enum Direction {
     case Lost
 }
 
+// Engine for resolving the Direction the User has to go
 class DirectionEngine {
     var previousDistances: [CLLocationAccuracy] = []
     var previousDirection: Direction = Direction.Any
