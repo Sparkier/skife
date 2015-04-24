@@ -49,6 +49,7 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
     
     // Table View Generating each Cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        peripherals[indexPath.row].readRSSI()
         var cell:UITableViewCell? =
         tableView.dequeueReusableCellWithIdentifier("MyIdentifier") as? UITableViewCell
         
@@ -61,7 +62,7 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
         var nameLabel:String! = "\(peripherals[indexPath.row].name)"
         cell!.textLabel!.text = nameLabel
         
-        var detailLabel: String = "\(peripherals[indexPath.row].readRSSI())"
+        var detailLabel: String = "\(peripherals[indexPath.row].RSSI)"
         cell!.detailTextLabel!.text = detailLabel
         
         return cell!
