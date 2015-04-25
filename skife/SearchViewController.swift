@@ -13,7 +13,7 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
     
     var centralManager: CBCentralManager!
     var nsTimer: NSTimer!
-    var peripherals = [CBPeripheral]()
+    var riders = [Rider]()
     
     @IBOutlet weak var beaconsTableView: UITableView!
     
@@ -30,8 +30,15 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
     
     // Found IPhone
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
-        println(RSSI)
-        self.peripherals.append(peripheral)
+        let rider = Rider()
+        rider.peripheral = peripheral
+        rider.RSSI = RSSI
+        self.riders.append(rider)
+        peripheral.delegate = self
+        centralManager.connectPeripheral(peripheral, options: nil)
+    }
+    
+    func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
         centralManager.connectPeripheral(peripheral, options: nil)
     }
     
@@ -44,12 +51,11 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
     
     // Table View Specifying how many Rows
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return peripherals.count
+        return riders.count
     }
     
     // Table View Generating each Cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        peripherals[indexPath.row].readRSSI()
         var cell:UITableViewCell? =
         tableView.dequeueReusableCellWithIdentifier("MyIdentifier") as? UITableViewCell
         
@@ -59,10 +65,10 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
             cell!.selectionStyle = UITableViewCellSelectionStyle.None
         }
         
-        var nameLabel:String! = "\(peripherals[indexPath.row].name)"
+        var nameLabel:String! = "\(riders[indexPath.row].peripheral!.name)"
         cell!.textLabel!.text = nameLabel
         
-        var detailLabel: String = "\(peripherals[indexPath.row].RSSI)"
+        var detailLabel: String = "\(riders[indexPath.row].RSSI)"
         cell!.detailTextLabel!.text = detailLabel
         
         return cell!
@@ -70,13 +76,39 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
     
     // Click on TableView Row detection
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        /*let vc: AnyObject! = self.storyboard?.instantiateViewControllerWithIdentifier("detailedSearchViewController")
+        let vc: AnyObject! = self.storyboard?.instantiateViewControllerWithIdentifier("detailedSearchViewController")
         var detailedSearchViewController: DetailedSearchViewController = vc as! DetailedSearchViewController;
         detailedSearchViewController.rider = riders[indexPath.row]
-        navigationController?.pushViewController(vc as! UIViewController, animated: true)*/
+        navigationController?.pushViewController(vc as! UIViewController, animated: true)
     }
     
     func checkRSSI() {
+        for rider in riders {
+            if let per = rider.peripheral {
+                per.readRSSI()
+            }
+        }
         self.beaconsTableView.reloadData()
+    }
+    
+    func peripheral(peripheral: CBPeripheral!, didReadRSSI RSSI: NSNumber!, error: NSError!) {
+        for rider in riders {
+            if rider.peripheral == peripheral {
+                rider.RSSI = RSSI
+                rider.accuracy = calculateAccuracy(55.0, rssi: Double(RSSI))
+            }
+        }
+    }
+    
+    func calculateAccuracy(txPower: Double, rssi: Double) -> Double {
+        if rssi == 0 {
+            return -1.0
+        }
+        var ratio: Double = rssi*1.0/txPower
+        if ratio < 1.0 {
+            return pow(ratio, 10.0)
+        } else {
+            return ((0.89976) * (pow(ratio,7.7095)) + 0.111)
+        }
     }
 }

@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import CoreLocation
-import MapKit
+import CoreBluetooth
 
-class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate {
+class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDelegate {
     
-    var locationManager: CLLocationManager?
     var rider: Rider!
     var closeLabel: UILabel!
     var goingBack: Bool = false
     let directionEngine = DirectionEngine()
+    var centralManager: CBCentralManager!
+    var nsTimer: NSTimer!
     
     @IBOutlet weak var directionImageView: UIImageView!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -25,46 +25,65 @@ class DetailedSearchViewController: UIViewController, CLLocationManagerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set up Location Manager for Beacons
-        locationManager = CLLocationManager()
-        locationManager!.desiredAccuracy = kCLLocationAccuracyBest
-        if(locationManager!.respondsToSelector("requestAlwaysAuthorization")) {
-            locationManager!.requestAlwaysAuthorization()
-        }
-        locationManager!.delegate = self
-        locationManager!.pausesLocationUpdatesAutomatically = false
-        
-        // Listen to Rider
-        locationManager!.startMonitoringForRegion(rider.beaconRegion)
-        locationManager!.startRangingBeaconsInRegion(rider.beaconRegion)
-        locationManager!.startUpdatingLocation()
+        centralManager = CBCentralManager(delegate: self, queue: nil)
         
         // Set up Close Label
         closeLabel = UILabel(frame: self.view.frame)
         closeLabel.font = closeLabel.font.fontWithSize(50.0)
         closeLabel.textAlignment = NSTextAlignment.Center
+        
+        nsTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("checkRSSI"), userInfo: nil, repeats: true)
     }
     
-    // Ranged Beacon by Location Manager
-    func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!,inRegion region: CLBeaconRegion!) {
-        var message:String = ""
-        
-        if beacons.count > 0 {
-            self.distanceLabel.text = "~ \(round(beacons[0].accuracy*100.0)/100.0) m"
-            self.closeLabel.text = "\(round(beacons[0].accuracy*100.0)/100.0)"
-            self.directionEngine.previousDistances.append(beacons[0].accuracy)
+    // Called when Peripheral disconnects
+    func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
+        if peripheral == rider.peripheral {
+            centralManager.connectPeripheral(peripheral, options: nil)
+        }
+    }
+    
+    // CBCentralManagerDelegate
+    func centralManagerDidUpdateState(central: CBCentralManager!) {
+        if central.state == CBCentralManagerState.PoweredOn {
+            centralManager.connectPeripheral(rider.peripheral, options: nil)
+            rider.peripheral!.delegate = self
+            println("Power")
+        }
+    }
+    
+    // RSSI was Read
+    func peripheral(peripheral: CBPeripheral!, didReadRSSI RSSI: NSNumber!, error: NSError!) {
+        if rider.peripheral == peripheral {
+            rider.RSSI = RSSI
+            rider.accuracy = calculateAccuracy(55.0, rssi: Double(RSSI))
+            self.distanceLabel.text = "~ \(round(rider.accuracy!*100.0)/100.0) m"
+            self.closeLabel.text = "\(round(rider.accuracy!*100.0)/100.0)"
+            self.directionEngine.previousDistances.append(rider.accuracy!)
             self.directionEngine.inRange = true
-            if directionEngine.closestPoint > beacons[0].accuracy {
-                self.directionEngine.closestPoint = beacons[0].accuracy
+            if directionEngine.closestPoint > rider.accuracy! {
+                self.directionEngine.closestPoint = rider.accuracy!
             }
             self.checkDistance()
-        } else {
-            self.directionEngine.inRange = false
-            self.distanceLabel.text = "Not in Range."
-            if self.directionEngine.previousDistances.count > 0 {
-            }
+            self.checkDirection()
         }
-        self.checkDirection()
+    }
+    
+    // Calculate the Accuracy of Peripheral
+    func calculateAccuracy(txPower: Double, rssi: Double) -> Double {
+        if rssi == 0 {
+            return -1.0
+        }
+        var ratio: Double = rssi*1.0/txPower
+        if ratio < 1.0 {
+            return pow(ratio, 10.0)
+        } else {
+            return ((0.89976) * (pow(ratio,7.7095)) + 0.111)
+        }
+    }
+    
+    // Update RSSI of peripheral
+    func checkRSSI() {
+        rider.peripheral!.readRSSI()
     }
     
     // Checks which Direction the User needs to go

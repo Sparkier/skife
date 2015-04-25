@@ -7,21 +7,17 @@
 //  Copyright (c) 2015 Alex Bäuerle. All rights reserved.
 //
 
-import CoreLocation
+import CoreBluetooth
 
 // Rider = Someone burrowed
 class Rider {
-    var name: String
-    var uuid: String
-    var beaconUUID: NSUUID
-    var beaconRegion: CLBeaconRegion
-    var beacon: CLBeacon?
+//    var name: String
+//    var uuid: String
+//    var beaconUUID: NSUUID
+    var peripheral: CBPeripheral?
+    var RSSI: NSNumber?
+    var accuracy: Double?
     
-    init (name: String, uuid:String) {
-        self.name = name
-        self.uuid = uuid
-        beaconUUID = NSUUID(UUIDString: uuid)!
-        beaconRegion = CLBeaconRegion(proximityUUID: beaconUUID,
-            identifier: name)
+    init () {
     }
 }
