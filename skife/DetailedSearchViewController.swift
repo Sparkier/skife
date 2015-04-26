@@ -17,6 +17,7 @@ class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCe
     let directionEngine = DirectionEngine()
     var centralManager: CBCentralManager!
     var nsTimer: NSTimer!
+    lazy var noBluetoothView = NoBluetoothView()
     
     @IBOutlet weak var directionImageView: UIImageView!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -47,6 +48,9 @@ class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCe
         if central.state == CBCentralManagerState.PoweredOn {
             centralManager.connectPeripheral(rider.peripheral, options: nil)
             rider.peripheral!.delegate = self
+            self.noBluetoothView.removeFromSuperview()
+        } else {
+            self.view.addSubview(noBluetoothView)
         }
     }
     

@@ -14,6 +14,7 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
     var centralManager: CBCentralManager!
     var nsTimer: NSTimer!
     var riders = [Rider]()
+    lazy var noBluetoothView = NoBluetoothView()
     
     @IBOutlet weak var beaconsTableView: UITableView!
     
@@ -46,6 +47,9 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
     func centralManagerDidUpdateState(central: CBCentralManager!) {
         if central.state == CBCentralManagerState.PoweredOn {
             centralManager.scanForPeripheralsWithServices(nil, options: nil)
+            noBluetoothView.removeFromSuperview()
+        } else {
+            self.view.addSubview(noBluetoothView)
         }
     }
     
@@ -82,6 +86,7 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
         navigationController?.pushViewController(vc as! UIViewController, animated: true)
     }
     
+    // Checks the RSSI of all Peripherals
     func checkRSSI() {
         for rider in riders {
             if let per = rider.peripheral {
@@ -91,6 +96,7 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
         self.beaconsTableView.reloadData()
     }
     
+    // Called when the RSSI is getting read
     func peripheral(peripheral: CBPeripheral!, didReadRSSI RSSI: NSNumber!, error: NSError!) {
         for rider in riders {
             if rider.peripheral == peripheral {
@@ -100,6 +106,7 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
         }
     }
     
+    // Calculates an approximated Accuracy value
     func calculateAccuracy(txPower: Double, rssi: Double) -> Double {
         if rssi == 0 {
             return -1.0
