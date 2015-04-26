@@ -22,9 +22,6 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
         super.viewDidLoad()
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
-
-        // Listen to BLE of IPhones
-        let services: NSArray = ["7521105F-8937-48B7-A875-66E6FE21D714"]
         
         nsTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("checkRSSI"), userInfo: nil, repeats: true)
     }
@@ -50,6 +47,11 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
     
     // Called When Peripheral gets disconnected, reconnecting it
     func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
+        for i in 0..<riders.count {
+            if riders[i].peripheral == peripheral {
+                riders.removeAtIndex(i)
+            }
+        }
         centralManager.connectPeripheral(peripheral, options: nil)
     }
     

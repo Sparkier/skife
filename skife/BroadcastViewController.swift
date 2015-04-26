@@ -27,7 +27,7 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate {
     func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
         if peripheral.state == CBPeripheralManagerState.PoweredOn {
             // Start advertising over BLE
-            self.perMan.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [myService.UUID], CBAdvertisementDataLocalNameKey: ["Alex"]])
+            self.perMan.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [myService.UUID]])
             self.noBluetoothView.removeFromSuperview()
         } else if peripheral.state == CBPeripheralManagerState.PoweredOff {
             self.perMan.stopAdvertising()

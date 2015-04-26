@@ -4,6 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Profile-->
@@ -103,53 +104,82 @@ Thank you and enjoy your Ride!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Me5-nl-HTN">
-                                <rect key="frame" x="278" y="524" width="44" height="30"/>
-                                <state key="normal" title="Profile">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="gIK-XA-VoQ" kind="show" id="kS2-Yx-ehp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiZ-sg-dU2">
-                                <rect key="frame" x="257" y="562" width="86" height="30"/>
-                                <state key="normal" title="Informations">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="d0h-ZL-d36" kind="show" id="Mzq-F6-PEx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dM2-6M-S4J">
-                                <rect key="frame" x="284" y="486" width="32" height="30"/>
-                                <state key="normal" title="Ride">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="PTS-qS-bCQ" kind="show" id="OW0-En-3dV"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Sv-gS-2Pn">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiZ-sg-dU2">
+                                        <rect key="frame" x="0.0" y="357" width="600" height="179"/>
+                                        <state key="normal" title="Information">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="d0h-ZL-d36" kind="show" id="Mzq-F6-PEx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dM2-6M-S4J">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="179"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="dM2-6M-S4J" secondAttribute="height" multiplier="3:1" id="fI9-dw-ogW"/>
+                                        </constraints>
+                                        <state key="normal" title="Ride">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="fI9-dw-ogW"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <segue destination="PTS-qS-bCQ" kind="show" id="OW0-En-3dV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Me5-nl-HTN">
+                                        <rect key="frame" x="0.0" y="179" width="600" height="178"/>
+                                        <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Profile">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="gIK-XA-VoQ" kind="show" id="kS2-Yx-ehp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="dM2-6M-S4J" firstAttribute="top" secondItem="4Sv-gS-2Pn" secondAttribute="top" id="8Tg-d0-lTe"/>
+                                    <constraint firstAttribute="height" secondItem="eiZ-sg-dU2" secondAttribute="height" multiplier="3" id="CE2-3W-zTf"/>
+                                    <constraint firstAttribute="trailing" secondItem="eiZ-sg-dU2" secondAttribute="trailing" id="FfL-3e-snE"/>
+                                    <constraint firstItem="Me5-nl-HTN" firstAttribute="leading" secondItem="4Sv-gS-2Pn" secondAttribute="leading" id="Low-27-Jza"/>
+                                    <constraint firstAttribute="centerY" secondItem="Me5-nl-HTN" secondAttribute="centerY" id="NnZ-qs-5bI"/>
+                                    <constraint firstAttribute="trailing" secondItem="dM2-6M-S4J" secondAttribute="trailing" id="QFT-Hf-iZ8"/>
+                                    <constraint firstAttribute="bottom" secondItem="eiZ-sg-dU2" secondAttribute="bottom" id="RaH-Dg-0RF"/>
+                                    <constraint firstAttribute="height" secondItem="dM2-6M-S4J" secondAttribute="height" multiplier="3" id="SX5-iT-CQo"/>
+                                    <constraint firstItem="Me5-nl-HTN" firstAttribute="top" secondItem="dM2-6M-S4J" secondAttribute="bottom" id="Wf4-5N-u9r"/>
+                                    <constraint firstAttribute="height" secondItem="Me5-nl-HTN" secondAttribute="height" multiplier="3" id="Ym8-dk-9h2"/>
+                                    <constraint firstAttribute="height" secondItem="dM2-6M-S4J" secondAttribute="height" multiplier="3" id="dAq-BP-2Od"/>
+                                    <constraint firstItem="dM2-6M-S4J" firstAttribute="leading" secondItem="4Sv-gS-2Pn" secondAttribute="leading" id="gmr-2O-dzf"/>
+                                    <constraint firstItem="eiZ-sg-dU2" firstAttribute="top" secondItem="Me5-nl-HTN" secondAttribute="bottom" id="iIq-wV-YqY"/>
+                                    <constraint firstItem="eiZ-sg-dU2" firstAttribute="leading" secondItem="4Sv-gS-2Pn" secondAttribute="leading" id="srf-M5-bYG"/>
+                                    <constraint firstAttribute="trailing" secondItem="Me5-nl-HTN" secondAttribute="trailing" id="vXY-hq-aoY"/>
+                                    <constraint firstItem="Me5-nl-HTN" firstAttribute="height" secondItem="4Sv-gS-2Pn" secondAttribute="height" multiplier="0.3" id="wn5-Og-1XU"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="SX5-iT-CQo"/>
+                                        <exclude reference="Wf4-5N-u9r"/>
+                                        <exclude reference="wn5-Og-1XU"/>
+                                        <exclude reference="iIq-wV-YqY"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="dM2-6M-S4J" secondAttribute="centerX" id="6yR-0S-aTs"/>
-                            <constraint firstItem="dM2-6M-S4J" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="8fL-HV-ola"/>
-                            <constraint firstItem="Me5-nl-HTN" firstAttribute="top" secondItem="dM2-6M-S4J" secondAttribute="bottom" constant="8" id="FHp-dl-miu"/>
-                            <constraint firstItem="Me5-nl-HTN" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="aTB-95-u4t"/>
-                            <constraint firstItem="eiZ-sg-dU2" firstAttribute="top" secondItem="Me5-nl-HTN" secondAttribute="bottom" constant="8" id="clt-4P-4xP"/>
-                            <constraint firstAttribute="centerX" secondItem="Me5-nl-HTN" secondAttribute="centerX" id="fqO-Xb-eTk"/>
-                            <constraint firstAttribute="centerX" secondItem="eiZ-sg-dU2" secondAttribute="centerX" id="ms5-26-6Ar"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="eiZ-sg-dU2" secondAttribute="bottom" constant="8" id="v9x-KB-DaV"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Me5-nl-HTN" secondAttribute="bottom" constant="8" id="zVP-xu-5bF"/>
+                            <constraint firstItem="4Sv-gS-2Pn" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="9r2-6B-x0m"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="4Sv-gS-2Pn" secondAttribute="bottom" id="KIM-rb-CsZ"/>
+                            <constraint firstItem="4Sv-gS-2Pn" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Tmd-5r-qJv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4Sv-gS-2Pn" secondAttribute="trailing" constant="-16" id="z6v-OJ-OqR"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="8fL-HV-ola"/>
-                                <exclude reference="aTB-95-u4t"/>
-                                <exclude reference="zVP-xu-5bF"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="skife" id="LsQ-m4-JhT"/>
                 </viewController>
