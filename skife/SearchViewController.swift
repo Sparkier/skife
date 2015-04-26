@@ -39,6 +39,7 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
         centralManager.connectPeripheral(peripheral, options: nil)
     }
     
+    // Called When Peripheral gets disconnected, reconnecting it
     func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
         centralManager.connectPeripheral(peripheral, options: nil)
     }
