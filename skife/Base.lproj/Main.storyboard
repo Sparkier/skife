@@ -67,7 +67,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qq-lx-u2f">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <string key="text">This Application does not protect you from any Injuries. It was created to make skiing a little less risky even if you dont expect an avalanche coming.
+                                <string key="text">This Application does not protect you from any Injuries. It was created to make skiing a little less risky even if you do not expect an avalanche coming.
 
 Never go Freeskiing without propper equipment such as Beacon, Shovel and Probe.
 

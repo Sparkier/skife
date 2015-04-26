@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreLocation
 
 enum Direction {
     case Back
@@ -19,9 +18,9 @@ enum Direction {
 
 // Engine for resolving the Direction the User has to go
 class DirectionEngine {
-    var previousDistances: [CLLocationAccuracy] = []
+    var previousDistances: [Double] = []
     var previousDirection: Direction = Direction.Any
-    var closestPoint: CLLocationAccuracy = CLLocationAccuracy.infinity
+    var closestPoint: Double = Double.infinity
     var inRange: Bool = false
     
     func getDirection() -> Direction {

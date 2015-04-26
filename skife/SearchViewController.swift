@@ -31,12 +31,21 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
     
     // Found IPhone
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
-        let rider = Rider()
-        rider.peripheral = peripheral
-        rider.RSSI = RSSI
-        self.riders.append(rider)
-        peripheral.delegate = self
-        centralManager.connectPeripheral(peripheral, options: nil)
+        // For not getting the same Peripheral twice
+        var doubleID = false
+        for rider in riders {
+            if rider.peripheral!.identifier == peripheral.identifier {
+                doubleID = true
+            }
+        }
+        if !doubleID {
+            let rider = Rider()
+            rider.peripheral = peripheral
+            rider.RSSI = RSSI
+            self.riders.append(rider)
+            peripheral.delegate = self
+            centralManager.connectPeripheral(peripheral, options: nil)
+        }
     }
     
     // Called When Peripheral gets disconnected, reconnecting it
@@ -73,8 +82,13 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
         var nameLabel:String! = "\(riders[indexPath.row].peripheral!.name)"
         cell!.textLabel!.text = nameLabel
         
-        var detailLabel: String = "\(riders[indexPath.row].RSSI)"
-        cell!.detailTextLabel!.text = detailLabel
+        if let acc = riders[indexPath.row].accuracy {
+            var detailLabel: String = "~ \(round(acc*10.0)/10.0) m"
+            cell!.detailTextLabel!.text = detailLabel
+        } else {
+            var detailLabel: String = "Not in Range"
+            cell!.detailTextLabel!.text = detailLabel
+        }
         
         return cell!
     }
@@ -102,7 +116,7 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
         for rider in riders {
             if rider.peripheral == peripheral {
                 rider.RSSI = RSSI
-                rider.accuracy = calculateAccuracy(55.0, rssi: Double(RSSI))
+                rider.accuracy = calculateAccuracy(50.0, rssi: Double(RSSI))
             }
         }
     }

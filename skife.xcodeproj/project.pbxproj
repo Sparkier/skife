@@ -18,7 +18,6 @@
 		FA6E771D1A9F3C0D001F1BE9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA6E771C1A9F3C0D001F1BE9 /* Images.xcassets */; };
 		FA6E77201A9F3C0D001F1BE9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA6E771E1A9F3C0D001F1BE9 /* LaunchScreen.xib */; };
 		FA6E772C1A9F3C0E001F1BE9 /* skifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E772B1A9F3C0E001F1BE9 /* skifeTests.swift */; };
-		FA6E77361A9F3C76001F1BE9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6E77351A9F3C76001F1BE9 /* CoreLocation.framework */; };
 		FA6F431A1AA1FAC000AF98A8 /* DetailedSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F43191AA1FAC000AF98A8 /* DetailedSearchViewController.swift */; };
 		FA7518D91AC1B29800DCFAF7 /* DirectionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7518D81AC1B29800DCFAF7 /* DirectionEngine.swift */; };
 		FA7518DB1AC2B31A00DCFAF7 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7518DA1AC2B31A00DCFAF7 /* CreateGroupViewController.swift */; };
@@ -58,7 +57,6 @@
 		FA6E77251A9F3C0D001F1BE9 /* skifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6E772A1A9F3C0D001F1BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA6E772B1A9F3C0E001F1BE9 /* skifeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skifeTests.swift; sourceTree = "<group>"; };
-		FA6E77351A9F3C76001F1BE9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FA6F43191AA1FAC000AF98A8 /* DetailedSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedSearchViewController.swift; sourceTree = "<group>"; };
 		FA7518D81AC1B29800DCFAF7 /* DirectionEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionEngine.swift; sourceTree = "<group>"; };
 		FA7518DA1AC2B31A00DCFAF7 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 			files = (
 				FADB29B11AAD82D9000868F7 /* MapKit.framework in Frameworks */,
 				FA51753A1AA3572F0078FAD4 /* CoreBluetooth.framework in Frameworks */,
-				FA6E77361A9F3C76001F1BE9 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +114,6 @@
 			children = (
 				FADB29B01AAD82D9000868F7 /* MapKit.framework */,
 				FA5175391AA3572F0078FAD4 /* CoreBluetooth.framework */,
-				FA6E77351A9F3C76001F1BE9 /* CoreLocation.framework */,
 				FA6E770F1A9F3C0D001F1BE9 /* skife */,
 				FA6E77281A9F3C0D001F1BE9 /* skifeTests */,
 				FA6E770E1A9F3C0D001F1BE9 /* Products */,
