@@ -119,10 +119,12 @@ class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCe
         if lastDistance <= 3.0 {
             self.distanceLabel.hidden = true
             self.directionImageView.hidden = true
+            self.directionLabel.hidden = true
             self.view.addSubview(closeLabel)
         } else if lastDistance > 3.0 {
             self.closeLabel.removeFromSuperview()
             self.distanceLabel.hidden = false
+            self.directionLabel.hidden = false
             self.directionImageView.hidden = false
         }
     }
