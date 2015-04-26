@@ -21,7 +21,6 @@
 		FA7518D91AC1B29800DCFAF7 /* DirectionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7518D81AC1B29800DCFAF7 /* DirectionEngine.swift */; };
 		FA8B58FC1A9F4D6D0064B16D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B58FB1A9F4D6D0064B16D /* SearchViewController.swift */; };
 		FA9A12E11AA204B800D0058E /* Rider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A12E01AA204B800D0058E /* Rider.swift */; };
-		FAA548531AC40B28004E2E96 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA548521AC40B28004E2E96 /* MPCManager.swift */; };
 		FAAD14C41AB1B0B40025F626 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAD14C31AB1B0B40025F626 /* ProfileViewController.swift */; };
 		FAAD14C91AB1B2200025F626 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAD14C81AB1B2200025F626 /* Profile.swift */; };
 		FADB29B11AAD82D9000868F7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADB29B01AAD82D9000868F7 /* MapKit.framework */; };
@@ -57,7 +56,6 @@
 		FA7518D81AC1B29800DCFAF7 /* DirectionEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionEngine.swift; sourceTree = "<group>"; };
 		FA8B58FB1A9F4D6D0064B16D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		FA9A12E01AA204B800D0058E /* Rider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rider.swift; sourceTree = "<group>"; };
-		FAA548521AC40B28004E2E96 /* MPCManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
 		FAAD14C31AB1B0B40025F626 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FAAD14C81AB1B2200025F626 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		FADB29B01AAD82D9000868F7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -178,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				FA7518D81AC1B29800DCFAF7 /* DirectionEngine.swift */,
-				FAA548521AC40B28004E2E96 /* MPCManager.swift */,
 				FA1049BA1ADEA84500007212 /* NoBluetoothView.swift */,
 			);
 			name = Helpers;
@@ -319,7 +316,6 @@
 				FA9A12E11AA204B800D0058E /* Rider.swift in Sources */,
 				FA8B58FC1A9F4D6D0064B16D /* SearchViewController.swift in Sources */,
 				FA6E77161A9F3C0D001F1BE9 /* skife.xcdatamodeld in Sources */,
-				FAA548531AC40B28004E2E96 /* MPCManager.swift in Sources */,
 				FA6F431A1AA1FAC000AF98A8 /* DetailedSearchViewController.swift in Sources */,
 				FA6E77131A9F3C0D001F1BE9 /* AppDelegate.swift in Sources */,
 				FAF01CA51AA1C4AF00D491D4 /* MainViewController.swift in Sources */,
