@@ -47,7 +47,6 @@ class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCe
         if central.state == CBCentralManagerState.PoweredOn {
             centralManager.connectPeripheral(rider.peripheral, options: nil)
             rider.peripheral!.delegate = self
-            println("Power")
         }
     }
     
@@ -101,11 +100,11 @@ class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCe
             directionImageView.image = UIImage(named: "BackDirectionIcon")
         } else if dir == Direction.Straight {
             self.directionLabel.text = "Keep on walking this direction."
-            self.view.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.3)
+            self.distanceLabel.textColor = UIColor.greenColor().colorWithAlphaComponent(0.3)
             directionImageView.image = UIImage(named: "CloserDirectionIcon")
         } else if dir == Direction.Wrong {
             self.directionLabel.text = "The distance to the Sender is getting bigger."
-            self.view.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.3)
+            self.distanceLabel.textColor = UIColor.redColor().colorWithAlphaComponent(0.3)
             directionImageView.image = UIImage(named: "FurtherDirectionIcon")
         }
     }
