@@ -14,6 +14,7 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
     var centralManager: CBCentralManager!
     var nsTimer: NSTimer!
     var riders = [Rider]()
+    var rollingRssi: Double = 0.0
     lazy var noBluetoothView = NoBluetoothView()
     
     @IBOutlet weak var beaconsTableView: UITableView!
@@ -38,7 +39,8 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
         if !doubleID {
             let rider = Rider()
             rider.peripheral = peripheral
-            rider.RSSI = RSSI
+            rollingRssi = Double(RSSI)
+            rider.RSSI = rollingRssi
             self.riders.append(rider)
             peripheral.delegate = self
             centralManager.connectPeripheral(peripheral, options: nil)
@@ -47,11 +49,6 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
     
     // Called When Peripheral gets disconnected, reconnecting it
     func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
-        for i in 0..<riders.count {
-            if riders[i].peripheral == peripheral {
-                riders.removeAtIndex(i)
-            }
-        }
         centralManager.connectPeripheral(peripheral, options: nil)
     }
     
@@ -100,6 +97,7 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
         let vc: AnyObject! = self.storyboard?.instantiateViewControllerWithIdentifier("detailedSearchViewController")
         var detailedSearchViewController: DetailedSearchViewController = vc as! DetailedSearchViewController;
         detailedSearchViewController.rider = riders[indexPath.row]
+        detailedSearchViewController.rollingRssi = self.rollingRssi
         navigationController?.pushViewController(vc as! UIViewController, animated: true)
     }
     
@@ -117,8 +115,9 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
     func peripheral(peripheral: CBPeripheral!, didReadRSSI RSSI: NSNumber!, error: NSError!) {
         for rider in riders {
             if rider.peripheral == peripheral {
-                rider.RSSI = RSSI
-                rider.accuracy = calculateAccuracy(50.0, rssi: Double(RSSI))
+                rollingRssi = (Double(RSSI) * 0.1)+(rollingRssi * (1.0-0.1))
+                rider.RSSI = rollingRssi
+                rider.accuracy = calculateAccuracy(70.0, rssi: Double(rollingRssi))
             }
         }
     }

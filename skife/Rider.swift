@@ -15,7 +15,7 @@ class Rider {
 //    var uuid: String
 //    var beaconUUID: NSUUID
     var peripheral: CBPeripheral?
-    var RSSI: NSNumber?
+    var RSSI: Double?
     var accuracy: Double?
     
     init () {

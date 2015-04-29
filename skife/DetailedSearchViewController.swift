@@ -16,6 +16,7 @@ class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCe
     var goingBack: Bool = false
     let directionEngine = DirectionEngine()
     var centralManager: CBCentralManager!
+    var rollingRssi: Double!
     var nsTimer: NSTimer!
     lazy var noBluetoothView = NoBluetoothView()
     
@@ -57,8 +58,9 @@ class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCe
     // RSSI was Read
     func peripheral(peripheral: CBPeripheral!, didReadRSSI RSSI: NSNumber!, error: NSError!) {
         if rider.peripheral == peripheral {
-            rider.RSSI = RSSI
-            rider.accuracy = calculateAccuracy(55.0, rssi: Double(RSSI))
+            rollingRssi = (Double(RSSI) * 0.1)+(rollingRssi * (1.0-0.1))
+            rider.RSSI = rollingRssi
+            rider.accuracy = calculateAccuracy(70.0, rssi: Double(rollingRssi))
             self.distanceLabel.text = "~ \(round(rider.accuracy!*100.0)/100.0) m"
             self.closeLabel.text = "\(round(rider.accuracy!*100.0)/100.0)"
             self.directionEngine.previousDistances.append(rider.accuracy!)
