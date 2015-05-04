@@ -18,6 +18,7 @@ class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCe
     var centralManager: CBCentralManager!
     var rollingRssi: Double!
     var nsTimer: NSTimer!
+    var notIncluded = [Double]()
     lazy var noBluetoothView = NoBluetoothView()
     
     @IBOutlet weak var directionImageView: UIImageView!
@@ -59,8 +60,19 @@ class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCe
     func peripheral(peripheral: CBPeripheral!, didReadRSSI RSSI: NSNumber!, error: NSError!) {
         if rider.peripheral == peripheral {
             rollingRssi = (Double(RSSI) * 0.1)+(rollingRssi * (1.0-0.1))
-            rider.RSSI = rollingRssi
-            rider.accuracy = calculateAccuracy(70.0, rssi: Double(rollingRssi))
+            if notIncluded.count == 3 {
+                rider.RSSI = rollingRssi
+                rider.accuracy = calculateAccuracy(70.0, rssi: rollingRssi)
+                notIncluded = []
+            } else {
+                if (rollingRssi * 1.1) < rider.RSSI || (rollingRssi * 0.9) > rider.RSSI {
+                    notIncluded.append(rollingRssi)
+                } else {
+                    rider.RSSI = rollingRssi
+                    rider.accuracy = calculateAccuracy(70.0, rssi: rollingRssi)
+                    notIncluded = []
+                }
+            }
             self.distanceLabel.text = "~ \(round(rider.accuracy!*100.0)/100.0) m"
             self.closeLabel.text = "\(round(rider.accuracy!*100.0)/100.0)"
             self.directionEngine.previousDistances.append(rider.accuracy!)

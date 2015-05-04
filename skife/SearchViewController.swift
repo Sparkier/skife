@@ -15,6 +15,7 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
     var nsTimer: NSTimer!
     var riders = [Rider]()
     var rollingRssi: Double = 0.0
+    var notIncluded = [Double]()
     lazy var noBluetoothView = NoBluetoothView()
     
     @IBOutlet weak var beaconsTableView: UITableView!
@@ -116,8 +117,19 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
         for rider in riders {
             if rider.peripheral == peripheral {
                 rollingRssi = (Double(RSSI) * 0.1)+(rollingRssi * (1.0-0.1))
-                rider.RSSI = rollingRssi
-                rider.accuracy = calculateAccuracy(70.0, rssi: Double(rollingRssi))
+                if notIncluded.count == 3 {
+                    rider.RSSI = rollingRssi
+                    rider.accuracy = calculateAccuracy(70.0, rssi: rollingRssi)
+                    notIncluded = []
+                } else {
+                    if (rollingRssi * 1.1) < rider.RSSI || (rollingRssi * 0.9) > rider.RSSI {
+                        notIncluded.append(rollingRssi)
+                    } else {
+                        rider.RSSI = rollingRssi
+                        rider.accuracy = calculateAccuracy(70.0, rssi: rollingRssi)
+                        notIncluded = []
+                    }
+                }
             }
         }
     }
