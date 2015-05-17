@@ -10,9 +10,11 @@ import UIKit
 import CoreBluetooth
 import CoreData
 
-class MainViewController: UIViewController, CBPeripheralManagerDelegate {
+class MainViewController: BaseViewController, CBPeripheralManagerDelegate {
     
     var perMan: CBPeripheralManager!
+    
+    @IBOutlet weak var bbMenu: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,11 @@ class MainViewController: UIViewController, CBPeripheralManagerDelegate {
             })
             presentViewController(namePrompt, animated: true, completion: nil)
         }
+        
+        // RevealViewController Controls
+        bbMenu.target = self.revealViewController()
+        bbMenu.action = Selector("revealToggle:")
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
     
     override func didReceiveMemoryWarning() {

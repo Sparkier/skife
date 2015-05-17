@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		FA1049B91ADEA13800007212 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1049B81ADEA13800007212 /* InformationViewController.swift */; };
 		FA1049BB1ADEA84500007212 /* NoBluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1049BA1ADEA84500007212 /* NoBluetoothView.swift */; };
+		FA3D12361B08AFF100DA2060 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3D12351B08AFF100DA2060 /* BaseViewController.swift */; };
+		FA44E1681B06194800768A55 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA44E1671B06194800768A55 /* SWRevealViewController.m */; };
+		FA44E16A1B0619EE00768A55 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA44E1691B0619EE00768A55 /* MenuViewController.swift */; };
 		FA5175381AA356440078FAD4 /* BroadcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5175371AA356440078FAD4 /* BroadcastViewController.swift */; };
 		FA51753A1AA3572F0078FAD4 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA5175391AA3572F0078FAD4 /* CoreBluetooth.framework */; };
 		FA6E77131A9F3C0D001F1BE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E77121A9F3C0D001F1BE9 /* AppDelegate.swift */; };
@@ -40,6 +43,11 @@
 /* Begin PBXFileReference section */
 		FA1049B81ADEA13800007212 /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		FA1049BA1ADEA84500007212 /* NoBluetoothView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoBluetoothView.swift; sourceTree = "<group>"; };
+		FA3D12351B08AFF100DA2060 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		FA44E1651B06194700768A55 /* skife-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "skife-Bridging-Header.h"; sourceTree = "<group>"; };
+		FA44E1661B06194800768A55 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		FA44E1671B06194800768A55 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		FA44E1691B0619EE00768A55 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		FA5175371AA356440078FAD4 /* BroadcastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BroadcastViewController.swift; sourceTree = "<group>"; };
 		FA5175391AA3572F0078FAD4 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		FA6E770D1A9F3C0D001F1BE9 /* skife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skife.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +90,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA44E1611B0618DF00768A55 /* Objective-C */ = {
+			isa = PBXGroup;
+			children = (
+				FA44E1661B06194800768A55 /* SWRevealViewController.h */,
+				FA44E1671B06194800768A55 /* SWRevealViewController.m */,
+				FA44E1651B06194700768A55 /* skife-Bridging-Header.h */,
+			);
+			name = "Objective-C";
+			sourceTree = "<group>";
+		};
 		FA6D5A091AB836A9007BA763 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,11 +132,13 @@
 		FA6E770F1A9F3C0D001F1BE9 /* skife */ = {
 			isa = PBXGroup;
 			children = (
+				FA3D12351B08AFF100DA2060 /* BaseViewController.swift */,
 				FA6E77121A9F3C0D001F1BE9 /* AppDelegate.swift */,
 				FA6F431B1AA1FAC600AF98A8 /* ViewController */,
 				FAA548561AC4130E004E2E96 /* Helpers */,
 				FA9A12E21AA204DB00D0058E /* Objects */,
 				FAAD14C71AB1B2020025F626 /* CoreData */,
+				FA44E1611B0618DF00768A55 /* Objective-C */,
 				FA6E77191A9F3C0D001F1BE9 /* Main.storyboard */,
 				FA6E771C1A9F3C0D001F1BE9 /* Images.xcassets */,
 				FA6E771E1A9F3C0D001F1BE9 /* LaunchScreen.xib */,
@@ -157,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				FAF01CA41AA1C4AF00D491D4 /* MainViewController.swift */,
+				FA44E1691B0619EE00768A55 /* MenuViewController.swift */,
 				FAAD14C61AB1B0CB0025F626 /* Broadcast */,
 				FAAD14C51AB1B0BE0025F626 /* Search */,
 				FA6D5A091AB836A9007BA763 /* Settings */,
@@ -312,9 +333,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA44E1681B06194800768A55 /* SWRevealViewController.m in Sources */,
 				FA5175381AA356440078FAD4 /* BroadcastViewController.swift in Sources */,
 				FA9A12E11AA204B800D0058E /* Rider.swift in Sources */,
+				FA44E16A1B0619EE00768A55 /* MenuViewController.swift in Sources */,
 				FA8B58FC1A9F4D6D0064B16D /* SearchViewController.swift in Sources */,
+				FA3D12361B08AFF100DA2060 /* BaseViewController.swift in Sources */,
 				FA6E77161A9F3C0D001F1BE9 /* skife.xcdatamodeld in Sources */,
 				FA6F431A1AA1FAC000AF98A8 /* DetailedSearchViewController.swift in Sources */,
 				FA6E77131A9F3C0D001F1BE9 /* AppDelegate.swift in Sources */,
@@ -450,12 +474,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = skife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "skife/skife-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -463,12 +490,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = skife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "skife/skife-Bridging-Header.h";
 			};
 			name = Release;
 		};

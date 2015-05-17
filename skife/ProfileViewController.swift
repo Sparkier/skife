@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: BaseViewController {
     
+    @IBOutlet weak var bbMenu: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
 
     var profile: Profile!
@@ -27,6 +28,11 @@ class ProfileViewController: UIViewController {
         var res:NSArray = context.executeFetchRequest(request, error: nil)!
         self.profile = res[0] as! Profile
         nameTextField.text = profile.name
+        
+        // RevealViewController Controls
+        bbMenu.target = self.revealViewController()
+        bbMenu.action = Selector("revealToggle:")
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
     
     override func didReceiveMemoryWarning() {

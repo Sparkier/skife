@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableViewDataSource, UITableViewDelegate, CBPeripheralDelegate {
+class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITableViewDataSource, UITableViewDelegate, CBPeripheralDelegate {
     
     var centralManager: CBCentralManager!
     var nsTimer: NSTimer!
@@ -18,6 +18,7 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
     var notIncluded = [Double]()
     lazy var noBluetoothView = NoBluetoothView()
     
+    @IBOutlet weak var bbMenu: UIBarButtonItem!
     @IBOutlet weak var beaconsTableView: UITableView!
     
     override func viewDidLoad() {
@@ -25,7 +26,12 @@ class SearchViewController: UIViewController, CBCentralManagerDelegate, UITableV
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
         
-        nsTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("checkRSSI"), userInfo: nil, repeats: true)
+        nsTimer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: Selector("checkRSSI"), userInfo: nil, repeats: true)
+        
+        // RevealViewController Controls
+        bbMenu.target = self.revealViewController()
+        bbMenu.action = Selector("revealToggle:")
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
     
     // Found IPhone

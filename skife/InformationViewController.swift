@@ -8,10 +8,17 @@
 
 import UIKit
 
-class InformationViewController: UIViewController {
+class InformationViewController: BaseViewController {
 
+    @IBOutlet weak var bbMenu: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // RevealViewController Controls
+        bbMenu.target = self.revealViewController()
+        bbMenu.action = Selector("revealToggle:")
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
 
     override func didReceiveMemoryWarning() {

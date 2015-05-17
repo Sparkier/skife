@@ -9,18 +9,26 @@
 import UIKit
 import CoreBluetooth
 
-class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate {
+class BroadcastViewController: BaseViewController, CBPeripheralManagerDelegate {
     
     var perMan: CBPeripheralManager!
     let myCustomServiceUUID: CBUUID = CBUUID(string: "109F17E4-EF68-43FC-957D-502BB0EFCF46")
     var myService: CBMutableService!
     lazy var noBluetoothView = NoBluetoothView()
     
+    @IBOutlet weak var bbMenu: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         perMan = CBPeripheralManager(delegate: self, queue: nil)
         myService = CBMutableService(type: myCustomServiceUUID, primary: true)
         perMan.addService(myService)
+        
+        // RevealViewController Controls
+        bbMenu.target = self.revealViewController()
+        bbMenu.action = Selector("revealToggle:")
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+
     }
     
     // Broadcast when Bluetooth is on

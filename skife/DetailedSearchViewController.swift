@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDelegate {
+class DetailedSearchViewController: BaseViewController, CBPeripheralDelegate, CBCentralManagerDelegate {
     
     var rider: Rider!
     var closeLabel: UILabel!
