@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class BroadcastViewController: BaseViewController, CBPeripheralManagerDelegate {
+class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate {
     
     var perMan: CBPeripheralManager!
     let myCustomServiceUUID: CBUUID = CBUUID(string: "109F17E4-EF68-43FC-957D-502BB0EFCF46")

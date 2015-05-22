@@ -142,19 +142,7 @@ Thank you and enjoy your Ride!</string>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Sv-gS-2Pn">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="4Sv-gS-2Pn" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="9r2-6B-x0m"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="4Sv-gS-2Pn" secondAttribute="bottom" id="KIM-rb-CsZ"/>
-                            <constraint firstItem="4Sv-gS-2Pn" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Tmd-5r-qJv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4Sv-gS-2Pn" secondAttribute="trailing" constant="-16" id="z6v-OJ-OqR"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="skife" id="LsQ-m4-JhT">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="kvX-b9-Ifo"/>
@@ -179,17 +167,26 @@ Thank you and enjoy your Ride!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BroadCasting..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Dg-w7-31K">
-                                <rect key="frame" x="240" y="72" width="120" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="geX-CW-jof">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <string key="text">You are now Broadcasting BLE and can be found by your comrades. 
+Always keep in mind that this is no guarantee for survival.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Broadcast" translatesAutoresizingMaskIntoConstraints="NO" id="NoX-yR-xJF">
+                                <rect key="frame" x="150" y="230" width="300" height="300"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="3Dg-w7-31K" secondAttribute="centerX" id="O1o-y9-JB9"/>
-                            <constraint firstItem="3Dg-w7-31K" firstAttribute="top" secondItem="5e8-O5-N7m" secondAttribute="bottom" constant="8" id="fah-N7-nIZ"/>
+                            <constraint firstItem="eZJ-3U-OVi" firstAttribute="top" secondItem="NoX-yR-xJF" secondAttribute="bottom" constant="70" id="BUW-Nl-QBO"/>
+                            <constraint firstItem="eZJ-3U-OVi" firstAttribute="top" secondItem="geX-CW-jof" secondAttribute="bottom" id="E6z-0N-zQx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="geX-CW-jof" secondAttribute="trailing" constant="-16" id="IYi-xN-3Mq"/>
+                            <constraint firstAttribute="centerX" secondItem="NoX-yR-xJF" secondAttribute="centerX" id="NNZ-kf-vVM"/>
+                            <constraint firstItem="geX-CW-jof" firstAttribute="top" secondItem="5e8-O5-N7m" secondAttribute="bottom" id="R5E-sk-JuM"/>
+                            <constraint firstItem="geX-CW-jof" firstAttribute="leading" secondItem="eJr-yO-QV5" secondAttribute="leadingMargin" constant="-16" id="jQF-ug-rWG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Broadcast" id="z0g-jo-2gH">
@@ -541,6 +538,7 @@ Thank you and enjoy your Ride!</string>
     </scenes>
     <resources>
         <image name="AnyDirectionIcon" width="300" height="300"/>
+        <image name="Broadcast" width="300" height="300"/>
         <image name="menu" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
