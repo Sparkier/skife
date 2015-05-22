@@ -20,6 +20,7 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
     
     @IBOutlet weak var bbMenu: UIBarButtonItem!
     @IBOutlet weak var beaconsTableView: UITableView!
+    @IBOutlet weak var tvNoSignal: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,12 +111,19 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
     
     // Checks the RSSI of all Peripherals
     func checkRSSI() {
-        for rider in riders {
-            if let per = rider.peripheral {
-                per.readRSSI()
+        if riders.count > 0 {
+            self.beaconsTableView.hidden = false
+            self.tvNoSignal.hidden = true
+            for rider in riders {
+                if let per = rider.peripheral {
+                    per.readRSSI()
+                }
             }
+            self.beaconsTableView.reloadData()
+        } else {
+            self.beaconsTableView.hidden = true
+            self.tvNoSignal.hidden = false
         }
-        self.beaconsTableView.reloadData()
     }
     
     // Called when the RSSI is getting read
