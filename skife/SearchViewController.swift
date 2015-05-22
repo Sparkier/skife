@@ -160,4 +160,10 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
             return ((0.89976) * (pow(ratio,7.7095)) + 0.111)
         }
     }
+    
+    @IBAction func emergencyCall(sender: AnyObject) {
+        let phone = "tel://0049754691091";
+        let url:NSURL = NSURL(string:phone)!;
+        UIApplication.sharedApplication().openURL(url);
+    }
 }

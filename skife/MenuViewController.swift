@@ -18,9 +18,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         tableArray = ["Broadcast", "Search"]
-        channelArray = ["Hello","Information", "Profile"]
+        channelArray = ["Information", "Profile"]
         let indexpath = NSIndexPath(forRow: 0, inSection: 1)
-        tvMenu.selectRowAtIndexPath(indexpath, animated: false, scrollPosition: UITableViewScrollPosition.None)
         self.tvMenu.tableFooterView = UIView(frame: CGRectZero)
     }
     
@@ -62,7 +61,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         cell.textLabel?.textColor = UIColor.whiteColor()
         var cellSelectionView = UIView(frame: cell.frame)
-        cellSelectionView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
+        cellSelectionView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
         cell.selectedBackgroundView = cellSelectionView
         return cell
     }

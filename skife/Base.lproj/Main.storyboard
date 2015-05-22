@@ -93,14 +93,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qq-lx-u2f">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qq-lx-u2f">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <string key="text">This Application does not protect you from any Injuries. It was created to make skiing a little less risky even if you do not expect an avalanche coming.
+                                <mutableString key="text">This Application does not protect you from any Injuries. It was created to make skiing a little less risky even if you do not expect an avalanche coming.
 
 Never go Freeskiing without propper equipment such as Beacon, Shovel and Probe.
 
-Thank you and enjoy your Ride!</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+Keep in mind that this is only for comrade search and you can only be found by Bluetooth Low Energy (which probably means only by this app).
+
+Never trust your technical equipment, be aware of how dangerous it is to ride where you are and dont exceed the physical limits.
+
+Thank you and enjoy your Ride!</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -142,7 +146,30 @@ Thank you and enjoy your Ride!</string>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="veo-zL-u2k">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">Hello!
+
+This app was created to help you be a little more secure while skiing.
+It ofthen happens that, by any circumstance you don't have an avalanche Beacon with you. You might not even think about avalanches in these cases becaus you're not entering the POW. 
+Well, we all know that bad things can happen, no matter how safe you think you are.
+Every skier always has a phone by his side while skiing.
+This app makes it possible to find you and your comrades by using your phones as a beacon. While this is not as safe as a professional beacon, it can still help and will always be by your side.
+
+Have fun riding and stay safe!</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="veo-zL-u2k" secondAttribute="trailing" constant="-16" id="ISo-DE-vgq"/>
+                            <constraint firstItem="veo-zL-u2k" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="OcI-2M-6v4"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="veo-zL-u2k" secondAttribute="bottom" id="cBC-aD-Xz8"/>
+                            <constraint firstItem="veo-zL-u2k" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="qCS-Oq-SlK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="skife" id="LsQ-m4-JhT">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="kvX-b9-Ifo"/>
@@ -249,6 +276,12 @@ Keep searching for a Signal and try to find your Comrades.</string>
                     <navigationItem key="navigationItem" title="Search" id="rNp-cp-79Z">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="bqQ-un-pY3">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Call SOS" id="zgq-8E-0Im">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="emergencyCall:" destination="zcc-Hh-mJv" id="EG5-GG-1Tc"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -401,16 +434,6 @@ Keep searching for a Signal and try to find your Comrades.</string>
                                             <segue destination="oBZ-6x-chP" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="U6s-6L-lpX"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Hello" id="TRv-hn-g3E">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TRv-hn-g3E" id="uZS-tb-Jq3">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="jEz-1i-37Z" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="4Iz-UC-HXA"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Profile" id="aNs-Uq-6vn">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aNs-Uq-6vn" id="e7g-qK-qHC">
@@ -557,7 +580,4 @@ Keep searching for a Signal and try to find your Comrades.</string>
         <image name="Broadcast" width="300" height="300"/>
         <image name="menu" width="22" height="22"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="4Iz-UC-HXA"/>
-    </inferredMetricsTieBreakers>
 </document>
