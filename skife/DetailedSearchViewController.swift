@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class DetailedSearchViewController: BaseViewController, CBPeripheralDelegate, CBCentralManagerDelegate {
+class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDelegate {
     
     var rider: Rider!
     var closeLabel: UILabel!
@@ -43,6 +43,10 @@ class DetailedSearchViewController: BaseViewController, CBPeripheralDelegate, CB
         if peripheral == rider.peripheral {
             centralManager.connectPeripheral(peripheral, options: nil)
         }
+    }
+    
+    func centralManager(central: CBCentralManager!, didFailToConnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
+            centralManager.connectPeripheral(peripheral, options: nil)
     }
     
     // CBCentralManagerDelegate

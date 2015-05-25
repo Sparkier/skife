@@ -95,7 +95,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qq-lx-u2f">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <mutableString key="text">This Application does not protect you from any Injuries. It was created to make skiing a little less risky even if you do not expect an avalanche coming.
+                                <string key="text">This Application does not protect you from any Injuries. It was created to make skiing a little less risky even if you do not expect an avalanche coming.
 
 Never go Freeskiing without propper equipment such as Beacon, Shovel and Probe.
 
@@ -103,7 +103,7 @@ Keep in mind that this is only for comrade search and you can only be found by B
 
 Never trust your technical equipment, be aware of how dangerous it is to ride where you are and dont exceed the physical limits.
 
-Thank you and enjoy your Ride!</mutableString>
+Thank you and enjoy your Ride!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -147,10 +147,10 @@ Thank you and enjoy your Ride!</mutableString>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="veo-zL-u2k">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veo-zL-u2k">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Hello!
+                                <string key="text">Hello!
 
 This app was created to help you be a little more secure while skiing.
 It ofthen happens that, by any circumstance you don't have an avalanche Beacon with you. You might not even think about avalanches in these cases becaus you're not entering the POW. 
@@ -158,7 +158,7 @@ Well, we all know that bad things can happen, no matter how safe you think you a
 Every skier always has a phone by his side while skiing.
 This app makes it possible to find you and your comrades by using your phones as a beacon. While this is not as safe as a professional beacon, it can still help and will always be by your side.
 
-Have fun riding and stay safe!</mutableString>
+Have fun riding and stay safe!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -254,7 +254,8 @@ Keep searching for a Signal and try to find your Comrades.</string>
                             </textView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ThM-Qr-se0">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="zcc-Hh-mJv" id="1SD-g3-10R"/>
                                     <outlet property="delegate" destination="zcc-Hh-mJv" id="E8y-K0-bbx"/>
@@ -516,6 +517,7 @@ Keep searching for a Signal and try to find your Comrades.</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="CxH-du-ALa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

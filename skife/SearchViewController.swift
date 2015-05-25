@@ -33,6 +33,8 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
         bbMenu.target = self.revealViewController()
         bbMenu.action = Selector("revealToggle:")
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        self.beaconsTableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
     // Found IPhone
@@ -161,6 +163,7 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
         }
     }
     
+    // Dial emergency Call
     @IBAction func emergencyCall(sender: AnyObject) {
         let phone = "tel://0049754691091";
         let url:NSURL = NSURL(string:phone)!;
