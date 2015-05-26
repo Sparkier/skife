@@ -18,7 +18,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         tableArray = ["Broadcast", "Search"]
-        channelArray = ["Information", "Profile"]
+        channelArray = ["Information", "Profile", "Avalanche Warnings"]
         let indexpath = NSIndexPath(forRow: 0, inSection: 1)
         self.tvMenu.tableFooterView = UIView(frame: CGRectZero)
     }

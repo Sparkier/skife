@@ -131,7 +131,7 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
     // Called when the RSSI is getting read
     func peripheral(peripheral: CBPeripheral!, didReadRSSI RSSI: NSNumber!, error: NSError!) {
         for rider in riders {
-            if rider.peripheral == peripheral {
+            if rider.peripheral == peripheral && RSSI != nil {
                 rollingRssi = (Double(RSSI) * 0.1)+(rollingRssi * (1.0-0.1))
                 if notIncluded.count == 3 {
                     rider.RSSI = rollingRssi

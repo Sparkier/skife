@@ -12,6 +12,7 @@
 		FA3D12361B08AFF100DA2060 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3D12351B08AFF100DA2060 /* BaseViewController.swift */; };
 		FA44E1681B06194800768A55 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA44E1671B06194800768A55 /* SWRevealViewController.m */; };
 		FA44E16A1B0619EE00768A55 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA44E1691B0619EE00768A55 /* MenuViewController.swift */; };
+		FA4FE0171B15027D00076BC0 /* AvalancheWarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE0161B15027D00076BC0 /* AvalancheWarningViewController.swift */; };
 		FA5175381AA356440078FAD4 /* BroadcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5175371AA356440078FAD4 /* BroadcastViewController.swift */; };
 		FA51753A1AA3572F0078FAD4 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA5175391AA3572F0078FAD4 /* CoreBluetooth.framework */; };
 		FA6E77131A9F3C0D001F1BE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E77121A9F3C0D001F1BE9 /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 		FA44E1661B06194800768A55 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		FA44E1671B06194800768A55 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		FA44E1691B0619EE00768A55 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		FA4FE0161B15027D00076BC0 /* AvalancheWarningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvalancheWarningViewController.swift; sourceTree = "<group>"; };
 		FA5175371AA356440078FAD4 /* BroadcastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BroadcastViewController.swift; sourceTree = "<group>"; };
 		FA5175391AA3572F0078FAD4 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		FA6E770D1A9F3C0D001F1BE9 /* skife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skife.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,13 +102,14 @@
 			name = "Objective-C";
 			sourceTree = "<group>";
 		};
-		FA6D5A091AB836A9007BA763 /* Settings */ = {
+		FA6D5A091AB836A9007BA763 /* Additional */ = {
 			isa = PBXGroup;
 			children = (
 				FAAD14C31AB1B0B40025F626 /* ProfileViewController.swift */,
 				FA1049B81ADEA13800007212 /* InformationViewController.swift */,
+				FA4FE0161B15027D00076BC0 /* AvalancheWarningViewController.swift */,
 			);
-			name = Settings;
+			name = Additional;
 			sourceTree = "<group>";
 		};
 		FA6E77041A9F3C0D001F1BE9 = {
@@ -180,7 +183,7 @@
 				FA44E1691B0619EE00768A55 /* MenuViewController.swift */,
 				FAAD14C61AB1B0CB0025F626 /* Broadcast */,
 				FAAD14C51AB1B0BE0025F626 /* Search */,
-				FA6D5A091AB836A9007BA763 /* Settings */,
+				FA6D5A091AB836A9007BA763 /* Additional */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				FA8B58FC1A9F4D6D0064B16D /* SearchViewController.swift in Sources */,
 				FA3D12361B08AFF100DA2060 /* BaseViewController.swift in Sources */,
 				FA6E77161A9F3C0D001F1BE9 /* skife.xcdatamodeld in Sources */,
+				FA4FE0171B15027D00076BC0 /* AvalancheWarningViewController.swift in Sources */,
 				FA6F431A1AA1FAC000AF98A8 /* DetailedSearchViewController.swift in Sources */,
 				FA6E77131A9F3C0D001F1BE9 /* AppDelegate.swift in Sources */,
 				FAF01CA51AA1C4AF00D491D4 /* MainViewController.swift in Sources */,

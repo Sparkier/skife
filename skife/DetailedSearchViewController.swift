@@ -63,7 +63,7 @@ class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCe
     
     // RSSI was Read
     func peripheral(peripheral: CBPeripheral!, didReadRSSI RSSI: NSNumber!, error: NSError!) {
-        if rider.peripheral == peripheral {
+        if rider.peripheral == peripheral && RSSI != nil {
             rollingRssi = (Double(RSSI) * 0.1)+(rollingRssi * (1.0-0.1))
             if notIncluded.count == 3 {
                 rider.RSSI = rollingRssi

@@ -182,6 +182,30 @@ Have fun riding and stay safe!</string>
             </objects>
             <point key="canvasLocation" x="1057" y="235"/>
         </scene>
+        <!--Avalanche Warnings-->
+        <scene sceneID="PRR-rm-W3G">
+            <objects>
+                <viewController id="Cgy-ud-3BM" customClass="AvalancheWarningViewController" customModule="skife" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W4R-Vs-vfB"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Ag-Hu-SgG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zyA-K9-Pbt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Avalanche Warnings" id="XqI-2h-Z0j">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="m3T-Th-4HF"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bbMenu" destination="m3T-Th-4HF" id="Wet-jh-GxU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cie-ah-JHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1737" y="926"/>
+        </scene>
         <!--Broadcast-->
         <scene sceneID="Fut-UN-nuo">
             <objects>
@@ -445,6 +469,16 @@ Keep searching for a Signal and try to find your Comrades.</string>
                                             <segue destination="cFj-65-Fej" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="zwv-pP-dT8"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Avalanche Warnings" id="d9n-uG-Rrf" userLabel="Avalanche Warnings">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d9n-uG-Rrf" id="xpW-ys-igf">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="Gr4-Nh-gML" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="LmF-IK-seb"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="uLA-EH-v30" id="THx-14-P5v"/>
@@ -575,6 +609,29 @@ Keep searching for a Signal and try to find your Comrades.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5tu-mH-WML" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2549" y="-1252"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="njp-bC-ghw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gr4-Nh-gML" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="GLp-YT-ThM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Cgy-ud-3BM" kind="relationship" relationship="rootViewController" id="ZKU-9e-xwh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dz7-EF-ymp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1057" y="926"/>
         </scene>
     </scenes>
     <resources>
