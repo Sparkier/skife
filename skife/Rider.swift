@@ -11,9 +11,6 @@ import CoreBluetooth
 
 // Rider = Someone burrowed
 class Rider {
-//    var name: String
-//    var uuid: String
-//    var beaconUUID: NSUUID
     var peripheral: CBPeripheral?
     var RSSI: Double?
     var accuracy: Double?

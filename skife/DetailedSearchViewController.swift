@@ -35,7 +35,7 @@ class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCe
         closeLabel.font = closeLabel.font.fontWithSize(50.0)
         closeLabel.textAlignment = NSTextAlignment.Center
         
-        nsTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("checkRSSI"), userInfo: nil, repeats: true)
+        nsTimer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: Selector("checkRSSI"), userInfo: nil, repeats: true)
     }
     
     // Called when Peripheral disconnects
@@ -78,15 +78,17 @@ class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCe
                     notIncluded = []
                 }
             }
-            self.distanceLabel.text = "~ \(round(rider.accuracy!*100.0)/100.0) m"
-            self.closeLabel.text = "\(round(rider.accuracy!*100.0)/100.0)"
-            self.directionEngine.previousDistances.append(rider.accuracy!)
-            self.directionEngine.inRange = true
-            if directionEngine.closestPoint > rider.accuracy! {
-                self.directionEngine.closestPoint = rider.accuracy!
+            if let acc = rider.accuracy {
+                self.distanceLabel.text = "~ \(round(rider.accuracy!*100.0)/100.0) m"
+                self.closeLabel.text = "\(round(rider.accuracy!*100.0)/100.0)"
+                self.directionEngine.previousDistances.append(rider.accuracy!)
+                self.directionEngine.inRange = true
+                if directionEngine.closestPoint > rider.accuracy! {
+                    self.directionEngine.closestPoint = rider.accuracy!
+                }
+                self.checkDistance()
+                self.checkDirection()
             }
-            self.checkDistance()
-            self.checkDirection()
         }
     }
     
