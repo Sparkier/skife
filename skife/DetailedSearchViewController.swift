@@ -45,6 +45,7 @@ class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCe
         }
     }
     
+    // Reconnecting after Connection Failure
     func centralManager(central: CBCentralManager!, didFailToConnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
             centralManager.connectPeripheral(peripheral, options: nil)
     }
