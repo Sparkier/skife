@@ -13,6 +13,7 @@
 		FA44E1681B06194800768A55 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA44E1671B06194800768A55 /* SWRevealViewController.m */; };
 		FA44E16A1B0619EE00768A55 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA44E1691B0619EE00768A55 /* MenuViewController.swift */; };
 		FA4FE0171B15027D00076BC0 /* AvalancheWarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE0161B15027D00076BC0 /* AvalancheWarningViewController.swift */; };
+		FA4FE0191B150EDF00076BC0 /* InclinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE0181B150EDF00076BC0 /* InclinationViewController.swift */; };
 		FA5175381AA356440078FAD4 /* BroadcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5175371AA356440078FAD4 /* BroadcastViewController.swift */; };
 		FA51753A1AA3572F0078FAD4 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA5175391AA3572F0078FAD4 /* CoreBluetooth.framework */; };
 		FA6E77131A9F3C0D001F1BE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E77121A9F3C0D001F1BE9 /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 		FA44E1671B06194800768A55 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		FA44E1691B0619EE00768A55 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		FA4FE0161B15027D00076BC0 /* AvalancheWarningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvalancheWarningViewController.swift; sourceTree = "<group>"; };
+		FA4FE0181B150EDF00076BC0 /* InclinationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InclinationViewController.swift; sourceTree = "<group>"; };
 		FA5175371AA356440078FAD4 /* BroadcastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BroadcastViewController.swift; sourceTree = "<group>"; };
 		FA5175391AA3572F0078FAD4 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		FA6E770D1A9F3C0D001F1BE9 /* skife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skife.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +110,7 @@
 				FAAD14C31AB1B0B40025F626 /* ProfileViewController.swift */,
 				FA1049B81ADEA13800007212 /* InformationViewController.swift */,
 				FA4FE0161B15027D00076BC0 /* AvalancheWarningViewController.swift */,
+				FA4FE0181B150EDF00076BC0 /* InclinationViewController.swift */,
 			);
 			name = Additional;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA44E1681B06194800768A55 /* SWRevealViewController.m in Sources */,
+				FA4FE0191B150EDF00076BC0 /* InclinationViewController.swift in Sources */,
 				FA5175381AA356440078FAD4 /* BroadcastViewController.swift in Sources */,
 				FA9A12E11AA204B800D0058E /* Rider.swift in Sources */,
 				FA44E16A1B0619EE00768A55 /* MenuViewController.swift in Sources */,

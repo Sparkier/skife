@@ -206,6 +206,56 @@ Have fun riding and stay safe!</string>
             </objects>
             <point key="canvasLocation" x="1737" y="926"/>
         </scene>
+        <!--Inclination-->
+        <scene sceneID="7bP-n7-ZLn">
+            <objects>
+                <viewController id="CJ0-HA-S0c" customClass="InclinationViewController" customModule="skife" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CsZ-Yc-6dq"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cr7-Jp-2uQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jzn-57-RlV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mountain" translatesAutoresizingMaskIntoConstraints="NO" id="WIU-yD-cfl">
+                                <rect key="frame" x="150" y="72" width="300" height="300"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0°" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mX2-oH-g9I">
+                                <rect key="frame" x="288" y="242" width="24" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mX2-oH-g9I" firstAttribute="top" secondItem="CsZ-Yc-6dq" secondAttribute="bottom" constant="8" id="BKo-Y3-MCI"/>
+                            <constraint firstItem="WIU-yD-cfl" firstAttribute="bottom" secondItem="mX2-oH-g9I" secondAttribute="bottom" constant="100" id="boF-vV-fIy"/>
+                            <constraint firstAttribute="centerX" secondItem="mX2-oH-g9I" secondAttribute="centerX" id="dsK-w5-IGZ"/>
+                            <constraint firstItem="WIU-yD-cfl" firstAttribute="top" secondItem="CsZ-Yc-6dq" secondAttribute="bottom" constant="8" id="gZU-h8-Olp"/>
+                            <constraint firstAttribute="centerX" secondItem="WIU-yD-cfl" secondAttribute="centerX" id="mTw-ba-TWB"/>
+                            <constraint firstAttribute="centerX" secondItem="mX2-oH-g9I" secondAttribute="centerX" id="r3g-xo-SdX"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="BKo-Y3-MCI"/>
+                                <exclude reference="r3g-xo-SdX"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Inclination" id="YR5-yK-3a4">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="8KP-vI-Hab"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bbMenu" destination="8KP-vI-Hab" id="YMf-s7-9mC"/>
+                        <outlet property="lbPitch" destination="mX2-oH-g9I" id="vwG-WN-07K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zni-Jt-jlM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1737" y="1634"/>
+        </scene>
         <!--Broadcast-->
         <scene sceneID="Fut-UN-nuo">
             <objects>
@@ -479,6 +529,16 @@ Keep searching for a Signal and try to find your Comrades.</string>
                                             <segue destination="Gr4-Nh-gML" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="LmF-IK-seb"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Inclination" id="lry-u5-WTP">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lry-u5-WTP" id="PoB-Y5-1UI">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="m6I-62-FRK" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="yEM-lj-hzC"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="uLA-EH-v30" id="THx-14-P5v"/>
@@ -633,10 +693,31 @@ Keep searching for a Signal and try to find your Comrades.</string>
             </objects>
             <point key="canvasLocation" x="1057" y="926"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8xd-1a-d5x">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m6I-62-FRK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="oSy-lp-Qn4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CJ0-HA-S0c" kind="relationship" relationship="rootViewController" id="dhT-R9-gXn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C6h-Yf-uCx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1063" y="1634"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AnyDirectionIcon" width="300" height="300"/>
         <image name="Broadcast" width="300" height="300"/>
+        <image name="Mountain" width="300" height="300"/>
         <image name="menu" width="22" height="22"/>
     </resources>
 </document>
