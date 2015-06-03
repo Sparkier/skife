@@ -20,6 +20,7 @@ class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCe
     var nsTimer: NSTimer!
     var notIncluded = [Double]()
     lazy var noBluetoothView = NoBluetoothView()
+    var peripherals = [CBPeripheral]()
     
     @IBOutlet weak var directionImageView: UIImageView!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -35,19 +36,70 @@ class DetailedSearchViewController: UIViewController, CBPeripheralDelegate, CBCe
         closeLabel.font = closeLabel.font.fontWithSize(50.0)
         closeLabel.textAlignment = NSTextAlignment.Center
         
-        nsTimer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: Selector("checkRSSI"), userInfo: nil, repeats: true)
+        nsTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("checkRSSI"), userInfo: nil, repeats: true)
     }
     
-    // Called when Peripheral disconnects
-    func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
-        if peripheral == rider.peripheral {
+    // Found IPhone
+    func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
+        // For not getting the same Peripheral twice
+        var doubleID = false
+        if rider.peripheral!.identifier == peripheral.identifier {
+            doubleID = true
+        }
+        if !doubleID {
+            peripherals.append(peripheral)
             centralManager.connectPeripheral(peripheral, options: nil)
         }
     }
     
-    // Reconnecting after Connection Failure
-    func centralManager(central: CBCentralManager!, didFailToConnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
-            centralManager.connectPeripheral(peripheral, options: nil)
+    // Called When Peripheral gets disconnected, reconnecting it
+    func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
+        centralManager.connectPeripheral(peripheral, options: nil)
+    }
+    
+    // Called after Peripheral Connected, discovering Services
+    func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
+        peripheral.delegate = self
+        peripheral.discoverServices([CBUUID(string: "109F17E4-EF68-43FC-957D-502BB0EFCF46")])
+    }
+    
+    // Called When Services are Dicovered, discovering Characteristics
+    func peripheral(peripheral: CBPeripheral!, didDiscoverServices error: NSError!) {
+        for service in peripheral.services {
+            peripheral.discoverCharacteristics([CBUUID(string: "F2AF77EC-2F1F-4B20-8075-3E69A4B60C53"),CBUUID(string: "F0FEDD89-1BF5-43B7-86D2-ABF53CD0A004")], forService: service as! CBService)
+        }
+    }
+    
+    // Called When Cahracteristics are Discovered, reading Values
+    func peripheral(peripheral: CBPeripheral!, didDiscoverCharacteristicsForService service: CBService!, error: NSError!) {
+        peripheral.readValueForCharacteristic(service.characteristics[1] as! CBCharacteristic)
+    }
+    
+    // Called When Values are updated
+    func peripheral(peripheral: CBPeripheral!, didUpdateValueForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
+        // Identifier Characteristic
+        if characteristic.UUID == CBUUID(string: "F0FEDD89-1BF5-43B7-86D2-ABF53CD0A004") {
+            if characteristic.value != nil {
+                let identifier = NSString(data: characteristic.value, encoding: NSUTF8StringEncoding)!
+                let service = peripheral.services[0] as! CBService
+                let char = service.characteristics[0] as! CBCharacteristic
+                var existing = false
+                if rider.identifier == identifier as! String {
+                    existing = true
+                    rider.peripheral = peripheral
+                    peripheral.readValueForCharacteristic(char)
+                }
+            }
+        }
+        // Name Characteristic
+        if characteristic.UUID == CBUUID(string: "F2AF77EC-2F1F-4B20-8075-3E69A4B60C53") {
+            if characteristic.value != nil {
+                let name = NSString(data: characteristic.value, encoding: NSUTF8StringEncoding)!
+                if rider.peripheral == peripheral {
+                    rider.name = name as! String
+                }
+            }
+        }
     }
     
     // CBCentralManagerDelegate

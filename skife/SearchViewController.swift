@@ -16,6 +16,7 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
     var riders = [Rider]()
     var rollingRssi: Double = 0.0
     var notIncluded = [Double]()
+    var peripherals = [CBPeripheral]()
     lazy var noBluetoothView = NoBluetoothView()
     
     @IBOutlet weak var bbMenu: UIBarButtonItem!
@@ -27,7 +28,7 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
         
-        nsTimer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: Selector("checkRSSI"), userInfo: nil, repeats: true)
+        nsTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("checkRSSI"), userInfo: nil, repeats: true)
         
         // RevealViewController Controls
         bbMenu.target = self.revealViewController()
@@ -47,12 +48,7 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
             }
         }
         if !doubleID {
-            let rider = Rider()
-            rider.peripheral = peripheral
-            rollingRssi = Double(RSSI)
-            rider.RSSI = rollingRssi
-            self.riders.append(rider)
-            peripheral.delegate = self
+            peripherals.append(peripheral)
             centralManager.connectPeripheral(peripheral, options: nil)
         }
     }
@@ -71,24 +67,48 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
     // Called When Services are Dicovered, discovering Characteristics
     func peripheral(peripheral: CBPeripheral!, didDiscoverServices error: NSError!) {
         for service in peripheral.services {
-            peripheral.discoverCharacteristics(nil, forService: service as! CBService)
+            peripheral.discoverCharacteristics([CBUUID(string: "F2AF77EC-2F1F-4B20-8075-3E69A4B60C53"),CBUUID(string: "F0FEDD89-1BF5-43B7-86D2-ABF53CD0A004")], forService: service as! CBService)
         }
     }
     
     // Called When Cahracteristics are Discovered, reading Values
     func peripheral(peripheral: CBPeripheral!, didDiscoverCharacteristicsForService service: CBService!, error: NSError!) {
-        for characteristic in service.characteristics {
-            peripheral.readValueForCharacteristic(characteristic as! CBCharacteristic)
-        }
+        peripheral.readValueForCharacteristic(service.characteristics[1] as! CBCharacteristic)
     }
     
     // Called When Values are updated
     func peripheral(peripheral: CBPeripheral!, didUpdateValueForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
-        if characteristic.value != nil {
-            let name = NSString(data: characteristic.value, encoding: NSUTF8StringEncoding)!
-            for rider in riders {
-                if rider.peripheral == peripheral {
-                    rider.name = name as! String
+        // Identifier Characteristic
+        if characteristic.UUID == CBUUID(string: "F0FEDD89-1BF5-43B7-86D2-ABF53CD0A004") {
+            if characteristic.value != nil {
+                let identifier = NSString(data: characteristic.value, encoding: NSUTF8StringEncoding)!
+                let service = peripheral.services[0] as! CBService
+                let char = service.characteristics[0] as! CBCharacteristic
+                var existing = false
+                for rider in riders {
+                    // Rider exists
+                    if rider.identifier == identifier as! String {
+                        existing = true
+                        rider.peripheral = peripheral
+                        peripheral.readValueForCharacteristic(char)
+                    }
+                }
+                // New Rider
+                if !existing {
+                    let rider = Rider(identifier: identifier as String, peripheral: peripheral)
+                    riders.append(rider)
+                    peripheral.readValueForCharacteristic(char)
+                }
+            }
+        }
+        // Name Characteristic
+        if characteristic.UUID == CBUUID(string: "F2AF77EC-2F1F-4B20-8075-3E69A4B60C53") {
+            if characteristic.value != nil {
+                let name = NSString(data: characteristic.value, encoding: NSUTF8StringEncoding)!
+                for rider in riders {
+                    if rider.peripheral == peripheral {
+                        rider.name = name as! String
+                    }
                 }
             }
         }
@@ -164,7 +184,11 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
     func peripheral(peripheral: CBPeripheral!, didReadRSSI RSSI: NSNumber!, error: NSError!) {
         for rider in riders {
             if rider.peripheral == peripheral && RSSI != nil {
-                rollingRssi = (Double(RSSI) * 0.1)+(rollingRssi * (1.0-0.1))
+                if rider.RSSI == nil {
+                    rider.RSSI = Double(RSSI)
+                    rider.accuracy = calculateAccuracy(70.0, rssi: rider.RSSI!)
+                }
+                rollingRssi = (Double(RSSI) * 0.2)+(rollingRssi * (1.0-0.2))
                 if notIncluded.count == 3 {
                     rider.RSSI = rollingRssi
                     rider.accuracy = calculateAccuracy(70.0, rssi: rollingRssi)

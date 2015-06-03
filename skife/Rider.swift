@@ -15,7 +15,10 @@ class Rider {
     var RSSI: Double?
     var name = "Peripheral"
     var accuracy: Double?
+    var identifier: String
     
-    init () {
+    init (identifier: String, peripheral: CBPeripheral) {
+        self.identifier = identifier
+        self.peripheral = peripheral
     }
 }

@@ -32,10 +32,14 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate {
         var res:NSArray = context.executeFetchRequest(request, error: nil)!
         let profile = res[0] as! Profile
         
-        // Setting up Characteristics
+        // Setting up Name Characteristic
         var myCharacteristic: CBCharacteristic = CBMutableCharacteristic(type: CBUUID(string: "F2AF77EC-2F1F-4B20-8075-3E69A4B60C53"), properties: CBCharacteristicProperties.Read, value: profile.name.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false), permissions: CBAttributePermissions.Readable)
         
-        myService.characteristics = [myCharacteristic]
+        // Setting up Name Characteristic
+        let identifier = UIDevice.currentDevice().identifierForVendor
+        var myIdentifierCharacteristic: CBCharacteristic = CBMutableCharacteristic(type: CBUUID(string: "F0FEDD89-1BF5-43B7-86D2-ABF53CD0A004"), properties: CBCharacteristicProperties.Read, value: identifier.UUIDString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false), permissions: CBAttributePermissions.Readable)
+        
+        myService.characteristics = [myCharacteristic, myIdentifierCharacteristic]
         
         // RevealViewController Controls
         bbMenu.target = self.revealViewController()
@@ -48,7 +52,6 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate {
         if peripheral.state == CBPeripheralManagerState.PoweredOn {
             // Start advertising over BLE
             self.perMan.addService(myService)
-            println(myService.characteristics)
             self.perMan.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [myService.UUID]])
             self.noBluetoothView.removeFromSuperview()
         } else if peripheral.state == CBPeripheralManagerState.PoweredOff {
