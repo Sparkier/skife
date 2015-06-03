@@ -13,6 +13,7 @@ import CoreBluetooth
 class Rider {
     var peripheral: CBPeripheral?
     var RSSI: Double?
+    var name = "Peripheral"
     var accuracy: Double?
     
     init () {

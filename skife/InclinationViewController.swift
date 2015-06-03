@@ -22,6 +22,7 @@ class InclinationViewController: UIViewController {
         bbMenu.action = Selector("revealToggle:")
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
+        // Updating Inclination Label
         motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue(), withHandler: { motion, error in
             // compute the device Pitch
             let myPitch = self.radiansToDegrees(self.motionManager.deviceMotion.attitude.pitch)
@@ -32,6 +33,7 @@ class InclinationViewController: UIViewController {
         });
     }
     
+    // Transforms Radians into Degrees
     func radiansToDegrees(radians: Double) -> Double {
         return (radians * (180.0 / M_PI))
     }

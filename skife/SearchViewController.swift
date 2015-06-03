@@ -62,6 +62,38 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
         centralManager.connectPeripheral(peripheral, options: nil)
     }
     
+    // Called after Peripheral Connected, discovering Services
+    func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
+        peripheral.delegate = self
+        peripheral.discoverServices([CBUUID(string: "109F17E4-EF68-43FC-957D-502BB0EFCF46")])
+    }
+    
+    // Called When Services are Dicovered, discovering Characteristics
+    func peripheral(peripheral: CBPeripheral!, didDiscoverServices error: NSError!) {
+        for service in peripheral.services {
+            peripheral.discoverCharacteristics(nil, forService: service as! CBService)
+        }
+    }
+    
+    // Called When Cahracteristics are Discovered, reading Values
+    func peripheral(peripheral: CBPeripheral!, didDiscoverCharacteristicsForService service: CBService!, error: NSError!) {
+        for characteristic in service.characteristics {
+            peripheral.readValueForCharacteristic(characteristic as! CBCharacteristic)
+        }
+    }
+    
+    // Called When Values are updated
+    func peripheral(peripheral: CBPeripheral!, didUpdateValueForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
+        if characteristic.value != nil {
+            let name = NSString(data: characteristic.value, encoding: NSUTF8StringEncoding)!
+            for rider in riders {
+                if rider.peripheral == peripheral {
+                    rider.name = name as! String
+                }
+            }
+        }
+    }
+    
     // CBCentralManagerDelegate
     func centralManagerDidUpdateState(central: CBCentralManager!) {
         if central.state == CBCentralManagerState.PoweredOn {
@@ -88,7 +120,7 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
             cell!.selectionStyle = UITableViewCellSelectionStyle.None
         }
         
-        var nameLabel:String! = "\(riders[indexPath.row].peripheral!.name)"
+        var nameLabel:String! = "\(riders[indexPath.row].name)"
         cell!.textLabel!.text = nameLabel
         
         if let acc = riders[indexPath.row].accuracy {

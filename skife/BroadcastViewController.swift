@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreBluetooth
+import CoreData
 
 class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate {
     
@@ -22,19 +23,32 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate {
         super.viewDidLoad()
         perMan = CBPeripheralManager(delegate: self, queue: nil)
         myService = CBMutableService(type: myCustomServiceUUID, primary: true)
-        perMan.addService(myService)
+        
+        // Getting Username
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDel.managedObjectContext!
+        let request = NSFetchRequest(entityName: "Profile")
+        request.returnsObjectsAsFaults = false
+        var res:NSArray = context.executeFetchRequest(request, error: nil)!
+        let profile = res[0] as! Profile
+        
+        // Setting up Characteristics
+        var myCharacteristic: CBCharacteristic = CBMutableCharacteristic(type: CBUUID(string: "F2AF77EC-2F1F-4B20-8075-3E69A4B60C53"), properties: CBCharacteristicProperties.Read, value: profile.name.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false), permissions: CBAttributePermissions.Readable)
+        
+        myService.characteristics = [myCharacteristic]
         
         // RevealViewController Controls
         bbMenu.target = self.revealViewController()
         bbMenu.action = Selector("revealToggle:")
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-
     }
     
     // Broadcast when Bluetooth is on
     func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
         if peripheral.state == CBPeripheralManagerState.PoweredOn {
             // Start advertising over BLE
+            self.perMan.addService(myService)
+            println(myService.characteristics)
             self.perMan.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [myService.UUID]])
             self.noBluetoothView.removeFromSuperview()
         } else if peripheral.state == CBPeripheralManagerState.PoweredOff {
