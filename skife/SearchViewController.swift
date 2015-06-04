@@ -194,7 +194,7 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
                     rider.accuracy = calculateAccuracy(70.0, rssi: rollingRssi)
                     notIncluded = []
                 } else {
-                    if (rollingRssi * 1.1) < rider.RSSI || (rollingRssi * 0.9) > rider.RSSI {
+                    if (rollingRssi * 1.5) > rider.RSSI || (rollingRssi * 0.5) < rider.RSSI {
                         notIncluded.append(rollingRssi)
                     } else {
                         rider.RSSI = rollingRssi

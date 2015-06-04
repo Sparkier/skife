@@ -227,10 +227,19 @@ Have fun riding and stay safe!</string>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Compass" translatesAutoresizingMaskIntoConstraints="NO" id="lPz-lg-MdJ">
+                                <rect key="frame" x="225" y="430" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lPz-lg-MdJ" secondAttribute="height" multiplier="1:1" id="ulw-in-Q5f"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mX2-oH-g9I" firstAttribute="top" secondItem="CsZ-Yc-6dq" secondAttribute="bottom" constant="8" id="BKo-Y3-MCI"/>
+                            <constraint firstItem="Cr7-Jp-2uQ" firstAttribute="top" secondItem="lPz-lg-MdJ" secondAttribute="bottom" constant="20" id="FkK-bh-m45"/>
+                            <constraint firstItem="lPz-lg-MdJ" firstAttribute="top" secondItem="mX2-oH-g9I" secondAttribute="bottom" constant="8" id="R7m-KD-ysM"/>
+                            <constraint firstAttribute="centerX" secondItem="lPz-lg-MdJ" secondAttribute="centerX" id="Tro-VY-Ud1"/>
                             <constraint firstItem="WIU-yD-cfl" firstAttribute="bottom" secondItem="mX2-oH-g9I" secondAttribute="bottom" constant="100" id="boF-vV-fIy"/>
                             <constraint firstAttribute="centerX" secondItem="mX2-oH-g9I" secondAttribute="centerX" id="dsK-w5-IGZ"/>
                             <constraint firstItem="WIU-yD-cfl" firstAttribute="top" secondItem="CsZ-Yc-6dq" secondAttribute="bottom" constant="8" id="gZU-h8-Olp"/>
@@ -239,6 +248,7 @@ Have fun riding and stay safe!</string>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="R7m-KD-ysM"/>
                                 <exclude reference="BKo-Y3-MCI"/>
                                 <exclude reference="r3g-xo-SdX"/>
                             </mask>
@@ -249,12 +259,39 @@ Have fun riding and stay safe!</string>
                     </navigationItem>
                     <connections>
                         <outlet property="bbMenu" destination="8KP-vI-Hab" id="YMf-s7-9mC"/>
+                        <outlet property="imgCompass" destination="lPz-lg-MdJ" id="rwn-aN-GZj"/>
                         <outlet property="lbPitch" destination="mX2-oH-g9I" id="vwG-WN-07K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zni-Jt-jlM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1737" y="1634"/>
+        </scene>
+        <!--How To View Controller-->
+        <scene sceneID="end-gu-Erh">
+            <objects>
+                <viewController id="D5s-sA-ugh" customClass="HowToViewController" customModule="skife" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g1P-lp-fS7"/>
+                        <viewControllerLayoutGuide type="bottom" id="u9f-9q-0Od"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gCX-bC-OVH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iLe-r8-zae">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="qYq-rQ-FdV">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bbMenu" destination="qYq-rQ-FdV" id="GF9-zw-DCA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HXR-rv-NHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1737" y="2366"/>
         </scene>
         <!--Broadcast-->
         <scene sceneID="Fut-UN-nuo">
@@ -539,6 +576,16 @@ Keep searching for a Signal and try to find your Comrades.</string>
                                             <segue destination="m6I-62-FRK" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="yEM-lj-hzC"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HowTo" id="jYw-rN-3MX">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jYw-rN-3MX" id="Qhw-xb-r5w">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="iDw-vY-uXP" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="yMg-U0-qLI"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="uLA-EH-v30" id="THx-14-P5v"/>
@@ -713,10 +760,30 @@ Keep searching for a Signal and try to find your Comrades.</string>
             </objects>
             <point key="canvasLocation" x="1063" y="1634"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UPx-OV-XAn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iDw-vY-uXP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="0cM-Kn-rll">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="D5s-sA-ugh" kind="relationship" relationship="rootViewController" id="S3w-k2-hIo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aky-Ja-aXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1057" y="2366"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AnyDirectionIcon" width="300" height="300"/>
         <image name="Broadcast" width="300" height="300"/>
+        <image name="Compass" width="150" height="144"/>
         <image name="Mountain" width="300" height="300"/>
         <image name="menu" width="22" height="22"/>
     </resources>

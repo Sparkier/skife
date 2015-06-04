@@ -8,11 +8,15 @@
 
 import Foundation
 import CoreMotion
+import QuartzCore
+import CoreLocation
 
-class InclinationViewController: UIViewController {
+class InclinationViewController: UIViewController, CLLocationManagerDelegate {
     var motionManager = CMMotionManager()
     var timer: NSTimer!
+    var locationManager = CLLocationManager()
     
+    @IBOutlet weak var imgCompass: UIImageView!
     @IBOutlet weak var bbMenu: UIBarButtonItem!
     @IBOutlet weak var lbPitch: UILabel!
     
@@ -31,10 +35,28 @@ class InclinationViewController: UIViewController {
                 self.lbPitch.text = "\(intPitch)°"
             }
         });
+        
+        // LocationManager for Compass  
+        locationManager.headingFilter = 1
+        locationManager.delegate = self
+        locationManager.startUpdatingHeading()
     }
     
     // Transforms Radians into Degrees
     func radiansToDegrees(radians: Double) -> Double {
         return (radians * (180.0 / M_PI))
+    }
+    
+    // Update Compass
+    func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
+        // Convert Degree to Radian and move the needle
+        var oldRad =  Float(-manager.heading.trueHeading * M_PI / 180.0)
+        var newRad =  Float(-newHeading.trueHeading * M_PI / 180.0)
+        let theAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        theAnimation.fromValue = NSNumber(float: oldRad)
+        theAnimation.toValue = NSNumber(float: newRad)
+        theAnimation.duration = 0.5
+        imgCompass.layer.addAnimation(theAnimation, forKey: "animateMyRotation")
+        imgCompass.transform = CGAffineTransformMakeRotation(CGFloat(newRad))
     }
 }
