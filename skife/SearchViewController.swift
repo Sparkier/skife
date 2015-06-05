@@ -131,27 +131,20 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
     
     // Table View Generating each Cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UITableViewCell? =
-        tableView.dequeueReusableCellWithIdentifier("MyIdentifier") as? UITableViewCell
-        
-        if(cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle,
-                reuseIdentifier: "MyIdentifier")
-            cell!.selectionStyle = UITableViewCellSelectionStyle.None
-        }
+        var cell = tableView.dequeueReusableCellWithIdentifier("searchCell") as! UITableViewCell
         
         var nameLabel:String! = "\(riders[indexPath.row].name)"
-        cell!.textLabel!.text = nameLabel
+        cell.textLabel!.text = nameLabel
         
         if let acc = riders[indexPath.row].accuracy {
             var detailLabel: String = "~ \(round(acc*10.0)/10.0) m"
-            cell!.detailTextLabel!.text = detailLabel
+            cell.detailTextLabel!.text = detailLabel
         } else {
             var detailLabel: String = "Not in Range"
-            cell!.detailTextLabel!.text = detailLabel
+            cell.detailTextLabel!.text = detailLabel
         }
         
-        return cell!
+        return cell
     }
     
     // Click on TableView Row detection
