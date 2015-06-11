@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA1049B91ADEA13800007212 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1049B81ADEA13800007212 /* InformationViewController.swift */; };
 		FA1049BB1ADEA84500007212 /* NoBluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1049BA1ADEA84500007212 /* NoBluetoothView.swift */; };
+		FA32BED51B298FD500DF84F2 /* AreaOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA32BED41B298FD500DF84F2 /* AreaOverviewViewController.swift */; };
 		FA3D12361B08AFF100DA2060 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3D12351B08AFF100DA2060 /* BaseViewController.swift */; };
 		FA44E1681B06194800768A55 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA44E1671B06194800768A55 /* SWRevealViewController.m */; };
 		FA44E16A1B0619EE00768A55 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA44E1691B0619EE00768A55 /* MenuViewController.swift */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		FA1049B81ADEA13800007212 /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		FA1049BA1ADEA84500007212 /* NoBluetoothView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoBluetoothView.swift; sourceTree = "<group>"; };
+		FA32BED41B298FD500DF84F2 /* AreaOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaOverviewViewController.swift; sourceTree = "<group>"; };
 		FA3D12351B08AFF100DA2060 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FA44E1651B06194700768A55 /* skife-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "skife-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA44E1661B06194800768A55 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				FA4FE0161B15027D00076BC0 /* AvalancheWarningViewController.swift */,
 				FA4FE0181B150EDF00076BC0 /* InclinationViewController.swift */,
 				FA83A2581B2048B200D358A6 /* HowToViewController.swift */,
+				FA32BED41B298FD500DF84F2 /* AreaOverviewViewController.swift */,
 			);
 			name = Additional;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				FA7518D91AC1B29800DCFAF7 /* DirectionEngine.swift in Sources */,
 				FAAD14C91AB1B2200025F626 /* Profile.swift in Sources */,
 				FAAD14C41AB1B0B40025F626 /* ProfileViewController.swift in Sources */,
+				FA32BED51B298FD500DF84F2 /* AreaOverviewViewController.swift in Sources */,
 				FA1049BB1ADEA84500007212 /* NoBluetoothView.swift in Sources */,
 				FA83A2591B2048B200D358A6 /* HowToViewController.swift in Sources */,
 				FA1049B91ADEA13800007212 /* InformationViewController.swift in Sources */,
