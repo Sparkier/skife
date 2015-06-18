@@ -11,20 +11,17 @@ import CoreMotion
 import QuartzCore
 import CoreLocation
 
-class InclinationViewController: UIViewController, CLLocationManagerDelegate {
+class InclinationViewController: RevealBaseViewController, CLLocationManagerDelegate {
     var motionManager = CMMotionManager()
     var timer: NSTimer!
     var locationManager = CLLocationManager()
     
     @IBOutlet weak var imgCompass: UIImageView!
-    @IBOutlet weak var bbMenu: UIBarButtonItem!
     @IBOutlet weak var lbPitch: UILabel!
     
     override func viewDidLoad() {
-        // RevealViewController Controls
-        bbMenu.target = self.revealViewController()
-        bbMenu.action = Selector("revealToggle:")
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        super.viewDidLoad()
+        self.bgImg.removeFromSuperview()
         
         // Updating Inclination Label
         motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue(), withHandler: { motion, error in

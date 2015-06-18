@@ -13,15 +13,22 @@ class AvalancheWarningViewController: BaseViewController, NSXMLParserDelegate {
     
     var parser = NSXMLParser()
     var posts = NSMutableArray()
+    var dangerPosts = NSMutableArray()
     var elements = NSMutableDictionary()
+    var dangers = NSMutableDictionary()
     var element = NSString()
     var highlights = NSMutableString()
     var date = NSMutableString()
     var weather = NSMutableString()
     var snowPackStructure = NSMutableString()
     var travelAdvisoryComment = NSMutableString()
+    var mainValue = NSMutableString()
+    var timeValue = NSMutableString()
+    var parseString: String!
+    var ca = false
     
     @IBOutlet weak var tvWarnings: UITextView!
+    @IBOutlet weak var lblDangerLevel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +37,8 @@ class AvalancheWarningViewController: BaseViewController, NSXMLParserDelegate {
     override func viewDidAppear(animated: Bool) {
         self.beginParsing()
         
-        tvWarnings.text = (posts[0]["highlights"] as! String) + "\n" + (posts[0]["travelAdvisoryComment"] as! String) + "\n" + (posts[0]["snowPackStructure"] as! String) + "\n" + (posts[0]["weather"] as! String)
+        setDangerLevel()
+        tvWarnings.text = (posts[0]["highlights"] as! String) + "\n\n" + (posts[0]["travelAdvisoryComment"] as! String) + "\n\n" + (posts[0]["snowPackStructure"] as! String) + "\n\n" + (posts[0]["weather"] as! String)
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,57 +46,138 @@ class AvalancheWarningViewController: BaseViewController, NSXMLParserDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    // Starting to parse
     func beginParsing() {
         posts = []
-        parser = NSXMLParser(contentsOfURL: (NSURL(string: "https://apps.tirol.gv.at/lwd/produkte/llb/2014-2015/2015-01-14_0730/2015-01-14_0730_avalanche_bulletin_tyrol_de.xml")))!
+        parser = NSXMLParser(contentsOfURL: (NSURL(string: parseString)))!
         parser.delegate = self
         parser.parse()
     }
     
+    // Beginning to parse one Element
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [NSObject : AnyObject]) {
         element = elementName
-        if (elementName as NSString).isEqualToString("caaml:Bulletin") {
+        if (elementName as NSString).isEqualToString("caaml:Bulletin") || (elementName as NSString).isEqualToString("CaamlData") {
             elements = NSMutableDictionary.alloc()
             elements = [:]
             highlights = NSMutableString.alloc()
             highlights = ""
             date = NSMutableString.alloc()
             date = ""
+            weather = NSMutableString.alloc()
+            weather = ""
+            snowPackStructure = NSMutableString.alloc()
+            snowPackStructure = ""
+            travelAdvisoryComment = NSMutableString.alloc()
+            travelAdvisoryComment = ""
+        } else if (elementName as NSString).isEqualToString("caaml:DangerRating") || (elementName as NSString).isEqualToString("DangerRating") {
+            dangers = NSMutableDictionary.alloc()
+            dangers = [:]
+            mainValue = NSMutableString.alloc()
+            mainValue = ""
+            timeValue = NSMutableString.alloc()
+            timeValue = ""
         }
     }
     
+    // Checking for special Characters
     func parser(parser: NSXMLParser, foundCharacters string: String?){
-        if element.isEqualToString("caaml:highlights") {
+        if element.isEqualToString("caaml:highlights") || element.isEqualToString("highlights") {
             highlights.appendString(string!)
-        } else if element.isEqualToString("caaml:dateTimeReport") {
+        } else if element.isEqualToString("caaml:dateTimeReport") || element.isEqualToString("dateTimeReport") {
             date.appendString(string!)
-        } else if element.isEqualToString("caaml:wxSynopsisComment") {
+        } else if element.isEqualToString("caaml:wxSynopsisComment") || element.isEqualToString("wxSynopsisComment") {
             weather.appendString(string!)
-        } else if element.isEqualToString("caaml:snowpackStructureComment") {
+        } else if element.isEqualToString("caaml:snowpackStructureComment") || element.isEqualToString("snowpackStructureComment") {
             snowPackStructure.appendString(string!)
-        } else if element.isEqualToString("caaml:travelAdvisoryComment") {
+        } else if element.isEqualToString("caaml:travelAdvisoryComment") || element.isEqualToString("travelAdvisoryComment") {
             travelAdvisoryComment.appendString(string!)
+        } else if element.isEqualToString("caaml:mainValue") || element.isEqualToString("mainValue") {
+            mainValue.appendString(string!)
+        } else if element.isEqualToString("caaml:timePosition") || element.isEqualToString("timePosition") || element.isEqualToString("caaml:beginPosition") || element.isEqualToString("beginPosition") {
+            timeValue.appendString(string!)
         }
     }
     
+    // Finished with parsing one Element
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if (elementName as NSString).isEqualToString("caaml:Bulletin") {
+        if (elementName as NSString).isEqualToString("caaml:Bulletin") || (elementName as NSString).isEqualToString("observations") {
             if !highlights.isEqual(nil) {
-                elements.setObject(highlights, forKey: "highlights")
+                elements.setObject(stringReplacement(highlights), forKey: "highlights")
             }
             if !date.isEqual(nil) {
-                elements.setObject(date, forKey: "date")
+                elements.setObject(stringReplacement(date).stringByReplacingOccurrencesOfString(" ", withString: ""), forKey: "date")
             }
             if !weather.isEqual(nil) {
-                elements.setObject(weather, forKey: "weather")
+                elements.setObject(stringReplacement(weather), forKey: "weather")
             }
             if !snowPackStructure.isEqual(nil) {
-                elements.setObject(snowPackStructure, forKey: "snowPackStructure")
+                elements.setObject(stringReplacement(snowPackStructure), forKey: "snowPackStructure")
             }
             if !travelAdvisoryComment.isEqual(nil) {
-                elements.setObject(travelAdvisoryComment, forKey: "travelAdvisoryComment")
+                elements.setObject(stringReplacement(travelAdvisoryComment), forKey: "travelAdvisoryComment")
             }
             posts.addObject(elements)
+        } else if (elementName as NSString).isEqualToString("caaml:DangerRating") || (elementName as NSString).isEqualToString("DangerRating") {
+            if !mainValue.isEqual(nil) {
+                dangers.setObject(mainValue, forKey: "mainValue")
+            }
+            if !timeValue.isEqual(nil) {
+                dangers.setObject(stringReplacement(timeValue).stringByReplacingOccurrencesOfString(" ", withString: ""), forKey: "timeValue")
+            }
+            dangerPosts.addObject(dangers)
         }
+    }
+    
+    // Filtering out HTML and CSS of String
+    func stringReplacement(entered: NSMutableString) -> String {
+        var str = String(entered).stringByReplacingOccurrencesOfString("<[^>]+>", withString: "", options: .RegularExpressionSearch, range: nil)
+        str = str.stringByReplacingOccurrencesOfString("\\.[^\\}]+\\}", withString: "", options: .RegularExpressionSearch, range: nil)
+        str = str.stringByReplacingOccurrencesOfString("\\{[^\\}]+\\}", withString: "", options: .RegularExpressionSearch, range: nil)
+        str = str.stringByReplacingOccurrencesOfString("\n", withString: "", options: nil, range: nil)
+        str = str.stringByReplacingOccurrencesOfString("!_!", withString: "", options: nil, range: nil)
+        return str
+    }
+    
+    // Setting Danger Level
+    func setDangerLevel() {
+        var maxLevel = "0"
+        if ca {
+            for var i = 0; i < dangerPosts.count; i = i+3 {
+                let elem = dangerPosts[i] as! NSDictionary
+                var value = (elem["mainValue"]! as! String).stringByReplacingOccurrencesOfString("\n", withString: "", options: nil, range: nil)
+                value = value.stringByReplacingOccurrencesOfString(" ", withString: "", options: nil, range: nil)
+                if value == "N/A" {
+                    maxLevel = "N/A"
+                    break
+                } else {
+                    if let val = value.toInt() {
+                        if val > maxLevel.toInt()! {
+                            maxLevel = value
+                        }
+                    }
+                }
+            }
+        } else {
+            let date: String = (posts[0]["date"] as! String).stringByPaddingToLength(10, withString: " ", startingAtIndex: 0)
+            for elem in dangerPosts {
+                let elemDate: String = (elem["timeValue"] as! String).stringByPaddingToLength(10, withString: "", startingAtIndex: 0)
+                if date == elemDate {
+                    var value = (elem["mainValue"]! as! String).stringByReplacingOccurrencesOfString("\n", withString: "", options: nil, range: nil)
+                    value = value.stringByReplacingOccurrencesOfString(" ", withString: "", options: nil, range: nil)
+                    if value == "N/A" {
+                        maxLevel = "N/A"
+                        break
+                    } else {
+                        if let val = value.toInt() {
+                            if val > maxLevel.toInt()! {
+                                maxLevel = value
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        lblDangerLevel.text = maxLevel
     }
 }

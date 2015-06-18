@@ -7,18 +7,12 @@
 //
 
 import UIKit
-import CoreBluetooth
 import CoreData
 
-class MainViewController: BaseViewController, CBPeripheralManagerDelegate {
-    
-    var perMan: CBPeripheralManager!
-    
-    @IBOutlet weak var bbMenu: UIBarButtonItem!
+class MainViewController: RevealBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        perMan = CBPeripheralManager(delegate: self, queue: nil)
         
         // Initial setup after first App Launch
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -34,18 +28,9 @@ class MainViewController: BaseViewController, CBPeripheralManagerDelegate {
             defaults.setBool(true, forKey: "hasLaunchedOnce")
             defaults.synchronize()
         }
-        
-        // RevealViewController Controls
-        bbMenu.target = self.revealViewController()
-        bbMenu.action = Selector("revealToggle:")
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    // Just for Notifying the User when Bluetooth is turned off
-    func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
     }
 }

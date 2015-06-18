@@ -8,20 +8,14 @@
 
 import Foundation
 
-class AreaOverviewViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class AreaOverviewViewController: RevealBaseViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var bbMenu: UIBarButtonItem!
     @IBOutlet weak var tvArea: UITableView!
     
-    var areas: [String] = ["Tirol"]
+    var areas: [(String, String, String)] = [("Tirol", "http://apps.tirol.gv.at/lwd/produkte/LLBTirol.xml", "Austria"), ("Steiermark", "http://lawine-steiermark.at/content/CAAML/caaml_stmk.xml", "Austria"), ("Yoho and Kootenay","http://avalanche.pc.gc.ca/CAAML-eng.aspx?d=TODAY&r=1", "Canada"), ("Little Yoho","http://avalanche.pc.gc.ca/CAAML-eng.aspx?d=TODAY&r=5", "Canada"), ("Glacier","http://avalanche.pc.gc.ca/CAAML-eng.aspx?d=TODAY&r=3", "Canada"), ("Jasper","http://avalanche.pc.gc.ca/CAAML-eng.aspx?d=TODAY&r=2", "Canada"), ("Waterton Lakes","http://avalanche.pc.gc.ca/CAAML-eng.aspx?d=TODAY&r=4", "Canada")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // RevealViewController Controls
-        bbMenu.target = self.revealViewController()
-        bbMenu.action = Selector("revealToggle:")
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
         self.tvArea.tableFooterView = UIView(frame: CGRectZero)
     }
@@ -33,14 +27,19 @@ class AreaOverviewViewController: BaseViewController, UITableViewDataSource, UIT
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("areaCell") as! UITableViewCell
         
-        cell.textLabel!.text = areas[indexPath.row]
+        cell.textLabel!.text = areas[indexPath.row].0
+        cell.detailTextLabel!.text = areas[indexPath.row].2
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc: AnyObject! = self.storyboard?.instantiateViewControllerWithIdentifier("avalancheWarningViewController")
-        var detailedSearchViewController: AvalancheWarningViewController = vc as! AvalancheWarningViewController
+        var avalancheWarningViewController: AvalancheWarningViewController = vc as! AvalancheWarningViewController
+        avalancheWarningViewController.parseString = areas[indexPath.row].1
+        if areas[indexPath.row].2 == "Canada" {
+            avalancheWarningViewController.ca = true
+        }
         navigationController?.pushViewController(vc as! UIViewController, animated: true)
     }
 }

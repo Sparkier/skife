@@ -8,20 +8,14 @@
 
 import Foundation
 
-class HowToViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class HowToViewController: RevealBaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     var items = ["Start Search"]
     
-    @IBOutlet weak var bbMenu: UIBarButtonItem!
     @IBOutlet weak var tvItems: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // RevealViewController Controls
-        bbMenu.target = self.revealViewController()
-        bbMenu.action = Selector("revealToggle:")
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
         self.tvItems.tableFooterView = UIView(frame: CGRectZero)
     }

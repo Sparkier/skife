@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITableViewDataSource, UITableViewDelegate, CBPeripheralDelegate {
+class SearchViewController: RevealBaseViewController, CBCentralManagerDelegate, UITableViewDataSource, UITableViewDelegate, CBPeripheralDelegate {
     
     var centralManager: CBCentralManager!
     var nsTimer: NSTimer!
@@ -19,7 +19,6 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
     var peripherals = [CBPeripheral]()
     lazy var noBluetoothView = NoBluetoothView()
     
-    @IBOutlet weak var bbMenu: UIBarButtonItem!
     @IBOutlet weak var beaconsTableView: UITableView!
     @IBOutlet weak var tvNoSignal: UITextView!
     
@@ -29,11 +28,6 @@ class SearchViewController: BaseViewController, CBCentralManagerDelegate, UITabl
         centralManager = CBCentralManager(delegate: self, queue: nil)
         
         nsTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("checkRSSI"), userInfo: nil, repeats: true)
-        
-        // RevealViewController Controls
-        bbMenu.target = self.revealViewController()
-        bbMenu.action = Selector("revealToggle:")
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
         self.beaconsTableView.tableFooterView = UIView(frame: CGRectZero)
     }

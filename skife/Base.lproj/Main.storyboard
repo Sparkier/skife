@@ -67,13 +67,8 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="4GV-PE-RUp">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="rM6-ZX-HlJ">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Profile" id="4GV-PE-RUp"/>
                     <connections>
-                        <outlet property="bbMenu" destination="rM6-ZX-HlJ" id="uXC-sb-AfH"/>
                         <outlet property="nameTextField" destination="a1e-oF-uTw" id="Uc5-p3-N5g"/>
                     </connections>
                 </viewController>
@@ -122,14 +117,7 @@ Thank you and enjoy your Ride!</string>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Information" id="hd8-2z-fjb">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="hMI-hV-ew7">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="bbMenu" destination="hMI-hV-ew7" id="8Lb-g5-zyp"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Information" id="hd8-2z-fjb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIj-nj-mSN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -195,23 +183,37 @@ Have fun riding and stay safe!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWB-Dz-pI1">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="57" width="600" height="543"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WpG-ox-Sy4">
+                                <rect key="frame" x="295" y="28" width="10" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KWB-Dz-pI1" firstAttribute="leading" secondItem="zyA-K9-Pbt" secondAttribute="leadingMargin" constant="-16" id="1US-Xn-6XB"/>
+                            <constraint firstItem="WpG-ox-Sy4" firstAttribute="top" secondItem="W4R-Vs-vfB" secondAttribute="bottom" constant="8" id="HYP-pf-CEQ"/>
                             <constraint firstItem="KWB-Dz-pI1" firstAttribute="top" secondItem="W4R-Vs-vfB" secondAttribute="bottom" id="YZ6-yz-BmD"/>
                             <constraint firstItem="9Ag-Hu-SgG" firstAttribute="top" secondItem="KWB-Dz-pI1" secondAttribute="bottom" id="bYA-LC-9jK"/>
+                            <constraint firstItem="KWB-Dz-pI1" firstAttribute="top" secondItem="WpG-ox-Sy4" secondAttribute="bottom" constant="8" id="r02-cD-rlO"/>
+                            <constraint firstAttribute="centerX" secondItem="WpG-ox-Sy4" secondAttribute="centerX" id="swI-wm-U20"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KWB-Dz-pI1" secondAttribute="trailing" constant="-16" id="xGi-OM-Pd1"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="YZ6-yz-BmD"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Avalanche Warnings" id="XqI-2h-Z0j"/>
                     <connections>
-                        <outlet property="bbMenu" destination="m3T-Th-4HF" id="Wet-jh-GxU"/>
+                        <outlet property="lblDangerLevel" destination="WpG-ox-Sy4" id="46J-r5-1S0"/>
                         <outlet property="tvWarnings" destination="KWB-Dz-pI1" id="IO6-2i-aGR"/>
                     </connections>
                 </viewController>
@@ -241,7 +243,7 @@ Have fun riding and stay safe!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Compass" translatesAutoresizingMaskIntoConstraints="NO" id="lPz-lg-MdJ">
-                                <rect key="frame" x="225" y="430" width="150" height="150"/>
+                                <rect key="frame" x="434" y="72" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lPz-lg-MdJ" secondAttribute="height" multiplier="1:1" id="ulw-in-Q5f"/>
                                 </constraints>
@@ -249,12 +251,14 @@ Have fun riding and stay safe!</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lPz-lg-MdJ" firstAttribute="top" secondItem="CsZ-Yc-6dq" secondAttribute="bottom" constant="8" id="4b0-Ai-Xhe"/>
                             <constraint firstItem="mX2-oH-g9I" firstAttribute="top" secondItem="CsZ-Yc-6dq" secondAttribute="bottom" constant="8" id="BKo-Y3-MCI"/>
                             <constraint firstItem="Cr7-Jp-2uQ" firstAttribute="top" secondItem="lPz-lg-MdJ" secondAttribute="bottom" constant="20" id="FkK-bh-m45"/>
                             <constraint firstItem="lPz-lg-MdJ" firstAttribute="top" secondItem="mX2-oH-g9I" secondAttribute="bottom" constant="8" id="R7m-KD-ysM"/>
                             <constraint firstAttribute="centerX" secondItem="lPz-lg-MdJ" secondAttribute="centerX" id="Tro-VY-Ud1"/>
                             <constraint firstItem="WIU-yD-cfl" firstAttribute="bottom" secondItem="mX2-oH-g9I" secondAttribute="bottom" constant="100" id="boF-vV-fIy"/>
                             <constraint firstAttribute="centerX" secondItem="mX2-oH-g9I" secondAttribute="centerX" id="dsK-w5-IGZ"/>
+                            <constraint firstItem="lPz-lg-MdJ" firstAttribute="trailing" secondItem="Jzn-57-RlV" secondAttribute="trailingMargin" id="gAg-Ul-jGN"/>
                             <constraint firstItem="WIU-yD-cfl" firstAttribute="top" secondItem="CsZ-Yc-6dq" secondAttribute="bottom" constant="8" id="gZU-h8-Olp"/>
                             <constraint firstAttribute="centerX" secondItem="WIU-yD-cfl" secondAttribute="centerX" id="mTw-ba-TWB"/>
                             <constraint firstAttribute="centerX" secondItem="mX2-oH-g9I" secondAttribute="centerX" id="r3g-xo-SdX"/>
@@ -264,14 +268,13 @@ Have fun riding and stay safe!</string>
                                 <exclude reference="BKo-Y3-MCI"/>
                                 <exclude reference="r3g-xo-SdX"/>
                                 <exclude reference="R7m-KD-ysM"/>
+                                <exclude reference="Tro-VY-Ud1"/>
+                                <exclude reference="FkK-bh-m45"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Inclination" id="YR5-yK-3a4">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="8KP-vI-Hab"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Inclination" id="YR5-yK-3a4"/>
                     <connections>
-                        <outlet property="bbMenu" destination="8KP-vI-Hab" id="YMf-s7-9mC"/>
                         <outlet property="imgCompass" destination="lPz-lg-MdJ" id="rwn-aN-GZj"/>
                         <outlet property="lbPitch" destination="mX2-oH-g9I" id="vwG-WN-07K"/>
                     </connections>
@@ -319,13 +322,8 @@ Have fun riding and stay safe!</string>
                             <constraint firstItem="WtY-H7-8s0" firstAttribute="top" secondItem="g1P-lp-fS7" secondAttribute="bottom" id="s2P-bf-e8L"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="iLe-r8-zae">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="qYq-rQ-FdV">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="iLe-r8-zae"/>
                     <connections>
-                        <outlet property="bbMenu" destination="qYq-rQ-FdV" id="GF9-zw-DCA"/>
                         <outlet property="tvItems" destination="WtY-H7-8s0" id="ruG-B0-bTf"/>
                     </connections>
                 </viewController>
@@ -367,14 +365,7 @@ Always keep in mind that this is no guarantee for survival.</string>
                             <constraint firstItem="geX-CW-jof" firstAttribute="leading" secondItem="eJr-yO-QV5" secondAttribute="leadingMargin" constant="-16" id="jQF-ug-rWG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Broadcast" id="z0g-jo-2gH">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="Ffz-nh-kW4">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="bbMenu" destination="Ffz-nh-kW4" id="ihe-nm-6eG"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Broadcast" id="z0g-jo-2gH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9mr-xg-p5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -449,9 +440,6 @@ Keep searching for a Signal and try to find your Comrades.</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="rNp-cp-79Z">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="bqQ-un-pY3">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Call SOS" id="zgq-8E-0Im">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -460,7 +448,6 @@ Keep searching for a Signal and try to find your Comrades.</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bbMenu" destination="bqQ-un-pY3" id="ic8-Ft-Kqm"/>
                         <outlet property="beaconsTableView" destination="ThM-Qr-se0" id="1ze-a7-UJL"/>
                         <outlet property="tvNoSignal" destination="MxD-De-zfA" id="dDu-dA-WSv"/>
                     </connections>
@@ -820,10 +807,24 @@ Keep searching for a Signal and try to find your Comrades.</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="areaCell" id="fVh-G1-BkN">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="areaCell" textLabel="pyh-Rb-tsn" detailTextLabel="nij-JS-KOx" style="IBUITableViewCellStyleSubtitle" id="fVh-G1-BkN">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fVh-G1-BkN" id="4gu-JH-MeS">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pyh-Rb-tsn">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nij-JS-KOx">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
@@ -842,11 +843,8 @@ Keep searching for a Signal and try to find your Comrades.</string>
                             <constraint firstItem="i5d-EP-SJX" firstAttribute="leading" secondItem="lko-kf-Idx" secondAttribute="leadingMargin" constant="-16" id="v3K-Vp-zCk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Area" id="EWa-De-zrq">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="m3T-Th-4HF"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Area" id="EWa-De-zrq"/>
                     <connections>
-                        <outlet property="bbMenu" destination="m3T-Th-4HF" id="bsc-Dd-aU8"/>
                         <outlet property="tvArea" destination="i5d-EP-SJX" id="HxJ-0H-X8x"/>
                     </connections>
                 </viewController>
