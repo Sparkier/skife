@@ -159,12 +159,7 @@ Have fun riding and stay safe!</string>
                             <constraint firstItem="veo-zL-u2k" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="qCS-Oq-SlK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="skife" id="LsQ-m4-JhT">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="kvX-b9-Ifo"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="bbMenu" destination="kvX-b9-Ifo" id="LLn-aa-QVH"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="skife" id="LsQ-m4-JhT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -183,37 +178,55 @@ Have fun riding and stay safe!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWB-Dz-pI1">
-                                <rect key="frame" x="0.0" y="57" width="600" height="543"/>
+                                <rect key="frame" x="0.0" y="131" width="600" height="469"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WpG-ox-Sy4">
-                                <rect key="frame" x="295" y="28" width="10" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warnstufe: N/A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKQ-5x-bMF">
+                                <rect key="frame" x="437" y="80" width="147" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VxE-v5-3K7">
+                                <rect key="frame" x="16" y="20" width="568" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Danger0" translatesAutoresizingMaskIntoConstraints="NO" id="f1V-zS-RNv">
+                                <rect key="frame" x="16" y="64" width="83" height="59"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KWB-Dz-pI1" firstAttribute="leading" secondItem="zyA-K9-Pbt" secondAttribute="leadingMargin" constant="-16" id="1US-Xn-6XB"/>
-                            <constraint firstItem="WpG-ox-Sy4" firstAttribute="top" secondItem="W4R-Vs-vfB" secondAttribute="bottom" constant="8" id="HYP-pf-CEQ"/>
+                            <constraint firstItem="eKQ-5x-bMF" firstAttribute="trailing" secondItem="zyA-K9-Pbt" secondAttribute="trailingMargin" id="IiE-6x-sOr"/>
                             <constraint firstItem="KWB-Dz-pI1" firstAttribute="top" secondItem="W4R-Vs-vfB" secondAttribute="bottom" id="YZ6-yz-BmD"/>
+                            <constraint firstItem="KWB-Dz-pI1" firstAttribute="top" secondItem="f1V-zS-RNv" secondAttribute="bottom" constant="8" id="YtR-O0-b9m"/>
                             <constraint firstItem="9Ag-Hu-SgG" firstAttribute="top" secondItem="KWB-Dz-pI1" secondAttribute="bottom" id="bYA-LC-9jK"/>
-                            <constraint firstItem="KWB-Dz-pI1" firstAttribute="top" secondItem="WpG-ox-Sy4" secondAttribute="bottom" constant="8" id="r02-cD-rlO"/>
-                            <constraint firstAttribute="centerX" secondItem="WpG-ox-Sy4" secondAttribute="centerX" id="swI-wm-U20"/>
+                            <constraint firstItem="f1V-zS-RNv" firstAttribute="top" secondItem="W4R-Vs-vfB" secondAttribute="bottom" constant="8" id="cvK-yb-vkF"/>
+                            <constraint firstItem="VxE-v5-3K7" firstAttribute="top" secondItem="W4R-Vs-vfB" secondAttribute="bottom" id="epN-ok-vTp"/>
+                            <constraint firstItem="f1V-zS-RNv" firstAttribute="leading" secondItem="zyA-K9-Pbt" secondAttribute="leadingMargin" id="feg-VE-Q7j"/>
+                            <constraint firstItem="VxE-v5-3K7" firstAttribute="trailing" secondItem="zyA-K9-Pbt" secondAttribute="trailingMargin" id="gQz-5R-Y5h"/>
+                            <constraint firstItem="f1V-zS-RNv" firstAttribute="top" secondItem="VxE-v5-3K7" secondAttribute="bottom" constant="8" id="hyC-GI-EW1"/>
+                            <constraint firstItem="VxE-v5-3K7" firstAttribute="leading" secondItem="zyA-K9-Pbt" secondAttribute="leadingMargin" id="rps-4T-AzU"/>
+                            <constraint firstItem="eKQ-5x-bMF" firstAttribute="centerY" secondItem="f1V-zS-RNv" secondAttribute="centerY" id="tiz-Kh-qjc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KWB-Dz-pI1" secondAttribute="trailing" constant="-16" id="xGi-OM-Pd1"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="cvK-yb-vkF"/>
                                 <exclude reference="YZ6-yz-BmD"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Avalanche Warnings" id="XqI-2h-Z0j"/>
                     <connections>
-                        <outlet property="lblDangerLevel" destination="WpG-ox-Sy4" id="46J-r5-1S0"/>
+                        <outlet property="imDanger" destination="f1V-zS-RNv" id="QaM-sJ-JiV"/>
+                        <outlet property="lblDanger" destination="eKQ-5x-bMF" id="Oaj-DU-yoL"/>
+                        <outlet property="lblRegion" destination="VxE-v5-3K7" id="EYZ-c2-MFn"/>
                         <outlet property="tvWarnings" destination="KWB-Dz-pI1" id="IO6-2i-aGR"/>
                     </connections>
                 </viewController>
@@ -686,6 +699,7 @@ Keep searching for a Signal and try to find your Comrades.</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="gIm-JK-zGU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -731,6 +745,7 @@ Keep searching for a Signal and try to find your Comrades.</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="51w-og-ve5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -753,6 +768,7 @@ Keep searching for a Signal and try to find your Comrades.</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Ruo-8A-F79">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -880,6 +896,7 @@ Keep searching for a Signal and try to find your Comrades.</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="0cM-Kn-rll">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -896,7 +913,7 @@ Keep searching for a Signal and try to find your Comrades.</string>
         <image name="AnyDirectionIcon" width="300" height="300"/>
         <image name="Broadcast" width="300" height="300"/>
         <image name="Compass" width="150" height="144"/>
+        <image name="Danger0" width="83" height="59"/>
         <image name="Mountain" width="300" height="300"/>
-        <image name="menu" width="22" height="22"/>
     </resources>
 </document>

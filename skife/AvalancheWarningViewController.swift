@@ -11,6 +11,8 @@ import Foundation
 // ViewController for displaying Avalanche Warnings
 class AvalancheWarningViewController: BaseViewController, NSXMLParserDelegate {
     
+    var regionString = ""
+    
     var parser = NSXMLParser()
     var posts = NSMutableArray()
     var dangerPosts = NSMutableArray()
@@ -27,18 +29,40 @@ class AvalancheWarningViewController: BaseViewController, NSXMLParserDelegate {
     var parseString: String!
     var ca = false
     
+    @IBOutlet weak var lblRegion: UILabel!
+    @IBOutlet weak var lblDanger: UILabel!
+    @IBOutlet weak var imDanger: UIImageView!
     @IBOutlet weak var tvWarnings: UITextView!
-    @IBOutlet weak var lblDangerLevel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.lblRegion.text = regionString
     }
     
+    // Parsing Bulletin and settung TextView
     override func viewDidAppear(animated: Bool) {
         self.beginParsing()
         
+        var attrs = [NSFontAttributeName : UIFont.boldSystemFontOfSize(15)]
+        
+        // Highlights Section
+        var attributedString = NSMutableAttributedString(string:"Highlights\n", attributes:attrs)
+        attributedString.appendAttributedString(NSMutableAttributedString(string:posts[0]["highlights"] as! String + "\n\n"))
+        
+        // TravelAdvisoryComment Section
+        attributedString.appendAttributedString(NSMutableAttributedString(string: "Travel advisoy Comment\n", attributes: attrs))
+        attributedString.appendAttributedString(NSMutableAttributedString(string:posts[0]["travelAdvisoryComment"] as! String + "\n\n"))
+        
+        // Snowpack Structure Section
+        attributedString.appendAttributedString(NSMutableAttributedString(string: "Snowpack Structure\n", attributes: attrs))
+        attributedString.appendAttributedString(NSMutableAttributedString(string:posts[0]["snowPackStructure"] as! String + "\n\n"))
+        
+        // Weather Section
+        attributedString.appendAttributedString(NSMutableAttributedString(string: "Weather\n", attributes: attrs))
+        attributedString.appendAttributedString(NSMutableAttributedString(string:posts[0]["weather"] as! String))
+        
         setDangerLevel()
-        tvWarnings.text = (posts[0]["highlights"] as! String) + "\n\n" + (posts[0]["travelAdvisoryComment"] as! String) + "\n\n" + (posts[0]["snowPackStructure"] as! String) + "\n\n" + (posts[0]["weather"] as! String)
+        tvWarnings.attributedText = attributedString
     }
     
     override func didReceiveMemoryWarning() {
@@ -136,6 +160,7 @@ class AvalancheWarningViewController: BaseViewController, NSXMLParserDelegate {
         str = str.stringByReplacingOccurrencesOfString("\\{[^\\}]+\\}", withString: "", options: .RegularExpressionSearch, range: nil)
         str = str.stringByReplacingOccurrencesOfString("\n", withString: "", options: nil, range: nil)
         str = str.stringByReplacingOccurrencesOfString("!_!", withString: "", options: nil, range: nil)
+        str = str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         return str
     }
     
@@ -178,6 +203,25 @@ class AvalancheWarningViewController: BaseViewController, NSXMLParserDelegate {
                 }
             }
         }
-        lblDangerLevel.text = maxLevel
+        lblDanger.text = "Warnstufe: " + maxLevel
+        setImage(maxLevel)
+    }
+    
+    // Setting the Danger Image
+    func setImage(danger: String) {
+        switch danger {
+        case "1":
+            self.imDanger.image = UIImage(named: "Danger1")
+        case "2":
+            self.imDanger.image = UIImage(named: "Danger2")
+        case "3":
+            self.imDanger.image = UIImage(named: "Danger3")
+        case "4":
+            self.imDanger.image = UIImage(named: "Danger45")
+        case "5":
+            self.imDanger.image = UIImage(named: "Danger45")
+        default:
+            self.imDanger.image = UIImage(named: "Danger0")
+        }
     }
 }
