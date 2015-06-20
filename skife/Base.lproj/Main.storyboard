@@ -28,55 +28,7 @@
             </objects>
             <point key="canvasLocation" x="1057" y="-1252"/>
         </scene>
-        <!--Profile-->
-        <scene sceneID="33K-6r-hiO">
-            <objects>
-                <viewController title="Profile" id="gIK-XA-VoQ" customClass="ProfileViewController" customModule="skife" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2bV-0a-zyj"/>
-                        <viewControllerLayoutGuide type="bottom" id="bjq-SI-pTn"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YBa-sJ-gyv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-oF-uTw">
-                                <rect key="frame" x="70" y="72" width="514" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GX7-y0-Sbz">
-                                <rect key="frame" x="16" y="77" width="46" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="GX7-y0-Sbz" firstAttribute="centerY" secondItem="a1e-oF-uTw" secondAttribute="centerY" id="DSp-ny-Af7"/>
-                            <constraint firstItem="a1e-oF-uTw" firstAttribute="top" secondItem="2bV-0a-zyj" secondAttribute="bottom" constant="8" id="Fdl-Ml-4Pg"/>
-                            <constraint firstItem="a1e-oF-uTw" firstAttribute="trailing" secondItem="YBa-sJ-gyv" secondAttribute="trailingMargin" id="MMB-18-AHv"/>
-                            <constraint firstItem="GX7-y0-Sbz" firstAttribute="top" secondItem="2bV-0a-zyj" secondAttribute="bottom" constant="8" id="UA3-rU-qMl"/>
-                            <constraint firstItem="a1e-oF-uTw" firstAttribute="leading" secondItem="GX7-y0-Sbz" secondAttribute="trailing" constant="8" id="Y63-tR-8X8"/>
-                            <constraint firstItem="GX7-y0-Sbz" firstAttribute="leading" secondItem="YBa-sJ-gyv" secondAttribute="leadingMargin" id="oez-x5-vAO"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="UA3-rU-qMl"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <navigationItem key="navigationItem" title="Profile" id="4GV-PE-RUp"/>
-                    <connections>
-                        <outlet property="nameTextField" destination="a1e-oF-uTw" id="Uc5-p3-N5g"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W2X-Ya-wBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3361" y="-1252"/>
-        </scene>
-        <!--Information-->
+        <!--General-->
         <scene sceneID="rcI-mo-jQg">
             <objects>
                 <viewController id="d0h-ZL-d36" customClass="InformationViewController" customModule="skife" customModuleProvider="target" sceneMemberID="viewController">
@@ -89,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qq-lx-u2f">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="110" width="600" height="490"/>
                                 <string key="text">This Application does not protect you from any Injuries. It was created to make skiing a little less risky even if you do not expect an avalanche coming.
 
 Never go Freeskiing without propper equipment such as Beacon, Shovel and Probe.
@@ -102,22 +54,49 @@ Thank you and enjoy your Ride!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SOr-D9-yg1">
+                                <rect key="frame" x="70" y="72" width="514" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="d0h-ZL-d36" id="9gJ-e2-YtG"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5t-nG-MRw">
+                                <rect key="frame" x="16" y="77" width="46" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="SOr-D9-yg1" firstAttribute="trailing" secondItem="JQq-K3-IpU" secondAttribute="trailingMargin" id="7v1-MN-coz"/>
+                            <constraint firstItem="k5t-nG-MRw" firstAttribute="centerY" secondItem="SOr-D9-yg1" secondAttribute="centerY" id="EN6-L4-Lp9"/>
                             <constraint firstItem="JsB-BC-gDy" firstAttribute="top" secondItem="6qq-lx-u2f" secondAttribute="bottom" id="Hn4-cB-KY3"/>
+                            <constraint firstItem="k5t-nG-MRw" firstAttribute="top" secondItem="6nx-wA-u58" secondAttribute="bottom" constant="13" id="SiI-BI-9cA"/>
+                            <constraint firstItem="SOr-D9-yg1" firstAttribute="leading" secondItem="k5t-nG-MRw" secondAttribute="trailing" constant="8" id="Ucm-hG-6cH"/>
+                            <constraint firstItem="6qq-lx-u2f" firstAttribute="top" secondItem="SOr-D9-yg1" secondAttribute="bottom" constant="8" id="WMh-CU-kvo"/>
                             <constraint firstItem="6qq-lx-u2f" firstAttribute="leading" secondItem="JQq-K3-IpU" secondAttribute="leadingMargin" constant="-16" id="WwR-bC-rIz"/>
+                            <constraint firstItem="k5t-nG-MRw" firstAttribute="leading" secondItem="JQq-K3-IpU" secondAttribute="leadingMargin" id="ctV-Ng-Mal"/>
                             <constraint firstItem="6qq-lx-u2f" firstAttribute="top" secondItem="6nx-wA-u58" secondAttribute="bottom" id="dNG-TI-MP2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6qq-lx-u2f" secondAttribute="trailing" constant="-16" id="hbe-ZN-rWC"/>
+                            <constraint firstItem="SOr-D9-yg1" firstAttribute="top" secondItem="6nx-wA-u58" secondAttribute="bottom" constant="8" id="r9T-PW-hUa"/>
                             <constraint firstItem="6qq-lx-u2f" firstAttribute="top" secondItem="JQq-K3-IpU" secondAttribute="topMargin" id="stl-xg-L1l"/>
+                            <constraint firstItem="SOr-D9-yg1" firstAttribute="leading" secondItem="k5t-nG-MRw" secondAttribute="trailing" constant="8" id="zr7-ba-aKn"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Ucm-hG-6cH"/>
+                                <exclude reference="dNG-TI-MP2"/>
                                 <exclude reference="stl-xg-L1l"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Information" id="hd8-2z-fjb"/>
+                    <navigationItem key="navigationItem" title="General" id="hd8-2z-fjb"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="SOr-D9-yg1" id="w3P-zz-mBX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIj-nj-mSN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -598,7 +577,7 @@ Keep searching for a Signal and try to find your Comrades.</string>
                                             <segue destination="NPk-RY-fa5" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="qL2-RV-BUZ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Information" id="K1p-WM-ST0">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="General" id="K1p-WM-ST0" userLabel="General">
                                         <rect key="frame" x="0.0" y="278" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K1p-WM-ST0" id="s11-WD-KMI">
@@ -607,16 +586,6 @@ Keep searching for a Signal and try to find your Comrades.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="oBZ-6x-chP" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="U6s-6L-lpX"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Profile" id="aNs-Uq-6vn">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aNs-Uq-6vn" id="e7g-qK-qHC">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="cFj-65-Fej" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="zwv-pP-dT8"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Avalanche Warnings" id="d9n-uG-Rrf" userLabel="Avalanche Warnings">
@@ -761,29 +730,6 @@ Keep searching for a Signal and try to find your Comrades.</string>
             <point key="canvasLocation" x="2549" y="-508"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="oZt-pu-vM0">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cFj-65-Fej" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Ruo-8A-F79">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="gIK-XA-VoQ" kind="relationship" relationship="rootViewController" id="o9y-2P-j5h"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5tu-mH-WML" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2549" y="-1252"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="njp-bC-ghw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gr4-Nh-gML" sceneMemberID="viewController">
@@ -819,7 +765,7 @@ Keep searching for a Signal and try to find your Comrades.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="i5d-EP-SJX">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="-16" y="64" width="616" height="536"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -856,7 +802,7 @@ Keep searching for a Signal and try to find your Comrades.</string>
                             <constraint firstAttribute="bottomMargin" secondItem="i5d-EP-SJX" secondAttribute="bottom" id="2dh-cN-wqN"/>
                             <constraint firstItem="i5d-EP-SJX" firstAttribute="top" secondItem="Iya-NZ-7F7" secondAttribute="bottom" id="C49-WU-YvT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="i5d-EP-SJX" secondAttribute="trailing" constant="-16" id="Rly-qL-xYw"/>
-                            <constraint firstItem="i5d-EP-SJX" firstAttribute="leading" secondItem="lko-kf-Idx" secondAttribute="leadingMargin" constant="-16" id="v3K-Vp-zCk"/>
+                            <constraint firstItem="i5d-EP-SJX" firstAttribute="leading" secondItem="lko-kf-Idx" secondAttribute="leadingMargin" constant="-32" id="v3K-Vp-zCk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Area" id="EWa-De-zrq"/>

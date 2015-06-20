@@ -18,6 +18,7 @@ class AreaOverviewViewController: RevealBaseViewController, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tvArea.separatorInset = UIEdgeInsetsZero
         self.tvArea.tableFooterView = UIView(frame: CGRectZero)
     }
     
@@ -31,6 +32,11 @@ class AreaOverviewViewController: RevealBaseViewController, UITableViewDataSourc
         var cell = tableView.dequeueReusableCellWithIdentifier("areaCell") as! UITableViewCell
         
         cell.textLabel!.text = areas[indexPath.row].0
+        if areas[indexPath.row].2 == "Canada" {
+            cell.imageView?.image = UIImage(named: "Canada")
+        } else if areas[indexPath.row].2 == "Austria" {
+            cell.imageView?.image = UIImage(named: "Austria")            
+        }
         cell.detailTextLabel!.text = areas[indexPath.row].2
         
         return cell
