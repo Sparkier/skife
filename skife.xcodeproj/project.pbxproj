@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA0CCCBF1B3576CF00979A48 /* ExplanationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0CCCBE1B3576CF00979A48 /* ExplanationViewController.swift */; };
+		FA0CCCC11B3577C100979A48 /* HowToTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0CCCC01B3577C100979A48 /* HowToTableViewCell.swift */; };
 		FA1049B91ADEA13800007212 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1049B81ADEA13800007212 /* InformationViewController.swift */; };
 		FA1049BB1ADEA84500007212 /* NoBluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1049BA1ADEA84500007212 /* NoBluetoothView.swift */; };
 		FA32BED51B298FD500DF84F2 /* AreaOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA32BED41B298FD500DF84F2 /* AreaOverviewViewController.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA0CCCBE1B3576CF00979A48 /* ExplanationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplanationViewController.swift; sourceTree = "<group>"; };
+		FA0CCCC01B3577C100979A48 /* HowToTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowToTableViewCell.swift; sourceTree = "<group>"; };
 		FA1049B81ADEA13800007212 /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		FA1049BA1ADEA84500007212 /* NoBluetoothView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoBluetoothView.swift; sourceTree = "<group>"; };
 		FA32BED41B298FD500DF84F2 /* AreaOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaOverviewViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +112,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA0CCCC21B3577D900979A48 /* Bases */ = {
+			isa = PBXGroup;
+			children = (
+				FA3D12351B08AFF100DA2060 /* BaseViewController.swift */,
+				FA3AD22C1B3361F700F5A99E /* RevealBaseViewController.swift */,
+			);
+			name = Bases;
+			sourceTree = "<group>";
+		};
+		FA0CCCC31B3578A400979A48 /* Warnings */ = {
+			isa = PBXGroup;
+			children = (
+				FA32BED41B298FD500DF84F2 /* AreaOverviewViewController.swift */,
+				FA4FE0161B15027D00076BC0 /* AvalancheWarningViewController.swift */,
+			);
+			name = Warnings;
+			sourceTree = "<group>";
+		};
+		FA0CCCC41B3578BA00979A48 /* Explanation */ = {
+			isa = PBXGroup;
+			children = (
+				FA1049B81ADEA13800007212 /* InformationViewController.swift */,
+				FA83A2581B2048B200D358A6 /* HowToViewController.swift */,
+				FA0CCCBE1B3576CF00979A48 /* ExplanationViewController.swift */,
+			);
+			name = Explanation;
+			sourceTree = "<group>";
+		};
 		FA44E1611B0618DF00768A55 /* Objective-C */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,11 +153,9 @@
 		FA6D5A091AB836A9007BA763 /* Additional */ = {
 			isa = PBXGroup;
 			children = (
-				FA1049B81ADEA13800007212 /* InformationViewController.swift */,
-				FA4FE0161B15027D00076BC0 /* AvalancheWarningViewController.swift */,
+				FA0CCCC41B3578BA00979A48 /* Explanation */,
+				FA0CCCC31B3578A400979A48 /* Warnings */,
 				FA4FE0181B150EDF00076BC0 /* InclinationViewController.swift */,
-				FA83A2581B2048B200D358A6 /* HowToViewController.swift */,
-				FA32BED41B298FD500DF84F2 /* AreaOverviewViewController.swift */,
 			);
 			name = Additional;
 			sourceTree = "<group>";
@@ -155,9 +185,8 @@
 		FA6E770F1A9F3C0D001F1BE9 /* skife */ = {
 			isa = PBXGroup;
 			children = (
-				FA3D12351B08AFF100DA2060 /* BaseViewController.swift */,
-				FA3AD22C1B3361F700F5A99E /* RevealBaseViewController.swift */,
 				FA6E77121A9F3C0D001F1BE9 /* AppDelegate.swift */,
+				FA0CCCC01B3577C100979A48 /* HowToTableViewCell.swift */,
 				FA6F431B1AA1FAC600AF98A8 /* ViewController */,
 				FAA548561AC4130E004E2E96 /* Helpers */,
 				FA9A12E21AA204DB00D0058E /* Objects */,
@@ -203,6 +232,7 @@
 			children = (
 				FAF01CA41AA1C4AF00D491D4 /* MainViewController.swift */,
 				FA44E1691B0619EE00768A55 /* MenuViewController.swift */,
+				FA0CCCC21B3577D900979A48 /* Bases */,
 				FAAD14C61AB1B0CB0025F626 /* Broadcast */,
 				FAAD14C51AB1B0BE0025F626 /* Search */,
 				FA6D5A091AB836A9007BA763 /* Additional */,
@@ -370,6 +400,7 @@
 			files = (
 				FA44E1681B06194800768A55 /* SWRevealViewController.m in Sources */,
 				FA4FE0191B150EDF00076BC0 /* InclinationViewController.swift in Sources */,
+				FA0CCCC11B3577C100979A48 /* HowToTableViewCell.swift in Sources */,
 				FA5175381AA356440078FAD4 /* BroadcastViewController.swift in Sources */,
 				FA9A12E11AA204B800D0058E /* Rider.swift in Sources */,
 				FA44E16A1B0619EE00768A55 /* MenuViewController.swift in Sources */,
@@ -382,6 +413,7 @@
 				FAF01CA51AA1C4AF00D491D4 /* MainViewController.swift in Sources */,
 				FA83A2541B202B6200D358A6 /* AudioHelper.swift in Sources */,
 				FA7518D91AC1B29800DCFAF7 /* DirectionEngine.swift in Sources */,
+				FA0CCCBF1B3576CF00979A48 /* ExplanationViewController.swift in Sources */,
 				FAAD14C91AB1B2200025F626 /* Profile.swift in Sources */,
 				FA3AD22D1B3361F700F5A99E /* RevealBaseViewController.swift in Sources */,
 				FA32BED51B298FD500DF84F2 /* AreaOverviewViewController.swift in Sources */,
@@ -518,6 +550,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = skife/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -534,6 +567,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = skife/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

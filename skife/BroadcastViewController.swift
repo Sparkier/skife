@@ -34,7 +34,7 @@ class BroadcastViewController: RevealBaseViewController, CBPeripheralManagerDele
         // Setting up Name Characteristic
         var myCharacteristic: CBCharacteristic = CBMutableCharacteristic(type: CBUUID(string: "F2AF77EC-2F1F-4B20-8075-3E69A4B60C53"), properties: CBCharacteristicProperties.Read, value: profile.name.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false), permissions: CBAttributePermissions.Readable)
         
-        // Setting up Name Characteristic
+        // Setting up Identifier Characteristic
         let identifier = UIDevice.currentDevice().identifierForVendor
         var myIdentifierCharacteristic: CBCharacteristic = CBMutableCharacteristic(type: CBUUID(string: "F0FEDD89-1BF5-43B7-86D2-ABF53CD0A004"), properties: CBCharacteristicProperties.Read, value: identifier.UUIDString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false), permissions: CBAttributePermissions.Readable)
         
