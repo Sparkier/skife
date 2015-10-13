@@ -26,8 +26,8 @@ class InclinationViewController: RevealBaseViewController, CLLocationManagerDele
         // Updating Inclination Label
         motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue(), withHandler: { motion, error in
             // compute the device Pitch
-            let myPitch = self.radiansToDegrees(self.motionManager.deviceMotion.attitude.pitch)
-            var intPitch = myPitch > 0 ? Int(myPitch) : 0
+            let myPitch = self.radiansToDegrees(self.motionManager.deviceMotion!.attitude.pitch)
+            let intPitch = myPitch > 0 ? Int(myPitch) : 0
             dispatch_async(dispatch_get_main_queue()) {
                 self.lbPitch.text = "\(intPitch)°"
             }
@@ -45,10 +45,10 @@ class InclinationViewController: RevealBaseViewController, CLLocationManagerDele
     }
     
     // Update Compass
-    func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
+    func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         // Convert Degree to Radian and move the needle
-        var oldRad =  Float(-manager.heading.trueHeading * M_PI / 180.0)
-        var newRad =  Float(-newHeading.trueHeading * M_PI / 180.0)
+        let oldRad =  Float(-manager.heading!.trueHeading * M_PI / 180.0)
+        let newRad =  Float(-newHeading.trueHeading * M_PI / 180.0)
         let theAnimation = CABasicAnimation(keyPath: "transform.rotation")
         theAnimation.fromValue = NSNumber(float: oldRad)
         theAnimation.toValue = NSNumber(float: newRad)

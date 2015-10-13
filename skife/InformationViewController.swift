@@ -24,7 +24,7 @@ class InformationViewController: RevealBaseViewController, UITextFieldDelegate {
         let request = NSFetchRequest(entityName: "Profile")
         request.returnsObjectsAsFaults = false
         
-        var res:NSArray = context.executeFetchRequest(request, error: nil)!
+        let res:NSArray = try! context.executeFetchRequest(request)
         self.profile = res[0] as! Profile
         nameTextField.text = profile.name
     }
@@ -35,10 +35,13 @@ class InformationViewController: RevealBaseViewController, UITextFieldDelegate {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.profile.name = self.nameTextField.text
+        self.profile.name = self.nameTextField.text!
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDel.managedObjectContext!
-        context.save(nil)
+        do {
+            try context.save()
+        } catch _ {
+        }
     }
     
     // TextField Return Press

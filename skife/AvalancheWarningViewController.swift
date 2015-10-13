@@ -43,10 +43,10 @@ class AvalancheWarningViewController: BaseViewController, NSXMLParserDelegate {
     override func viewDidAppear(animated: Bool) {
         self.beginParsing()
         
-        var attrs = [NSFontAttributeName : UIFont.boldSystemFontOfSize(15)]
+        let attrs = [NSFontAttributeName : UIFont.boldSystemFontOfSize(15)]
         
         // Highlights Section
-        var attributedString = NSMutableAttributedString(string:"Highlights\n", attributes:attrs)
+        let attributedString = NSMutableAttributedString(string:"Highlights\n", attributes:attrs)
         attributedString.appendAttributedString(NSMutableAttributedString(string:posts[0]["highlights"] as! String + "\n\n"))
         
         // TravelAdvisoryComment Section
@@ -73,53 +73,53 @@ class AvalancheWarningViewController: BaseViewController, NSXMLParserDelegate {
     // Starting to parse
     func beginParsing() {
         posts = []
-        parser = NSXMLParser(contentsOfURL: (NSURL(string: parseString)))!
+        parser = NSXMLParser(contentsOfURL: (NSURL(string: parseString))!)!
         parser.delegate = self
         parser.parse()
     }
     
     // Beginning to parse one Element
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [NSObject : AnyObject]) {
+    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         element = elementName
         if (elementName as NSString).isEqualToString("caaml:Bulletin") || (elementName as NSString).isEqualToString("CaamlData") {
-            elements = NSMutableDictionary.alloc()
+            elements = NSMutableDictionary()
             elements = [:]
-            highlights = NSMutableString.alloc()
+            highlights = NSMutableString()
             highlights = ""
-            date = NSMutableString.alloc()
+            date = NSMutableString()
             date = ""
-            weather = NSMutableString.alloc()
+            weather = NSMutableString()
             weather = ""
-            snowPackStructure = NSMutableString.alloc()
+            snowPackStructure = NSMutableString()
             snowPackStructure = ""
-            travelAdvisoryComment = NSMutableString.alloc()
+            travelAdvisoryComment = NSMutableString()
             travelAdvisoryComment = ""
         } else if (elementName as NSString).isEqualToString("caaml:DangerRating") || (elementName as NSString).isEqualToString("DangerRating") {
-            dangers = NSMutableDictionary.alloc()
+            dangers = NSMutableDictionary()
             dangers = [:]
-            mainValue = NSMutableString.alloc()
+            mainValue = NSMutableString()
             mainValue = ""
-            timeValue = NSMutableString.alloc()
+            timeValue = NSMutableString()
             timeValue = ""
         }
     }
     
     // Checking for special Characters
-    func parser(parser: NSXMLParser, foundCharacters string: String?){
+    func parser(parser: NSXMLParser, foundCharacters string: String){
         if element.isEqualToString("caaml:highlights") || element.isEqualToString("highlights") {
-            highlights.appendString(string!)
+            highlights.appendString(string)
         } else if element.isEqualToString("caaml:dateTimeReport") || element.isEqualToString("dateTimeReport") {
-            date.appendString(string!)
+            date.appendString(string)
         } else if element.isEqualToString("caaml:wxSynopsisComment") || element.isEqualToString("wxSynopsisComment") {
-            weather.appendString(string!)
+            weather.appendString(string)
         } else if element.isEqualToString("caaml:snowpackStructureComment") || element.isEqualToString("snowpackStructureComment") {
-            snowPackStructure.appendString(string!)
+            snowPackStructure.appendString(string)
         } else if element.isEqualToString("caaml:travelAdvisoryComment") || element.isEqualToString("travelAdvisoryComment") {
-            travelAdvisoryComment.appendString(string!)
+            travelAdvisoryComment.appendString(string)
         } else if element.isEqualToString("caaml:mainValue") || element.isEqualToString("mainValue") {
-            mainValue.appendString(string!)
+            mainValue.appendString(string)
         } else if element.isEqualToString("caaml:timePosition") || element.isEqualToString("timePosition") || element.isEqualToString("caaml:beginPosition") || element.isEqualToString("beginPosition") {
-            timeValue.appendString(string!)
+            timeValue.appendString(string)
         }
     }
     
@@ -158,8 +158,8 @@ class AvalancheWarningViewController: BaseViewController, NSXMLParserDelegate {
         var str = String(entered).stringByReplacingOccurrencesOfString("<[^>]+>", withString: "", options: .RegularExpressionSearch, range: nil)
         str = str.stringByReplacingOccurrencesOfString("\\.[^\\}]+\\}", withString: "", options: .RegularExpressionSearch, range: nil)
         str = str.stringByReplacingOccurrencesOfString("\\{[^\\}]+\\}", withString: "", options: .RegularExpressionSearch, range: nil)
-        str = str.stringByReplacingOccurrencesOfString("\n", withString: "", options: nil, range: nil)
-        str = str.stringByReplacingOccurrencesOfString("!_!", withString: "", options: nil, range: nil)
+        str = str.stringByReplacingOccurrencesOfString("\n", withString: "", options: [], range: nil)
+        str = str.stringByReplacingOccurrencesOfString("!_!", withString: "", options: [], range: nil)
         str = str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         return str
     }
@@ -170,14 +170,14 @@ class AvalancheWarningViewController: BaseViewController, NSXMLParserDelegate {
         if ca {
             for var i = 0; i < dangerPosts.count; i = i+3 {
                 let elem = dangerPosts[i] as! NSDictionary
-                var value = (elem["mainValue"]! as! String).stringByReplacingOccurrencesOfString("\n", withString: "", options: nil, range: nil)
-                value = value.stringByReplacingOccurrencesOfString(" ", withString: "", options: nil, range: nil)
+                var value = (elem["mainValue"]! as! String).stringByReplacingOccurrencesOfString("\n", withString: "", options: [], range: nil)
+                value = value.stringByReplacingOccurrencesOfString(" ", withString: "", options: [], range: nil)
                 if value == "N/A" {
                     maxLevel = "N/A"
                     break
                 } else {
-                    if let val = value.toInt() {
-                        if val > maxLevel.toInt()! {
+                    if let val = Int(value) {
+                        if val > Int(maxLevel)! {
                             maxLevel = value
                         }
                     }
@@ -188,14 +188,14 @@ class AvalancheWarningViewController: BaseViewController, NSXMLParserDelegate {
             for elem in dangerPosts {
                 let elemDate: String = (elem["timeValue"] as! String).stringByPaddingToLength(10, withString: "", startingAtIndex: 0)
                 if date == elemDate {
-                    var value = (elem["mainValue"]! as! String).stringByReplacingOccurrencesOfString("\n", withString: "", options: nil, range: nil)
-                    value = value.stringByReplacingOccurrencesOfString(" ", withString: "", options: nil, range: nil)
+                    var value = (elem["mainValue"]! as! String).stringByReplacingOccurrencesOfString("\n", withString: "", options: [], range: nil)
+                    value = value.stringByReplacingOccurrencesOfString(" ", withString: "", options: [], range: nil)
                     if value == "N/A" {
                         maxLevel = "N/A"
                         break
                     } else {
-                        if let val = value.toInt() {
-                            if val > maxLevel.toInt()! {
+                        if let val = Int(value) {
+                            if val > Int(maxLevel)! {
                                 maxLevel = value
                             }
                         }

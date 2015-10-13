@@ -19,7 +19,7 @@ class AudioHelper: NSObject, AVAudioPlayerDelegate{
     
     private func initPlayer(filename: String, type: String){
         let url = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(filename, ofType:type)!)
-        audioPlayer = AVAudioPlayer(contentsOfURL: url, error: nil)
+        audioPlayer = try! AVAudioPlayer(contentsOfURL: url)
         audioPlayer.volume = 1.0
         audioPlayer.delegate = self
         audioPlayer.prepareToPlay()

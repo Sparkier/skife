@@ -30,7 +30,7 @@ class DirectionEngine {
                 return previousDirection
             }
             let i = previousDistances.count-1
-            var tendency = previousDistances[i] - previousDistances[i-1] + (previousDistances[i-1] - previousDistances[i-2])
+            let tendency = previousDistances[i] - previousDistances[i-1] + (previousDistances[i-1] - previousDistances[i-2])
             if closestPoint*1.2 < previousDistances.last { // Closest Point Way Closer than Current Point
                 previousDirection = Direction.Back
                 return previousDirection

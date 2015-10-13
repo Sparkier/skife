@@ -29,7 +29,7 @@ class AreaOverviewViewController: RevealBaseViewController, UITableViewDataSourc
     
     // Creating a Cell for each Area
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("areaCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("areaCell") as UITableViewCell!
         
         cell.textLabel!.text = areas[indexPath.row].0
         if areas[indexPath.row].2 == "Canada" {
@@ -45,7 +45,7 @@ class AreaOverviewViewController: RevealBaseViewController, UITableViewDataSourc
     // Handling click on Area Cell
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc: AnyObject! = self.storyboard?.instantiateViewControllerWithIdentifier("avalancheWarningViewController")
-        var avalancheWarningViewController: AvalancheWarningViewController = vc as! AvalancheWarningViewController
+        let avalancheWarningViewController: AvalancheWarningViewController = vc as! AvalancheWarningViewController
         avalancheWarningViewController.parseString = areas[indexPath.row].1
         if areas[indexPath.row].2 == "Canada" {
             avalancheWarningViewController.ca = true

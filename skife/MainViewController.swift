@@ -21,10 +21,13 @@ class MainViewController: RevealBaseViewController {
             let context = appDel.managedObjectContext!
                 
             let entProfile = NSEntityDescription.entityForName("Profile", inManagedObjectContext: context)
-            var defaultBg = Profile(entity: entProfile!, insertIntoManagedObjectContext: context)
+            let defaultBg = Profile(entity: entProfile!, insertIntoManagedObjectContext: context)
             let device = UIDevice.currentDevice()
             defaultBg.name = device.name
-            context.save(nil)
+            do {
+                try context.save()
+            } catch _ {
+            }
             defaults.setBool(true, forKey: "hasLaunchedOnce")
             defaults.synchronize()
         }

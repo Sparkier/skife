@@ -19,7 +19,6 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         tableArray = ["Broadcast", "Search"]
         channelArray = ["General", "Avalanche Warnings", "Inclination", "HowTo"]
-        let indexpath = NSIndexPath(forRow: 0, inSection: 1)
         self.tvMenu.tableFooterView = UIView(frame: CGRectZero)
     }
     
@@ -50,17 +49,17 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var cell = UITableViewCell()
         switch indexPath.section {
         case 0:
-            cell = tvMenu.dequeueReusableCellWithIdentifier(tableArray[indexPath.row]) as! UITableViewCell
+            cell = tvMenu.dequeueReusableCellWithIdentifier(tableArray[indexPath.row]) as UITableViewCell!
             cell.textLabel?.text = tableArray[indexPath.row]
             
         case 1:
-            cell = tvMenu.dequeueReusableCellWithIdentifier(channelArray[indexPath.row]) as! UITableViewCell
+            cell = tvMenu.dequeueReusableCellWithIdentifier(channelArray[indexPath.row]) as UITableViewCell!
             cell.textLabel?.text = channelArray[indexPath.row]
         default:
             break
         }
         cell.textLabel?.textColor = UIColor.whiteColor()
-        var cellSelectionView = UIView(frame: cell.frame)
+        let cellSelectionView = UIView(frame: cell.frame)
         cellSelectionView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
         cell.selectedBackgroundView = cellSelectionView
         return cell
@@ -70,7 +69,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         header.contentView.backgroundColor = UIColor.blackColor()
         header.alpha = 0.3
-        header.textLabel.textColor = UIColor.whiteColor()
+        header.textLabel!.textColor = UIColor.whiteColor()
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

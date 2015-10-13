@@ -15,8 +15,8 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bgImg = UIImageView(image: UIImage(named: "LaunchImage"))
-        bgImg.frame.origin.x = (self.view.frame.width - bgImg.frame.width)/2
-        bgImg.frame.origin.y = (self.view.frame.height - bgImg.frame.height)/2
+        bgImg.frame.origin.x = (self.view.frame.size.width - bgImg.frame.size.width)/2
+        bgImg.frame.origin.y = (self.view.frame.size.height - bgImg.frame.size.height)/2
         bgImg.alpha = 0.3
         self.view.insertSubview(bgImg, atIndex: 0)
     }

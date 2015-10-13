@@ -10,7 +10,7 @@ import Foundation
 
 class HowToViewController: RevealBaseViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var items = ["Broadcast", "Bluetooth" ]
+    var items = ["Send", "Start Searching", "Locate a Person"]
     
     @IBOutlet weak var tvItems: UITableView!
     
@@ -27,9 +27,9 @@ class HowToViewController: RevealBaseViewController, UITableViewDataSource, UITa
     
     // Table View Generating each Cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("howtoCell") as! HowToTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("howtoCell") as! HowToTableViewCell
         
-        var nameLabel:String! = items[indexPath.row]
+        let nameLabel:String! = items[indexPath.row]
         cell.titleLabel.text = nameLabel
         cell.imView.image = UIImage(named: items[indexPath.row])
         
@@ -42,7 +42,7 @@ class HowToViewController: RevealBaseViewController, UITableViewDataSource, UITa
     
     // Height for TableView Cells
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return tvItems.frame.width * (360.0/430.0)
+        return tvItems.frame.size.width / 4.0 * 3.0
     }
     
     // Segue Preparation 
